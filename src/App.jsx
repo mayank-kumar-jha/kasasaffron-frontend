@@ -112,7 +112,7 @@ function AdminSection() {
         <Route path="/admin/flavours" element={<AdminLayout><FlavoursEditor /></AdminLayout>} />
         <Route path="/admin/gallery" element={<AdminLayout><GalleryEditor /></AdminLayout>} />
         <Route path="/admin/about" element={<AdminLayout><AboutEditor /></AdminLayout>} />
-        <Route path="/admin/broadcast" element={<AdminLayout><BroadcastEditor /></AdminLayout>} />
+        {/* <Route path="/admin/broadcast" element={<AdminLayout><BroadcastEditor /></AdminLayout>} /> */}
         <Route path="/admin/settings" element={<AdminLayout><AdminSettings /></AdminLayout>} />
         <Route path="*" element={<Navigate to="/admin/login" replace />} />
       </Routes>
