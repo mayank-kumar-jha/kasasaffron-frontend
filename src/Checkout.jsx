@@ -187,8 +187,16 @@ export default function Checkout() {
     }
   };
 
-  const handlePaymentSuccess = (txId) => {
+  const handlePaymentSuccess = async (txId) => {
     setPaymentTxId(txId);
+    
+    // Explicitly confirm payment with backend in case webhook is delayed or misses
+    try {
+      await api.post('/orders/confirm-payment', { paymentIntentId: txId, orderId });
+    } catch (err) {
+      console.error('Failed to confirm payment status with backend:', err);
+    }
+
     clearCart();
     setStep('success');
   };
