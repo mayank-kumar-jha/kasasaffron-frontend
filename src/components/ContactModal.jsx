@@ -42,7 +42,10 @@ export default function ContactModal({ isOpen, onClose }) {
         handleClose();
       }, 3000);
     } catch (error) {
-      const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
+      let errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
+      if (error.response?.data?.errors?.length > 0) {
+        errorMsg = error.response.data.errors.map(err => err.message).join('\\n');
+      }
       alert(errorMsg);
     } finally {
       setIsSubmitting(false);
