@@ -122,6 +122,8 @@ export default function B2b() {
 
   /* ── Scroll Progress ── */
   const { scrollYProgress } = useScroll();
+  const flower1Y = useTransform(scrollYProgress, [0.7, 1], [0, -35]);
+  const flower2Y = useTransform(scrollYProgress, [0.7, 1], [0, 25]);
 
   /* ── GSAP ANIMATIONS ── */
   useLayoutEffect(() => {
@@ -910,13 +912,13 @@ export default function B2b() {
           src="/assets/FLOWER.png"
           alt=""
           className="absolute top-[12%] right-[-5%] w-40 opacity-[0.05] pointer-events-none select-none filter drop-shadow-[0_0_20px_rgba(189,86,26,0.15)]"
-          style={{ y: useTransform(scrollYProgress, [0.7, 1], [0, -35]) }}
+          style={{ y: flower1Y }}
         />
         <motion.img
           src="/Images/Hibiscus.png"
           alt=""
           className="absolute bottom-[8%] left-[-7%] w-44 opacity-[0.04] pointer-events-none select-none rotate-45"
-          style={{ y: useTransform(scrollYProgress, [0.7, 1], [0, 25]) }}
+          style={{ y: flower2Y }}
         />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-14">
