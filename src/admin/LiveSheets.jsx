@@ -2,23 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { adminGetAllOrders, adminGetB2BLeads, adminUpdateB2BLeadStatus, adminGetContacts, adminUpdateContactStatus } from '../api/admin.service';
 
 // Module-level cache to prevent refetching when navigating between pages
-let cachedOrders = null;
+// Removed cachedOrders to ensure fresh B2C orders are always loaded
 let cachedLeads = null;
 let cachedContacts = null;
 
 export default function LiveSheets() {
   const [activeTab, setActiveTab] = useState('b2c');
-  const [b2cOrders, setB2cOrders] = useState(cachedOrders || []);
+  const [b2cOrders, setB2cOrders] = useState([]);
   const [b2bLeads, setB2bLeads] = useState(cachedLeads || []);
   const [contacts, setContacts] = useState(cachedContacts || []);
-  const [loading, setLoading] = useState(!cachedOrders);
+  const [loading, setLoading] = useState(true);
   
-  const fetchAllData = async (forceRefresh = false) => {
-    if (!forceRefresh && cachedOrders) {
-      setLoading(false);
-      return;
-    }
-    
+  const fetchAllData = async () => {
     setLoading(true);
     try {
       const [resOrders, resLeads, resContacts] = await Promise.all([
@@ -27,11 +22,10 @@ export default function LiveSheets() {
         adminGetContacts()
       ]);
       
-      cachedOrders = resOrders?.data || [];
       cachedLeads = resLeads?.data || [];
       cachedContacts = resContacts?.data || [];
       
-      setB2cOrders(cachedOrders);
+      setB2cOrders(resOrders?.data || []);
       setB2bLeads(cachedLeads);
       setContacts(cachedContacts);
     } catch (err) {
