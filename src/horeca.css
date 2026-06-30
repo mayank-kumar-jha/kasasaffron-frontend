@@ -1,0 +1,568 @@
+/* =========================================================
+   WHO WE ARE — BACK OF CARD (HistorySection)
+   ========================================================= */
+
+/* ── Scroller shell ── */
+.back-content-scroller {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── MARQUEE ── */
+.who-marquee-bar {
+  width: 100%;
+  background: #4A0E1B;
+  padding: 11px 0;
+  overflow: hidden;
+  border-top: 1.5px solid #B8893A;
+  border-bottom: 1.5px solid #B8893A;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.who-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: whoMarquee 22s linear infinite;
+}
+
+.who-marquee-content {
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #F8F0E3;
+  padding-right: 0;
+}
+
+@keyframes whoMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.who-section-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 80px 56px;
+}
+
+/* ── Watermark botanical leaf ── */
+.who-watermark {
+  position: absolute;
+  top: 60px;
+  right: -20px;
+  width: 200px;
+  height: 240px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Centered heading ── */
+.who-heading-block {
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.who-main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #510C1B;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.who-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px auto;
+}
+
+.who-divider-line {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: #B8893A;
+}
+
+.who-divider-diamond {
+  color: #B8893A;
+  font-size: 10px;
+}
+
+.who-script-subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  color: #B8893A;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+}
+
+/* ── Two-column layout ── */
+.who-two-col {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── LEFT: Arch image column ── */
+.who-image-col {
+  flex: 0 0 36%;
+  width: 36%;
+  position: relative;
+  top: -70px;
+  left: -20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Gold decorative arch FRAME (outer) */
+.who-arch-frame-outer {
+  width: 100%;
+  max-width: 348px;
+  aspect-ratio: 348 / 488;
+  border-radius: 9999px 9999px 0 0;
+  border: 1.5px solid #B8893A;
+  padding: 4px;
+  background: transparent;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Inner arch (image clip) */
+.who-arch-frame-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px 9999px 0 0;
+  overflow: hidden;
+  background: #e8d5c0;
+}
+
+.who-arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Stamp badge (bottom-left overlap) ── */
+.who-stamp-badge {
+  position: absolute;
+  bottom: -16px;
+  left: 16px;
+  width: 80px;
+  height: 80px;
+  background: #FAF0E6;
+  border-radius: 50%;
+  border: 1.5px solid #B8893A;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(74, 14, 26, 0.15);
+}
+
+/* ── RIGHT: Text column ── */
+.who-text-col {
+  flex: 0 0 64%;
+  width: 64%;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-10px);
+}
+
+.who-intro-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #3D2010;
+  margin-bottom: 28px;
+  text-align: left;
+  max-width: 100%;
+}
+
+/* Feature cards */
+.who-card {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FBF6EF 100%);
+  border: 1px solid rgba(184, 137, 58, 0.2);
+  border-radius: 16px;
+  padding: 19px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(81, 12, 27, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.who-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #B8893A, #E6C587);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.who-card:last-child {
+  margin-bottom: 0;
+}
+
+.who-card:hover {
+  box-shadow: 0 12px 35px rgba(81, 12, 27, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(184, 137, 58, 0.4);
+}
+
+.who-card:hover::before {
+  opacity: 1;
+}
+
+.who-card-icon-wrap {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #510C1B 0%, #30060f 100%);
+  border: 1px solid rgba(230, 197, 135, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(81, 12, 27, 0.15);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.who-card:hover .who-card-icon-wrap {
+  transform: scale(1.08) rotate(-5deg);
+}
+
+.who-card-body {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.who-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #510C1B;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.who-card-title::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, rgba(184, 137, 58, 0.4), transparent);
+}
+
+.who-card-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #5A3522;
+  font-weight: 400;
+}
+
+/* ── BOTTOM STATS BAR ── */
+.who-stats-bar {
+  width: 100%;
+  background: #FAF0E6;
+  border-radius: 12px;
+  padding: 28px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.who-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.who-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.who-stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #510C1B;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* ── ACTION BUTTONS ── */
+.who-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.who-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 22px 40px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(81, 12, 27, 0.1);
+  animation: whoBtnPulse 3s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes whoBtnPulse {
+  0% {
+    box-shadow: 0 8px 25px rgba(81, 12, 27, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 15px 35px rgba(184, 137, 58, 0.25);
+  }
+}
+
+.who-btn-primary {
+  background: linear-gradient(135deg, #510C1B 0%, #30060f 100%);
+  color: #E6C587;
+  border: 1px solid rgba(230, 197, 135, 0.3);
+}
+
+.who-btn-secondary {
+  background: linear-gradient(135deg, #FAF0E6 0%, #FDF6EE 100%);
+  color: #510C1B;
+  border: 1px solid rgba(184, 137, 58, 0.4);
+}
+
+.who-btn:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(81, 12, 27, 0.2);
+}
+
+.who-btn-primary:hover {
+  color: #FFFFFF;
+  border-color: rgba(230, 197, 135, 0.8);
+}
+
+.who-btn-secondary:hover {
+  background: #FFFFFF;
+  border-color: #B8893A;
+}
+
+.who-btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
+}
+
+.who-btn:hover .who-btn-glow {
+  left: 200%;
+}
+
+.who-btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.who-btn-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.who-btn-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.who-btn:hover .who-btn-icon {
+  transform: translateX(6px);
+}
+
+/* ── DECORATIVE SIDE LINES ── */
+.who-side-line {
+  position: fixed;
+  top: 50%;
+  margin-top: -380px;
+  /* Shifted 140px upward (moved down 60px from -440px) */
+  width: 60px;
+  height: 480px;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.who-line-left {
+  left: 15px;
+}
+
+.who-line-right {
+  right: 15px;
+}
+
+.who-side-marquee-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.who-side-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: #4a0e1b;
+  text-transform: uppercase;
+  position: absolute;
+  width: max-content;
+}
+
+/* Left side: rotates 90deg to read top-to-bottom, scrolls up to down */
+.who-line-left .who-side-marquee-track {
+  transform: rotate(90deg);
+  animation: whoSideMarqueeDown 35s linear infinite;
+}
+
+/* Right side: rotates -90deg to read bottom-to-top, scrolls down to up */
+.who-line-right .who-side-marquee-track {
+  transform: rotate(-90deg);
+  animation: whoSideMarqueeUp 35s linear infinite;
+}
+
+@keyframes whoSideMarqueeUp {
+  0% {
+    transform: rotate(-90deg) translateX(-50%);
+  }
+
+  100% {
+    transform: rotate(-90deg) translateX(0);
+  }
+}
+
+@keyframes whoSideMarqueeDown {
+  0% {
+    transform: rotate(90deg) translateX(-50%);
+  }
+
+  100% {
+    transform: rotate(90deg) translateX(0);
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .who-side-line {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .who-two-col {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .who-image-col {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .who-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .who-stat-item {
+    border-right: none;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .who-stats-bar {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .who-action-buttons {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

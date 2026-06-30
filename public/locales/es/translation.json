@@ -1,0 +1,345 @@
+{
+  "nav": {
+    "home": "INICIO",
+    "whoWeAre": "QUIÉNES SOMOS",
+    "ourFlavours": "NUESTROS SABORES",
+    "b2bBusiness": "NEGOCIO B2B",
+    "gallery": "GALERÍA",
+    "events": "PRÓXIMOS EVENTOS"
+  },
+  "hero": {
+    "handcrafted": "HECHAS A MANO CON",
+    "pureSaffron": "CALIDAD PREMIUM",
+    "croquetes": "CROQUETAS",
+    "ambAmor": "Con Amor",
+    "descLine1": "Elaboradas a partir de auténticas recetas caseras",
+    "descLine2": "hechas con ingredientes premium y",
+    "descLine3": "elaboradas con cariño, para un sabor inolvidable.",
+    "feat1Title": "100% CALIDAD PREMIUM",
+    "feat1DescLine1": "Ingredientes de la más alta calidad",
+    "feat1DescLine2": "para un aroma rico",
+    "feat2Title": "RECETA CASERA",
+    "feat2DescLine1": "Preparadas con amor",
+    "feat2DescLine2": "y un toque tradicional",
+    "feat3Title": "SIN ADITIVOS ARTIFICIALES",
+    "feat3DescLine1": "Ingredientes puros para",
+    "feat3DescLine2": "cuidar de ti",
+    "feat4Title": "ELABORADAS CON CUIDADO",
+    "feat4DescLine1": "Elaboradas en pequeños lotes",
+    "feat4DescLine2": "para alcanzar la perfección"
+  },
+  "history": {
+    "title": "QUÉ HACEMOS",
+    "subtitle": "Cocina Artesanal",
+    "intro1": "En Kasa Saffron Croqueteria Y Catering transformamos una receta tradicional española en una experiencia gourmet contemporánea. Nacimos con una visión clara: ofrecer croquetas artesanales de alta calidad, elaboradas con ingredientes seleccionados y procesos meticulosamente cuidados.",
+    "intro2": "Cada croqueta representa un equilibrio entre textura, sabor y presentación. Nuestra producción combina técnicas tradicionales con estándares modernos de higiene y consistencia, garantizando un producto homogéneo tanto para el cliente final como para el catering profesional.",
+    "feat1Title": "NUESTRA ESENCIA",
+    "feat1Desc": "Cada croqueta representa un equilibrio entre textura, sabor y presentación. Nuestra producción combina técnicas tradicionales con estándares modernos de higiene y consistencia.",
+    "feat2Title": "NUESTRO COMPROMISO",
+    "feat2Desc": "Garantizamos un producto homogéneo tanto para el cliente final como para el catering profesional, siempre comprometidos con la calidad, la autenticidad y la atención al detalle.",
+    "feat3Title": "Innovación Gourmet",
+    "feat3Desc": "Sabores clásicos y combinaciones creativas adaptadas al mercado actual.",
+    "feat4Title": "Enfoque B2B y Retail",
+    "feat4Desc": "Servicio diseñado para restaurantes, caterings y supermercados en Barcelona."
+  },
+  "stories": {
+    "chetnaRole": "Chef / Directora / Fundadora",
+    "chetnaP1": "La pasión de Chetna por la cocina comenzó en la cocina de su padre en India, donde aprendió el arte de combinar especias y crear sabores memorables.",
+    "chetnaP2": "Tras formarse en las mejores escuelas culinarias de Barcelona y especializarse en pastelería, Chetna decidió crear Kasa Saffron como un tributo a sus raíces y a su amor por la croqueta española.",
+    "chetnaP3": "Su visión es simple pero ambiciosa: transformar la humilde croqueta en una experiencia gastronómica de primer nivel, utilizando solo ingredientes naturales y técnicas artesanales.",
+    "lovieshRole": "Chef Ejecutivo",
+    "lovieshP1": "Con formación culinaria en Suiza y experiencia profesional en algunos de los hoteles de lujo más prestigiosos del mundo, Loviesh aporta un nivel de excelencia inigualable a Kasa Saffron.",
+    "lovieshP2": "Su carrera incluye posiciones en los Estados Unidos, Suiza y España, culminando con una maestría en dirección hotelera en España."
+  },
+  "b2b": {
+    "heroBadge": "••• Venta al por mayor y B2B •••",
+    "heroTitle1": "Croquetas",
+    "heroTitle2": "al por mayor",
+    "heroSubtitle": "Elaboradas para Hostelería",
+    "heroDesc": "Croquetas premium para restaurantes, cafeterías, hoteles y distribuidores. Elaboradas a mano en Barcelona con ingredientes 100% naturales.",
+    "heroBtn1": "Conviértete en Socio",
+    "heroBtn2": "Ver Catálogo",
+    "heroFloating1": "Congeladas Frescas",
+    "heroFloating2": "Entrega en 24-48h",
+    "scroll": "Desplazar",
+    "sec2Badge": "••• Por qué asociarte con nosotros •••",
+    "sec2Title": "La Diferencia Kasa Saffron",
+    "sec3Badge": "••• En Números •••",
+    "sec4Badge": "••• Nuestro Catálogo •••",
+    "sec4Title": "Ocho Sabores de Autor",
+    "sec4Desc": "Cada croqueta es elaborada a mano utilizando técnicas tradicionales y los mejores ingredientes naturales.",
+    "sec4Scroll": "Desplaza para explorar",
+    "sec5Badge": "••• A quién servimos •••",
+    "sec5Title": "Para Cada Negocio",
+    "sec6Badge": "••• De Nuestros Socios •••",
+    "sec6Quote": "Las croquetas de Kasa Saffron se han convertido en la especialidad de nuestro menú de tapas. La consistencia, calidad y sabor son inigualables.",
+    "sec6Author": "Chef Daniel Martínez",
+    "sec6AuthorRole": "Chef Ejecutivo, Restaurante Cal Pep — Barcelona",
+    "sec7Badge": "••• Cómo Funciona •••",
+    "sec7Title": "Desde la Consulta hasta la Entrega",
+    "sec8Badge": "••• Contáctanos •••",
+    "sec8Title": "Trabajemos Juntos",
+    "sec8Subtitle": "Una colaboración excelente",
+    "sec8Desc": "Rellena el formulario y nos pondremos en contacto contigo en 24 horas con un presupuesto personalizado y muestras gratuitas.",
+    "bullets": [
+      "Presupuesto personalizado en 24 horas",
+      "Muestras gratuitas para tu equipo",
+      "Sin compromiso de pedido mínimo",
+      "Entrega flexible en Barcelona",
+      "Sabores personalizados disponibles",
+      "Soporte directo por WhatsApp"
+    ],
+    "whatsappText": "¿Prefieres hablar directamente?",
+    "formLabels": {
+      "company": "Empresa *",
+      "contactPerson": "Persona de Contacto *",
+      "phone": "Teléfono *",
+      "email": "Email *",
+      "businessType": "Tipo de Negocio *",
+      "estimatedVolume": "Vol. Estimado *",
+      "notes": "Mensaje (Opcional)"
+    },
+    "formPlaceholders": {
+      "company": "Nombre de la empresa",
+      "contactPerson": "Tu nombre",
+      "phone": "+34 600 000 000",
+      "email": "email@empresa.com",
+      "selectType": "Seleccionar...",
+      "estimatedVolume": "200 unidades/semana",
+      "notes": "Cuéntanos sobre tu negocio, los sabores que te interesan y la frecuencia de pedido esperada..."
+    },
+    "formSubmit": "Solicitar Muestras",
+    "formSubmitLoading": "Enviando...",
+    "privacy": "Tu información está segura con nosotros. Respetamos tu privacidad.",
+    "benefits": [
+      {
+        "title": "Calidad Constante",
+        "desc": "Elaboradas artesanalmente con precisión, asegurando siempre la excelencia."
+      },
+      {
+        "title": "Ingredientes Premium",
+        "desc": "Los mejores ingredientes naturales: jamón ibérico, champiñones selectos y quesos."
+      },
+      {
+        "title": "Suministro Escalable",
+        "desc": "Nuestra cocina industrial escala a tu demanda sin comprometer la calidad."
+      },
+      {
+        "title": "Entrega Fiable",
+        "desc": "Entrega en 24-48 horas en Barcelona. Control de temperatura garantizado."
+      },
+      {
+        "title": "Pedidos Personalizados",
+        "desc": "¿Sabor a medida? Desarrollamos recetas exclusivas para tu menú."
+      },
+      {
+        "title": "Lista para Hostelería",
+        "desc": "Porcionadas y envasadas. Listas para freír en 3 minutos sin preparación."
+      }
+    ],
+    "partners": [
+      {
+        "title": "Restaurantes",
+        "desc": "Eleva tu menú de tapas con croquetas artesanales que igualen la ambición de tu chef."
+      },
+      {
+        "title": "Hoteles",
+        "desc": "Croquetas premium para servicio a habitaciones, banquetes y buffets para huéspedes exigentes."
+      },
+      {
+        "title": "Cafeterías y Bares",
+        "desc": "El maridaje perfecto para tapas: doradas, crujientes y listas para servir en minutos."
+      },
+      {
+        "title": "Catering",
+        "desc": "Calidad constante a gran escala para eventos, funciones corporativas y celebraciones."
+      },
+      {
+        "title": "Retail y Supermercados",
+        "desc": "Croquetas congeladas bellamente empaquetadas y listas para retail en tu sección gourmet."
+      },
+      {
+        "title": "Distribuidores",
+        "desc": "Asóciate con nosotros para llevar croquetas españolas premium a nuevos mercados."
+      }
+    ],
+    "stats": [
+      {
+        "label": "Años de Oficio"
+      },
+      {
+        "label": "Socios Minoristas"
+      },
+      {
+        "label": "Sabores de Autor"
+      },
+      {
+        "label": "Ventana de Entrega"
+      }
+    ],
+    "process": [
+      {
+        "title": "Consulta",
+        "desc": "Contáctanos a través de nuestro formulario o WhatsApp. Cuéntanos sobre tu negocio y lo que estás buscando."
+      },
+      {
+        "title": "Muestreo",
+        "desc": "Preparamos un paquete de muestras de cortesía para que puedas probar la calidad de primera mano."
+      },
+      {
+        "title": "Aprobación",
+        "desc": "Trabaja con nuestro equipo para seleccionar tus sabores, volúmenes y horario de entrega."
+      },
+      {
+        "title": "Producción",
+        "desc": "Tu pedido es elaborado a mano en nuestra cocina industrial utilizando técnicas artesanales."
+      },
+      {
+        "title": "Entrega",
+        "desc": "Croquetas frescas congeladas entregadas en tu puerta en un plazo de 24-48 horas."
+      }
+    ]
+  },
+  "flavoursPage": {
+    "badge": "••• Nuestros Sabores •••",
+    "title": "Elaborados para cada antojo",
+    "items": [
+      {
+        "name": "Clásico Jamón Ibérico",
+        "tagline": "El Alma de España",
+        "description": "Croqueta tradicional española rellena de rico y sabroso jamón ibérico curado en una salsa bechamel cremosa que se deshace en la boca.",
+        "spanishName": "Croquetas de Jamón Ibérico"
+      },
+      {
+        "name": "Boletus Terrosos",
+        "tagline": "Silvestre y Aterciopelado",
+        "description": "Champiñones porcini silvestres salteados mezclados en una crema suave, una especialidad vegetariana rica en profundo aroma a bosque.",
+        "spanishName": "Croquetas de Ceps"
+      },
+      {
+        "name": "Bacalao Tradicional",
+        "tagline": "Una Herencia Costera",
+        "description": "Un clásico de las tapas costeras con bacalao salado finamente desmenuzado, ajo y perejil fresco, frito hasta la perfección dorada y crujiente.",
+        "spanishName": "Croquetas de Bacalao"
+      },
+      {
+        "name": "Pollo Asado de Autor",
+        "tagline": "Infusionado con Elegancia",
+        "description": "Nuestra especialidad de la casa: tierna pechuga de pollo asada a fuego lento infusionada con el delicado aroma de hierbas y especias premium.",
+        "spanishName": "Croquetas de Pollo Rustido"
+      },
+      {
+        "name": "Cremoso Queso Azul Cabrales",
+        "tagline": "Audaz e Indulgente",
+        "description": "Un bocado atrevido con queso azul español, bellamente equilibrado con cebollas caramelizadas dulces para una armonía dulce-salada.",
+        "spanishName": "Croquetas de Queso Azul"
+      },
+      {
+        "name": "Espinacas y Piñones Tostados",
+        "tagline": "Limpio y Crujiente",
+        "description": "Hojas frescas de espinaca y piñones españoles tostados incorporados en nuestra ligera bechamel, ofreciendo un acabado limpio y a nuez.",
+        "spanishName": "Croquetas de Espinaca"
+      },
+      {
+        "name": "Rabo de Toro Cocinado a Fuego Lento",
+        "tagline": "Rico y Profundo",
+        "description": "Carne de rabo de toro desmenuzada que se deshace en la boca, estofada en vino tinto español, envuelta en una corteza de pan rallado ultra crujiente.",
+        "spanishName": "Croquetas de Cocido"
+      },
+      {
+        "name": "Gambas al Ajillo",
+        "tagline": "Sensación Dinámica de Tapas",
+        "description": "Carnosas gambas salteadas en aceite de oliva infusionado con ajo y un toque de hojuelas de pimiento rojo, llevando las tapas calientes directamente a ti.",
+        "spanishName": "Croquetas de Rape y Gambas"
+      }
+    ]
+  },
+  "galleryPage": {
+    "badge": "✦ Galería ✦",
+    "title": "Momentos Dignos de Saborear",
+    "images": {
+      "freshPrep": {
+        "name": "Preparación Fresca",
+        "tagline": "Hecho a Mano a Diario"
+      },
+      "premiumBox": {
+        "name": "Caja Kasa Premium",
+        "tagline": "Lista para Entrega"
+      },
+      "perfectCrisp": {
+        "name": "Crujiente Perfecto",
+        "tagline": "Dorado y Delicioso"
+      },
+      "cateringPack": {
+        "name": "Pack de Catering",
+        "tagline": "Para Cualquier Ocasión"
+      },
+      "signatureFinish": {
+        "name": "Acabado de Autor",
+        "tagline": "El Estándar Kasa"
+      }
+    }
+  },
+  "events": {
+    "badge": "✦ Noticias y Hitos ✦",
+    "title1": "Qué hay de ",
+    "title2": "Nuevo",
+    "subtitle": "Desde nuevos sabores hasta ampliaciones de cocina: mantente al día con lo último de Kasa Saffron.",
+    "readMore": "Leer más",
+    "readLess": "Leer menos",
+    "noEvents": "No hay eventos planeados en este momento."
+  },
+  "checkout": {
+    "title": "Tu Pedido",
+    "empty": "Tu carrito está vacío.",
+    "emptySub": "Parece que aún no has añadido ningún sabor.",
+    "backToFlavours": "Volver a Sabores",
+    "pickupDetails": "Detalles de Recogida",
+    "fullName": "Nombre Completo *",
+    "phone": "Número de Teléfono *",
+    "pickupDate": "Fecha de Recogida *",
+    "notes": "Notas del Pedido / Peticiones Especiales",
+    "subtotal": "Subtotal",
+    "vat": "IVA (10%)",
+    "total": "Total",
+    "proceedBtn": "Proceder al Pago",
+    "signInToProceed": "Inicia sesión para Continuar",
+    "paymentTitle": "Detalles de Pago",
+    "payBtn": "Pagar",
+    "processing": "Procesando...",
+    "successTitle": "¡Pago Completado! 🎉",
+    "successMsg": "Gracias por tu pedido. Tu pago de",
+    "successSub": "ha sido procesado.",
+    "orderRef": "Referencia del pedido:",
+    "pickupInst": "¡Te veremos en tu fecha de recogida seleccionada!",
+    "backToHome": "Volver al Inicio",
+    "qty": "Cant:"
+  },
+  "auth": {
+    "welcome": "Bienvenido a Kasa Saffron",
+    "subtitle": "Inicia sesión o crea una cuenta",
+    "name": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "phone": "Número de Teléfono (Opcional)",
+    "signInBtn": "Iniciar Sesión",
+    "signUpBtn": "Crear Cuenta",
+    "signInSwitch": "¿Ya tienes cuenta? Inicia sesión",
+    "signUpSwitch": "¿No tienes cuenta? Regístrate",
+    "googleBtn": "Continuar con Google",
+    "or": "O",
+    "creating": "Creando cuenta...",
+    "signingIn": "Iniciando sesión..."
+  },
+  "footer": {
+    "explore": "Explorar",
+    "kitchen": "Cocina y Contacto",
+    "contact": "Contáctanos",
+    "follow": "Síguenos"
+  },
+  "navAuth": {
+    "changeAccount": "Cambiar cuenta",
+    "signOut": "Cerrar sesión",
+    "signInUp": "Iniciar Sesión / Registro"
+  }
+}

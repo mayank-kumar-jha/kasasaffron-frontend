@@ -1,0 +1,345 @@
+{
+  "nav": {
+    "home": "INICI",
+    "whoWeAre": "QUI SOM",
+    "ourFlavours": "ELS NOSTRES SABORS",
+    "b2bBusiness": "NEGOCI B2B",
+    "gallery": "GALERIA",
+    "events": "PROPERS ESDEVENIMENTS"
+  },
+  "hero": {
+    "handcrafted": "FETES A MÀ AMB",
+    "pureSaffron": "QUALITAT PRÈMIUM",
+    "croquetes": "CROQUETES",
+    "ambAmor": "Amb Amor",
+    "descLine1": "Elaborades a partir d'autèntiques receptes casolanes",
+    "descLine2": "fetes amb ingredients prèmium i",
+    "descLine3": "elaborades amb cura, per a un sabor inoblidable.",
+    "feat1Title": "100% QUALITAT PRÈMIUM",
+    "feat1DescLine1": "Ingredients de la més alta qualitat",
+    "feat1DescLine2": "per a un aroma ric",
+    "feat2Title": "RECEPTA CASOLANA",
+    "feat2DescLine1": "Preparades amb amor",
+    "feat2DescLine2": "i un toc tradicional",
+    "feat3Title": "SENSE ADDITIUS ARTIFICIALS",
+    "feat3DescLine1": "Ingredients purs per",
+    "feat3DescLine2": "cuidar de tu",
+    "feat4Title": "ELABORADES AMB CURA",
+    "feat4DescLine1": "Elaborades en petits lots",
+    "feat4DescLine2": "per assolir la perfecció"
+  },
+  "history": {
+    "title": "QUÈ FEM",
+    "subtitle": "Cuina Artesanal",
+    "intro1": "A Kasa Saffron Croqueteria Y Catering transformem una recepta tradicional espanyola en una experiència gurmet contemporània. Vam néixer amb una visió clara: oferir croquetes artesanals d'alta qualitat, elaborades amb ingredients seleccionats i processos meticulosament cuidats.",
+    "intro2": "Cada croqueta representa un equilibri entre textura, sabor i presentació. La nostra producció combina tècniques tradicionals amb estàndards moderns d'higiene i consistència, garantint un producte homogeni tant per al client final com per al càtering professional.",
+    "feat1Title": "LA NOSTRA ESSÈNCIA",
+    "feat1Desc": "Cada croqueta representa un equilibri entre textura, sabor i presentació. La nostra producció combina tècniques tradicionals amb estàndards moderns d'higiene i consistència.",
+    "feat2Title": "EL NOSTRE COMPROMÍS",
+    "feat2Desc": "Garantim un producte homogeni tant per al client final com per al càtering professional, sempre compromesos amb la qualitat, l'autenticitat i l'atenció al detall.",
+    "feat3Title": "Innovació Gurmet",
+    "feat3Desc": "Sabors clàssics i combinacions creatives adaptadas al mercat actual.",
+    "feat4Title": "Enfocament B2B i Retail",
+    "feat4Desc": "Servei dissenyat per a restaurants, càterings i supermercats a Barcelona."
+  },
+  "stories": {
+    "chetnaRole": "Xef / Directora / Fundadora",
+    "chetnaP1": "La passió de Chetna per la cuina va començar a la cuina del seu pare a l'Índia, on va aprendre l'art de combinar espècies i crear sabors memorables.",
+    "chetnaP2": "Després de formar-se a les millors escoles culinàries de Barcelona i especialitzar-se en pastisseria, Chetna va decidir crear Kasa Saffron com un tribut a les seves arrels i al seu amor per la croqueta espanyola.",
+    "chetnaP3": "La seva visió és simple però ambiciosa: transformar la humil croqueta en una experiència gastronòmica de primer nivell, utilitzant només ingredients naturals i tècniques artesanals.",
+    "lovieshRole": "Xef Executiu",
+    "lovieshP1": "Amb formació culinària a Suïssa i experiència professional en alguns dels hotels de luxe més prestigiosos del món, Loviesh aporta un nivell d'excel·lència inigualable a Kasa Saffron.",
+    "lovieshP2": "La seva carrera inclou posicions als Estats Units, Suïssa i Espanya, culminant amb un màster en direcció hotelera a Espanya."
+  },
+  "b2b": {
+    "heroBadge": "••• Venda a l'engròs i B2B •••",
+    "heroTitle1": "Croquetes",
+    "heroTitle2": "a l'engròs",
+    "heroSubtitle": "Elaborades per a l'Hostaleria",
+    "heroDesc": "Croquetes prèmium per a restaurants, cafeteries, hotels i distribuïdors. Elaborades a mà a Barcelona amb ingredients 100% naturals.",
+    "heroBtn1": "Fes-te Soci",
+    "heroBtn2": "Veure Catàleg",
+    "heroFloating1": "Congelades Fresques",
+    "heroFloating2": "Entrega en 24-48h",
+    "scroll": "Desplaçar",
+    "sec2Badge": "••• Per què associar-te amb nosaltres •••",
+    "sec2Title": "La Diferència Kasa Saffron",
+    "sec3Badge": "••• En Números •••",
+    "sec4Badge": "••• El Nostre Catàleg •••",
+    "sec4Title": "Vuit Sabors d'Autor",
+    "sec4Desc": "Cada croqueta és elaborada a mà utilitzant tècniques tradicionals i els millors ingredients naturals.",
+    "sec4Scroll": "Desplaça per explorar",
+    "sec5Badge": "••• A qui servim •••",
+    "sec5Title": "Per a Cada Negoci",
+    "sec6Badge": "••• Dels Nostres Socis •••",
+    "sec6Quote": "Les croquetes de Kasa Saffron s'han convertit en l'especialitat del nostre menú de tapes. La consistència, qualitat i sabor són inigualables.",
+    "sec6Author": "Xef Daniel Martínez",
+    "sec6AuthorRole": "Xef Executiu, Restaurant Cal Pep — Barcelona",
+    "sec7Badge": "••• Com Funciona •••",
+    "sec7Title": "Des de la Consulta fins a l'Entrega",
+    "sec8Badge": "••• Contacta'ns •••",
+    "sec8Title": "Treballem Junts",
+    "sec8Subtitle": "Una col·laboració excel·lent",
+    "sec8Desc": "Omple el formulari i ens posarem en contacte amb tu en 24 hores amb un pressupost personalitzat i mostres gratuïtes.",
+    "bullets": [
+      "Pressupost personalitzat en 24 hores",
+      "Mostres gratuïtes per al teu equip",
+      "Sense compromís de comanda mínima",
+      "Entrega flexible a Barcelona",
+      "Sabors personalitzats disponibles",
+      "Suport directe per WhatsApp"
+    ],
+    "whatsappText": "Prefereixes parlar directament?",
+    "formLabels": {
+      "company": "Empresa *",
+      "contactPerson": "Persona de Contacte *",
+      "phone": "Telèfon *",
+      "email": "Email *",
+      "businessType": "Tipus de Negoci *",
+      "estimatedVolume": "Volum Estimat *",
+      "notes": "Missatge (Opcional)"
+    },
+    "formPlaceholders": {
+      "company": "Nom de l'empresa",
+      "contactPerson": "El teu nom",
+      "phone": "+34 600 000 000",
+      "email": "email@empresa.com",
+      "selectType": "Seleccionar...",
+      "estimatedVolume": "200 unitats/setmana",
+      "notes": "Explica'ns sobre el teu negoci, els sabors que t'interessen i la freqüència de comanda esperada..."
+    },
+    "formSubmit": "Sol·licitar Mostres",
+    "formSubmitLoading": "Enviant...",
+    "privacy": "La teva informació està segura amb nosaltres. Respectem la teva privacitat.",
+    "benefits": [
+      {
+        "title": "Qualitat Constant",
+        "desc": "Elaborades artesanalment amb precisió, assegurant sempre l'excel·lència."
+      },
+      {
+        "title": "Ingredients Prèmium",
+        "desc": "Els millors ingredients naturals: pernil ibèric, xampinyons selectes i formatges."
+      },
+      {
+        "title": "Subministrament Escalable",
+        "desc": "La nostra cuina industrial escala a la teva demanda sense comprometre la qualitat."
+      },
+      {
+        "title": "Entrega Fiable",
+        "desc": "Entrega en 24-48 hores a Barcelona. Control de temperatura garantit."
+      },
+      {
+        "title": "Comandes Personalitzades",
+        "desc": "Sabor a mida? Desenvolupem receptes exclusives per al teu menú."
+      },
+      {
+        "title": "Llista per Hostaleria",
+        "desc": "Porcionades i envasades. Llestes per fregir en 3 minuts sense preparació."
+      }
+    ],
+    "partners": [
+      {
+        "title": "Restaurants",
+        "desc": "Eleva el teu menú de tapes amb croquetes artesanals que igualin l'ambició del teu xef."
+      },
+      {
+        "title": "Hotels",
+        "desc": "Croquetes prèmium per a servei a habitacions, banquets i bufets per a hostes exigents."
+      },
+      {
+        "title": "Cafeteries i Bars",
+        "desc": "El maridatge perfecte per a tapes: daurades, cruixents i llistes per servir en minuts."
+      },
+      {
+        "title": "Càtering",
+        "desc": "Qualitat constant a gran escala per a esdeveniments, funcions corporatives i celebracions."
+      },
+      {
+        "title": "Retail i Supermercats",
+        "desc": "Croquetes congelades bellamente empaquetades i llistes per a retail a la teva secció gurmet."
+      },
+      {
+        "title": "Distribuïdors",
+        "desc": "Associa't amb nosaltres per portar croquetes espanyoles prèmium a nous mercats."
+      }
+    ],
+    "stats": [
+      {
+        "label": "Anys d'Ofici"
+      },
+      {
+        "label": "Socis Minoristes"
+      },
+      {
+        "label": "Sabors d'Autor"
+      },
+      {
+        "label": "Finestra d'Entrega"
+      }
+    ],
+    "process": [
+      {
+        "title": "Consulta",
+        "desc": "Contacta'ns a través del nostre formulari o WhatsApp. Explica'ns sobre el teu negoci i el que estàs buscant."
+      },
+      {
+        "title": "Mostreig",
+        "desc": "Preparem un paquet de mostres de cortesia perquè puguis provar la qualitat de primera mà."
+      },
+      {
+        "title": "Aprovació",
+        "desc": "Treballa amb el nostre equip per seleccionar els teus sabors, volums i horari d'entrega."
+      },
+      {
+        "title": "Producció",
+        "desc": "La teva comanda és elaborada a mà a la nostra cuina industrial utilitzant tècniques artesanals."
+      },
+      {
+        "title": "Entrega",
+        "desc": "Croquetes fresques congelades entregades a la teva porta en un termini de 24-48 hores."
+      }
+    ]
+  },
+  "flavoursPage": {
+    "badge": "••• Els Nostres Sabors •••",
+    "title": "Elaborats per a cada caprici",
+    "items": [
+      {
+        "name": "Clàssic Pernil Ibèric",
+        "tagline": "L'Ànima d'Espanya",
+        "description": "Croqueta tradicional espanyola farcida de ric i saborós pernil ibèric curat en una salsa beixamel cremosa que es desfà a la boca.",
+        "spanishName": "Croquetes de Pernil Ibèric"
+      },
+      {
+        "name": "Boletus Terrosos",
+        "tagline": "Silvestre i Vellutat",
+        "description": "Xampinyons porcini silvestres saltejats barrejats en una crema suau, una especialitat vegetariana rica en profund aroma a bosc.",
+        "spanishName": "Croquetes de Ceps"
+      },
+      {
+        "name": "Bacallà Tradicional",
+        "tagline": "Una Herència Costanera",
+        "description": "Un clàssic de les tapes costaneres amb bacallà salat finamente esmicolat, all i julivert fresc, fregit fins a la perfecció daurada i cruixent.",
+        "spanishName": "Croquetes de Bacallà"
+      },
+      {
+        "name": "Pollastre Rostit d'Autor",
+        "tagline": "Infusionat amb Elegància",
+        "description": "La nostra especialitat de la casa: tendra pit de pollastre rostit a foc lent infusionat amb el delicat aroma d'herbes i espècies prèmium.",
+        "spanishName": "Croquetes de Pollastre Rustit"
+      },
+      {
+        "name": "Cremós Formatge Blau Cabrales",
+        "tagline": "Audaç i Indulgent",
+        "description": "Un mos atrevit amb formatge blau espanyol, bellament equilibrat amb cebes caramel·litzades dolces per a una harmonia dolça-salada.",
+        "spanishName": "Croquetes de Formatge Blau"
+      },
+      {
+        "name": "Espinacs i Pinyons Torrats",
+        "tagline": "Net i Cruixent",
+        "description": "Fulles fresques d'espinac i pinyons espanyols torrats incorporats en la nostra lleugera beixamel, oferint un acabat net i a nou.",
+        "spanishName": "Croquetes d'Espinacs"
+      },
+      {
+        "name": "Cua de Bou Cuinada a Foc Lent",
+        "tagline": "Ric i Profund",
+        "description": "Carn de cua de bou esmicolada que es desfà a la boca, ofegada en vi negre espanyol, embolicada en una crosta de pa ratllat ultra cruixent.",
+        "spanishName": "Croquetes de Cuit"
+      },
+      {
+        "name": "Gambes a l'Allet",
+        "tagline": "Sensació Dinàmica de Tapes",
+        "description": "Carnoses gambes saltejades en oli d'oliva infusionat amb all i un toc de flocs de pebrot vermell, portant les tapes calentes directament a tu.",
+        "spanishName": "Croquetes de Rap i Gambes"
+      }
+    ]
+  },
+  "galleryPage": {
+    "badge": "✦ Galeria ✦",
+    "title": "Moments Dignes de Saborejar",
+    "images": {
+      "freshPrep": {
+        "name": "Preparació Fresca",
+        "tagline": "Fet a Mà Diàriament"
+      },
+      "premiumBox": {
+        "name": "Caixa Kasa Prèmium",
+        "tagline": "Llista per a Entrega"
+      },
+      "perfectCrisp": {
+        "name": "Cruixent Perfecte",
+        "tagline": "Daurat i Deliciós"
+      },
+      "cateringPack": {
+        "name": "Pack de Càtering",
+        "tagline": "Per a Qualsevol Ocasió"
+      },
+      "signatureFinish": {
+        "name": "Acabat d'Autor",
+        "tagline": "L'Estàndard Kasa"
+      }
+    }
+  },
+  "events": {
+    "badge": "✦ Notícies i Fites ✦",
+    "title1": "Què hi ha de ",
+    "title2": "Nou",
+    "subtitle": "Des de nous sabors fins a ampliacions de cuina: estigues al dia amb l'última hora de Kasa Saffron.",
+    "readMore": "Llegir més",
+    "readLess": "Llegir menys",
+    "noEvents": "No hi ha esdeveniments planejats en aquest moment."
+  },
+  "checkout": {
+    "title": "La Teva Comanda",
+    "empty": "El teu carret està buit.",
+    "emptySub": "Sembla que encara no has afegit cap sabor.",
+    "backToFlavours": "Tornar a Sabors",
+    "pickupDetails": "Detalls de Recollida",
+    "fullName": "Nom Complet *",
+    "phone": "Número de Telèfon *",
+    "pickupDate": "Data de Recollida *",
+    "notes": "Notes de Comanda / Peticions Especials",
+    "subtotal": "Subtotal",
+    "vat": "IVA (10%)",
+    "total": "Total",
+    "proceedBtn": "Procedir al Pagament",
+    "signInToProceed": "Inicia sessió per Continuar",
+    "paymentTitle": "Detalls de Pagament",
+    "payBtn": "Pagar",
+    "processing": "Processant...",
+    "successTitle": "¡Pagament Completat! 🎉",
+    "successMsg": "Gràcies per la teva comanda. El teu pagament de",
+    "successSub": "ha estat processat.",
+    "orderRef": "Referència de la comanda:",
+    "pickupInst": "Ens veiem en la teva data de recollida seleccionada!",
+    "backToHome": "Tornar a l'Inici",
+    "qty": "Quant:"
+  },
+  "auth": {
+    "welcome": "Benvingut a Kasa Saffron",
+    "subtitle": "Inicia sessió o crea un compte",
+    "name": "Nom Complet",
+    "email": "Correu Electrònic",
+    "password": "Contrasenya",
+    "phone": "Número de Telèfon (Opcional)",
+    "signInBtn": "Iniciar Sessió",
+    "signUpBtn": "Crear Compte",
+    "signInSwitch": "Ja tens compte? Inicia sessió",
+    "signUpSwitch": "No tens compte? Registra't",
+    "googleBtn": "Continuar amb Google",
+    "or": "O",
+    "creating": "Creant compte...",
+    "signingIn": "Iniciant sessió..."
+  },
+  "footer": {
+    "explore": "Explorar",
+    "kitchen": "Cuina i Contacte",
+    "contact": "Contacta'ns",
+    "follow": "Segueix-nos"
+  },
+  "navAuth": {
+    "changeAccount": "Canviar compte",
+    "signOut": "Tancar sessió",
+    "signInUp": "Iniciar Sessió / Registre"
+  }
+}
