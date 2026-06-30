@@ -136,7 +136,13 @@ export default function Checkout() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'phone') {
+      // Only allow numbers, plus, minus, parentheses and spaces
+      const sanitizedValue = value.replace(/[^0-9+\-()\s]/g, '');
+      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleProceedToPayment = async (e) => {
