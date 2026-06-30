@@ -91,66 +91,6 @@ export default function B2b() {
   const pageRef = useRef(null);
   const catalogueRef = useRef(null);
   const timelineRef = useRef(null);
-  const serveContainerRef = useRef(null);
-  const topCardRef = useRef(null);
-  const leafRefs = useRef([]);
-
-  const { scrollYProgress: serveScrollY } = useScroll({
-    target: serveContainerRef,
-    offset: ["start end", "end start"]
-  });
-  const { scrollYProgress: servePathScrollY } = useScroll({
-    target: serveContainerRef,
-    offset: ["start center", "end center"]
-  });
-  const path1Progress = useTransform(servePathScrollY, [0, 0.45], [0, 1]);
-  const path2Progress = useTransform(servePathScrollY, [0, 0.75], [0, 1]);
-  const path3Progress = useTransform(servePathScrollY, [0, 1], [0, 1]);
-
-  const [coords, setCoords] = useState(null);
-
-  const updateCoords = useCallback(() => {
-    if (!serveContainerRef.current || !topCardRef.current) return;
-    const parentRect = serveContainerRef.current.getBoundingClientRect();
-
-    const topRect = topCardRef.current.getBoundingClientRect();
-    const startX = topRect.left + topRect.width / 2 - parentRect.left;
-    const startY = topRect.bottom - parentRect.top;
-
-    const leafItems = [];
-    for (let i = 0; i < partners.length; i++) {
-      const el = leafRefs.current[i];
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        const isDesktop = window.innerWidth >= 1024;
-        let endX, endY;
-
-        if (isDesktop) {
-          const isLeftColumn = i % 2 === 0;
-          endX = isLeftColumn ? (rect.right - parentRect.left) : (rect.left - parentRect.left);
-          endY = rect.top + rect.height / 2 - parentRect.top;
-        } else {
-          endX = rect.left - parentRect.left;
-          endY = rect.top + rect.height / 2 - parentRect.top;
-        }
-
-        leafItems.push({ endX, endY });
-      }
-    }
-
-    setCoords({ startX, startY, leafItems });
-  }, [partners.length]);
-
-  useLayoutEffect(() => {
-    updateCoords();
-    window.addEventListener('resize', updateCoords);
-    return () => window.removeEventListener('resize', updateCoords);
-  }, [updateCoords]);
-
-  useEffect(() => {
-    const timer = setTimeout(updateCoords, 150);
-    return () => clearTimeout(timer);
-  }, [updateCoords]);
   /* ── Form State ── */
   const [formData, setFormData] = useState({
     companyName: '', contactPerson: '', phone: '', email: '',
