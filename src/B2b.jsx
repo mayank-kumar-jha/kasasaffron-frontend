@@ -28,8 +28,6 @@ export default function B2b() {
   const { isDataLoading } = adminContext;
   const adminFlavours = adminContext.flavours || [];
 
-  if (isDataLoading) return <SkeletonPage />;
-
   const displayFlavours = adminFlavours && adminFlavours.length > 0 ? adminFlavours : FLAVOURS;
 
   const flavours = displayFlavours.map((f, i) => {
@@ -187,6 +185,8 @@ export default function B2b() {
 
   /* ── GSAP ANIMATIONS ── */
   useLayoutEffect(() => {
+    if (!pageRef.current) return;
+    
     const ctx = gsap.context(() => {
       // 2. Horizontal Catalogue Scroll (REMOVED: Now using manual button slider)
 
@@ -291,8 +291,9 @@ export default function B2b() {
       ro.disconnect();
       ctx.revert();
     };
-  }, [i18n.language]);
+  }, [i18n.language, isDataLoading]);
 
+  if (isDataLoading) return <SkeletonPage />;
 
   return (
     <div ref={pageRef} className="relative w-full bg-[#f6e5dd] overflow-hidden">
