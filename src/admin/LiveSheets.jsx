@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { adminGetAllOrders, adminGetB2BLeads, adminUpdateB2BLeadStatus, adminGetContacts, adminUpdateContactStatus } from '../api/admin.service';
+import { adminGetAllOrders, adminGetB2BLeads, adminUpdateB2BLeadStatus, adminGetContacts, adminUpdateContactStatus, adminGetUsers } from '../api/admin.service';
 
 // Module-level cache to prevent refetching when navigating between pages
 // Removed cachedOrders to ensure fresh B2C orders are always loaded
@@ -11,15 +11,17 @@ export default function LiveSheets() {
   const [b2cOrders, setB2cOrders] = useState([]);
   const [b2bLeads, setB2bLeads] = useState(cachedLeads || []);
   const [contacts, setContacts] = useState(cachedContacts || []);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   
   const fetchAllData = async () => {
     setLoading(true);
     try {
-      const [resOrders, resLeads, resContacts] = await Promise.all([
+      const [resOrders, resLeads, resContacts, resUsers] = await Promise.all([
         adminGetAllOrders(),
         adminGetB2BLeads(),
-        adminGetContacts()
+        adminGetContacts(),
+        adminGetUsers()
       ]);
       
       cachedLeads = resLeads?.data || [];
@@ -28,6 +30,7 @@ export default function LiveSheets() {
       setB2cOrders(resOrders?.data || []);
       setB2bLeads(cachedLeads);
       setContacts(cachedContacts);
+      setUsers(resUsers?.data || []);
     } catch (err) {
       console.error('Failed to fetch sheet data:', err);
     } finally {
@@ -99,6 +102,12 @@ export default function LiveSheets() {
           className={`px-4 py-2 rounded-lg text-xs font-bold tracking-widest uppercase transition-all whitespace-nowrap ${activeTab === 'contact' ? 'bg-[#E6C587]/15 text-[#E6C587]' : 'text-white/30 hover:text-white/60'}`}
         >
           Contact Forms
+        </button>
+        <button
+          onClick={() => setActiveTab('users')}
+          className={`px-4 py-2 rounded-lg text-xs font-bold tracking-widest uppercase transition-all whitespace-nowrap ${activeTab === 'users' ? 'bg-[#E6C587]/15 text-[#E6C587]' : 'text-white/30 hover:text-white/60'}`}
+        >
+          Registered Users
         </button>
       </div>
 
@@ -220,7 +229,40 @@ export default function LiveSheets() {
               </tbody>
             </table>
           </div>
-        )}
+        ) : activeTab === 'users' ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-[#E6C587]/5 border-b border-[#E6C587]/10 text-[#E6C587] text-[10px] uppercase tracking-widest">
+                  <th className="p-4">Join Date</th>
+                  <th className="p-4">Name</th>
+                  <th className="p-4">Email</th>
+                  <th className="p-4">Phone</th>
+                  <th className="p-4">Role</th>
+                  <th className="p-4">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.length === 0 ? (
+                  <tr><td colSpan="6" className="p-4 text-center text-white/50">No users found.</td></tr>
+                ) : users.map(user => (
+                  <tr key={user.id} className="border-b border-[#E6C587]/5 hover:bg-[#E6C587]/5 transition-colors text-white/80 text-sm">
+                    <td className="p-4">{new Date(user.createdAt).toLocaleString()}</td>
+                    <td className="p-4">{user.name}</td>
+                    <td className="p-4">{user.email}</td>
+                    <td className="p-4">{user.phone || 'N/A'}</td>
+                    <td className="p-4">{user.role}</td>
+                    <td className="p-4">
+                      <span className={`px-2 py-1 rounded text-xs ${user.isEmailVerified ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                        {user.isEmailVerified ? 'Verified' : 'Unverified'}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : null}
       </div>
     </div>
   );
