@@ -114,6 +114,8 @@ export default function LiveSheets() {
                   <th className="p-4">Date & Time</th>
                   <th className="p-4">Customer Name</th>
                   <th className="p-4">Email</th>
+                  <th className="p-4">Pickup / Notes</th>
+                  <th className="p-4">Items</th>
                   <th className="p-4">Revenue</th>
                   <th className="p-4">Status</th>
                 </tr>
@@ -126,6 +128,14 @@ export default function LiveSheets() {
                     <td className="p-4">{new Date(order.createdAt).toLocaleString()}</td>
                     <td className="p-4">{order.user?.name || 'Guest'}</td>
                     <td className="p-4">{order.user?.email || 'N/A'}</td>
+                    <td className="p-4 max-w-xs truncate" title={order.notes || 'N/A'}>{order.notes || 'N/A'}</td>
+                    <td className="p-4">
+                      {order.orderItems?.map(item => (
+                        <div key={item.id} className="text-xs whitespace-nowrap">
+                          {item.quantity}x {item.product?.name?.en || item.product?.name || 'Item'} ({item.size})
+                        </div>
+                      ))}
+                    </td>
                     <td className="p-4 font-bold">€{order.totalAmount?.toLocaleString()}</td>
                     <td className="p-4">
                       <span className={`px-2 py-1 rounded text-xs ${order.status === 'PAID' || order.status === 'DELIVERED' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
