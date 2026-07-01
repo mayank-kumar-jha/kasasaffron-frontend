@@ -88,7 +88,7 @@ const mobileStyles = `
 
   /* Plate Size Control for Mobile Portrait */
   .mob-animated-plate {
-      width: calc(100vw - 15px) !important;
+      width: calc(100vw - 5px) !important;
   }
 
   /* Sections */
@@ -430,7 +430,7 @@ export default function MobileHome() {
           <div
             ref={plateRef}
             className="mob-animated-plate flex items-center justify-center"
-            style={{ transform: 'translate(-50%, calc(-50% + 100vh - 8px))' }}
+            style={{ transform: 'translate(-50%, calc(-50% + 100vh - 26px))' }}
           >
             {/* Plate Image */}
             <img
