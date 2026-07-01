@@ -503,39 +503,6 @@ export default function Checkout() {
         </div>
       </div>
 
-      {/* Bottom Features Bar */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-[#E6C587]/30">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-[#4A0E1A]">
-          <div className="flex items-center gap-3">
-            <svg className="w-8 h-8 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-            <div>
-              <p className="text-sm font-bold mb-0.5">100% Pure & Natural</p>
-              <p className="text-xs text-[#4A0E1A]/60">The finest quality saffron</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <svg className="w-8 h-8 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" /></svg>
-            <div>
-              <p className="text-sm font-bold mb-0.5">Handpicked in Kashmir</p>
-              <p className="text-xs text-[#4A0E1A]/60">Carefully selected threads</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <svg className="w-8 h-8 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            <div>
-              <p className="text-sm font-bold mb-0.5">Lab Tested for Purity</p>
-              <p className="text-xs text-[#4A0E1A]/60">Ensuring unmatched quality</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <svg className="w-8 h-8 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-            <div>
-              <p className="text-sm font-bold mb-0.5">Premium Packaging</p>
-              <p className="text-xs text-[#4A0E1A]/60">Sealed for freshness</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
