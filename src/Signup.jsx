@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { login, register, forgotPassword, resetPassword } from './api/auth.service.js';
+import { login, register, forgotPassword, resetPassword, verifyRegistrationOtp } from './api/auth.service.js';
 
 export default function Signup() {
   const { t } = useTranslation();
@@ -34,8 +34,10 @@ export default function Signup() {
           return;
         }
         await register({ name, email, phone, password });
-        // Auto-login after register
-        await login({ email, password });
+        await register({ name, email, phone, password });
+        setViewMode('verify-signup');
+      } else if (viewMode === 'verify-signup') {
+        await verifyRegistrationOtp({ email, otp });
         navigate('/');
       } else if (viewMode === 'forgot') {
         await forgotPassword({ email });
@@ -282,12 +284,14 @@ export default function Signup() {
                 </div>
 
                 {/* Social Login */}
+                {/* 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-[90%] mx-auto">
                   <button type="button" onClick={() => window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/auth/google` : '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-4 h-4" />
                     Google
                   </button>
                 </div>
+                */}
 
                 {/* Switch to Signup Link */}
                 <p className="text-center mt-10 text-[13px] text-gray-600 font-medium">
@@ -477,12 +481,14 @@ export default function Signup() {
                 </div>
 
                 {/* Social Signup */}
+                {/* 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-[90%] mx-auto">
                   <button type="button" onClick={() => window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/auth/google` : '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-4 h-4" />
                     Google
                   </button>
                 </div>
+                */}
 
                 {/* Switch to Login Link */}
                 <p className="text-center mt-10 text-[13px] text-gray-600 font-medium">
@@ -493,6 +499,86 @@ export default function Signup() {
                     className="text-saffron hover:text-saffron-dark hover:underline font-bold transition-colors cursor-pointer"
                   >
                     Login
+                  </button>
+                </p>
+              </motion.div>
+            ) : viewMode === 'verify-signup' ? (
+              // VERIFY SIGNUP OTP FORM
+              <motion.div
+                key="verify-signup-form"
+                custom={1}
+                variants={formVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="w-full"
+              >
+                <h2 className="text-3xl md:text-4xl font-cinzel text-saffron text-center mb-6 tracking-wide font-bold">
+                  VERIFY EMAIL
+                </h2>
+                <p className="text-center text-sm text-gray-600 mb-8 font-medium">
+                  We've sent a 6-digit verification code to <br />
+                  <span className="font-bold text-gray-800">{email}</span>
+                </p>
+
+                <AnimatePresence>
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 rounded-lg bg-red-100 border border-red-200 text-red-600 text-sm text-center font-medium shadow-sm"
+                    >
+                      {error}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  {/* OTP Field */}
+                  <div className="relative group">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-saffron transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                      required
+                      placeholder="6-digit Verification Code"
+                      className="w-full pl-10.5 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron/30 focus:border-saffron bg-white/70 shadow-sm transition-all text-gray-700 placeholder-gray-400 hover:border-gray-300 text-[13px] tracking-widest text-center font-bold"
+                    />
+                  </div>
+
+                  {/* Verify Button */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={loading || otp.length !== 6}
+                      className="w-full sm:w-[85%] mx-auto flex items-center justify-center gap-2 bg-saffron text-white py-3.5 rounded-[20px] hover:bg-saffron-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg active:scale-[0.98] hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {loading ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Verifying...
+                        </>
+                      ) : (
+                        'Verify & Complete Signup'
+                      )}
+                    </button>
+                  </div>
+                </form>
+
+                <p className="text-center mt-10 text-[13px] text-gray-600 font-medium">
+                  Wrong email?{' '}
+                  <button
+                    type="button"
+                    onClick={() => { setViewMode('signup'); setError(''); }}
+                    className="text-saffron hover:text-saffron-dark hover:underline font-bold transition-colors cursor-pointer"
+                  >
+                    Go Back
                   </button>
                 </p>
               </motion.div>

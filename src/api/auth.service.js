@@ -65,6 +65,16 @@ export const resetPassword = async (data) => {
   return response.data;
 };
 
+export const verifyRegistrationOtp = async (data) => {
+  const response = await api.post('/auth/verify-registration-otp', data);
+  if (response.data?.data?.accessToken) {
+    localStorage.setItem('kasa_access_token', response.data.data.accessToken);
+    localStorage.setItem('kasa_user', JSON.stringify(response.data.data.user));
+    window.dispatchEvent(new Event('userStateChange'));
+  }
+  return response.data;
+};
+
 /**
  * Check if user is logged in and is an admin.
  */
