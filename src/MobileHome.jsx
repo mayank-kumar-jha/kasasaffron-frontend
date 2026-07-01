@@ -430,7 +430,7 @@ export default function MobileHome() {
           <div
             ref={plateRef}
             className="mob-animated-plate flex items-center justify-center"
-            style={{ transform: 'translate(-50%, calc(-50% + 100vh + 10px))' }}
+            style={{ transform: 'translate(-50%, calc(-50% + 100vh - 8px))' }}
           >
             {/* Plate Image */}
             <img
