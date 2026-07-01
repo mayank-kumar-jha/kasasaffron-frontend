@@ -98,9 +98,27 @@ export default function B2b() {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
   const [focusedField, setFocusedField] = useState(null);
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    let newValue = value;
+    let error = '';
+
+    if (name === 'phone') {
+      const digitsOnly = value.replace(/[^0-9]/g, '');
+      if (value !== digitsOnly && value.replace('+', '') !== digitsOnly) {
+        error = 'Phone number must contain digits only.';
+      } else if (digitsOnly.length > 10) {
+        error = 'Phone number cannot exceed 10 digits.';
+      }
+      newValue = digitsOnly.slice(0, 10);
+    }
+
+    setFormErrors(prev => ({ ...prev, [name]: error }));
+    setFormData({ ...formData, [name]: newValue });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!getCurrentUserLocal()) {
@@ -1026,13 +1044,18 @@ export default function B2b() {
 
                   {/* Row 2 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/60 uppercase font-sans">{t('b2b.formLabels.phone')}</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder={t('b2b.formPlaceholders.phone')}
+                      <input type="tel" inputMode="numeric" name="phone" value={formData.phone} onChange={handleChange} required placeholder={t('b2b.formPlaceholders.phone')}
                         onFocus={() => setFocusedField('phone')} onBlur={() => setFocusedField(null)}
-                        className="w-full bg-[#2c0107]/45 border border-[#E6C587]/15 rounded-xl px-3.5 py-2.5 text-[11px] text-[#f6e5dd] placeholder-[#f6e5dd]/25 focus:outline-none focus:border-[#E6C587] focus:ring-1 focus:ring-[#E6C587]/30 focus:bg-[#2c0107]/75 hover:border-[#E6C587]/35 hover:bg-[#2c0107]/50 transition-all duration-300 shadow-inner font-sans" />
+                        className={`w-full bg-[#2c0107]/45 border rounded-xl px-3.5 py-2.5 text-[11px] text-[#f6e5dd] placeholder-[#f6e5dd]/25 focus:outline-none focus:ring-1 focus:bg-[#2c0107]/75 transition-all duration-300 shadow-inner font-sans ${
+                          formErrors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400/30' : 'border-[#E6C587]/15 focus:border-[#E6C587] focus:ring-[#E6C587]/30 hover:border-[#E6C587]/35 hover:bg-[#2c0107]/50'
+                        }`} />
+                      {formErrors.phone && (
+                        <p className="text-[9px] text-red-400 mt-0.5 absolute -bottom-3.5 left-0">{formErrors.phone}</p>
+                      )}
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/60 uppercase font-sans">{t('b2b.formLabels.email')}</label>
                       <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder={t('b2b.formPlaceholders.email')}
                         onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)}
@@ -1041,7 +1064,7 @@ export default function B2b() {
                   </div>
 
                   {/* Row 3 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                     <div className="space-y-1">
                       <label className="text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/60 uppercase font-sans">{t('b2b.formLabels.businessType')}</label>
                       <div className="relative">
@@ -1060,16 +1083,16 @@ export default function B2b() {
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/60 uppercase font-sans">{t('b2b.formLabels.estimatedVolume')}</label>
-                      <input type="number" min="1" name="estimatedVolume" value={formData.estimatedVolume} onChange={handleChange} required placeholder={t('b2b.formPlaceholders.estimatedVolume')}
+                      <input type="text" name="estimatedVolume" value={formData.estimatedVolume} onChange={handleChange} required placeholder={t('b2b.formPlaceholders.estimatedVolume')}
                         onFocus={() => setFocusedField('estimatedVolume')} onBlur={() => setFocusedField(null)}
                         className="w-full bg-[#2c0107]/45 border border-[#E6C587]/15 rounded-xl px-3.5 py-2.5 text-[11px] text-[#f6e5dd] placeholder-[#f6e5dd]/25 focus:outline-none focus:border-[#E6C587] focus:ring-1 focus:ring-[#E6C587]/30 focus:bg-[#2c0107]/75 hover:border-[#E6C587]/35 hover:bg-[#2c0107]/50 transition-all duration-300 shadow-inner font-sans" />
                     </div>
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative pt-1">
                     <label className="text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/60 uppercase font-sans">{t('b2b.formLabels.notes')}</label>
                     <textarea
                       rows="3" name="notes" value={formData.notes} onChange={handleChange}
@@ -1080,10 +1103,11 @@ export default function B2b() {
                   </div>
 
                   {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="group w-full py-3 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase text-[#160003] transition-all duration-500 hover:-translate-y-[2px] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2.5 cursor-pointer"
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={loading || Object.values(formErrors).some(err => err)}
+                      className="group w-full py-3 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase text-[#160003] transition-all duration-500 hover:-translate-y-[2px] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2.5 cursor-pointer"
                     style={{
                       background: 'linear-gradient(135deg, #E6C587 0%, #BD561A 100%)',
                       boxShadow: '0 8px 30px rgba(189,86,26,0.35)',
@@ -1098,6 +1122,7 @@ export default function B2b() {
                       <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 stroke-[#160003]" fill="none" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                     )}
                   </button>
+                  </div>
 
                   {/* Privacy */}
                   <p className="text-center text-[9px] text-[#E6C587]/30 font-sans tracking-wide">

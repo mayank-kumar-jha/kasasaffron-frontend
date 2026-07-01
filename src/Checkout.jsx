@@ -128,6 +128,7 @@ export default function Checkout() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [paymentTxId, setPaymentTxId] = useState('');
+  const [formErrors, setFormErrors] = useState({});
 
   const vat = cartSubtotal * 0.10;
   const total = cartSubtotal + vat;
@@ -136,13 +137,21 @@ export default function Checkout() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    let newValue = value;
+    let error = '';
+
     if (name === 'phone') {
-      // Only allow numbers, plus, minus, parentheses and spaces
-      const sanitizedValue = value.replace(/[^0-9+\-()\s]/g, '');
-      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      const digitsOnly = value.replace(/[^0-9]/g, '');
+      if (value !== digitsOnly && value.replace('+', '') !== digitsOnly) {
+        error = 'Phone number must contain digits only.';
+      } else if (digitsOnly.length > 10) {
+        error = 'Phone number cannot exceed 10 digits.';
+      }
+      newValue = digitsOnly.slice(0, 10);
     }
+
+    setFormErrors(prev => ({ ...prev, [name]: error }));
+    setFormData(prev => ({ ...prev, [name]: newValue }));
   };
 
   const handleProceedToPayment = async (e) => {
@@ -334,14 +343,20 @@ export default function Checkout() {
                       </label>
                       <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm" placeholder="e.g. John Doe" />
                     </div>
-                    <div>
+                    <div className="relative">
                       <label className="block text-sm font-medium text-[#4A0E1A] mb-2">
                         <span className="flex items-center gap-2">
                           <svg className="w-4 h-4 text-[#4A0E1A]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                           Phone number *
                         </span>
                       </label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm" placeholder="+34 XXX XXX XXX" />
+                      <input type="tel" inputMode="numeric" name="phone" value={formData.phone} onChange={handleInputChange} required 
+                        className={`w-full px-4 py-3 rounded-lg border focus:ring-1 outline-none transition-colors text-sm ${
+                          formErrors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : 'border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-[#B8893A]'
+                        }`} placeholder="e.g. 681819652" />
+                      {formErrors.phone && (
+                        <p className="text-[10px] text-red-500 mt-1 absolute -bottom-5 left-0">{formErrors.phone}</p>
+                      )}
                     </div>
                   </div>
 
@@ -368,7 +383,7 @@ export default function Checkout() {
 
                 <button
                   type="submit"
-                  disabled={cartItems.length === 0 || loading}
+                  disabled={cartItems.length === 0 || loading || Object.values(formErrors).some(err => err)}
                   className="w-full bg-gradient-to-r from-saffron to-saffron-dark text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_4px_15px_rgba(189,86,26,0.3)] hover:shadow-[0_8px_25px_rgba(189,86,26,0.4)] hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none cursor-pointer group"
                 >
                   {loading ? (

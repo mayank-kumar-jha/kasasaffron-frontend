@@ -164,13 +164,16 @@ export default function LiveSheets() {
                   <th className="p-4">Date</th>
                   <th className="p-4">Company</th>
                   <th className="p-4">Contact</th>
+                  <th className="p-4">Phone</th>
+                  <th className="p-4">Type</th>
                   <th className="p-4">Volume</th>
+                  <th className="p-4 max-w-xs">Notes</th>
                   <th className="p-4 text-center">Done?</th>
                 </tr>
               </thead>
               <tbody>
                 {b2bLeads.length === 0 ? (
-                  <tr><td colSpan="5" className="p-4 text-center text-white/50">No inquiries found.</td></tr>
+                  <tr><td colSpan="8" className="p-4 text-center text-white/50">No inquiries found.</td></tr>
                 ) : b2bLeads.map(lead => (
                   <tr key={lead.id} className="border-b border-[#E6C587]/5 hover:bg-[#E6C587]/5 transition-colors text-white/80 text-sm">
                     <td className="p-4">{new Date(lead.createdAt).toLocaleDateString()}</td>
@@ -179,7 +182,10 @@ export default function LiveSheets() {
                       {lead.contactPerson}<br/>
                       <span className="text-xs opacity-60">{lead.email}</span>
                     </td>
+                    <td className="p-4">{lead.phone || 'N/A'}</td>
+                    <td className="p-4">{lead.businessType || 'N/A'}</td>
                     <td className="p-4">{lead.estimatedVolume}</td>
+                    <td className="p-4 max-w-xs truncate" title={lead.notes}>{lead.notes || 'N/A'}</td>
                     <td className="p-4 text-center">
                       <input 
                         type="checkbox" 
@@ -193,7 +199,7 @@ export default function LiveSheets() {
               </tbody>
             </table>
           </div>
-        ) : (
+        ) : activeTab === 'contact' ? (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
