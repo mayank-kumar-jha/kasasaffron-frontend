@@ -8,7 +8,7 @@ export default function Navbar() {
     const { t, i18n } = useTranslation();
     const { cartTotalItems } = useCart();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 1024 : false);
 
     const [user, setUser] = useState(getCurrentUserLocal());
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -25,7 +25,7 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        const handleResize = () => setIsMobile(window.innerWidth <= 1024);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);

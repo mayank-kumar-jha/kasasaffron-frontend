@@ -86,6 +86,11 @@ const mobileStyles = `
   .mob-hero-subtitle span { color: #E6C587 !important; }
   .mob-hero-script { color: #E6C587 !important; opacity: 0.9; }
 
+  /* Plate Size Control for Mobile Portrait */
+  .mob-animated-plate {
+      width: calc(100vw - 15px) !important;
+  }
+
   /* Sections */
   .mob-story-section {
       padding: 180px 20px 50px; /* Increased top padding to avoid plate overlap */
@@ -225,6 +230,114 @@ const mobileStyles = `
       box-shadow: none;
   }
   .mob-neu-btn-secondary:active { transform: scale(0.97); background: rgba(230,197,135,0.1); }
+
+  /* Left column wrapper — portrait: behaves transparently; landscape: becomes left half */
+  .mob-hero-left-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (orientation: landscape) and (max-height: 520px) and (pointer: coarse) {
+    .mob-hero-left-col {
+      flex: 1;
+      align-items: flex-start;
+      padding-left: 8px;
+      padding-top: 10px;
+      max-width: 55vw;
+      overflow: hidden;
+    }
+    /* Logo stays inline with text in landscape */
+    .mob-hero-logo-wrap {
+      margin-top: 0 !important;
+    }
+    /* Ensure hero-text is left-aligned */
+    .mob-hero-text {
+      width: 100%;
+    }
+  }
+  /* ═══════════════════════════════════════════════════════════════════
+     PHONE LANDSCAPE — Horizontal layout for rotated phones
+     (pointer:coarse + orientation:landscape + short height)
+     ═══════════════════════════════════════════════════════════════════ */
+
+  @media (orientation: landscape) and (max-height: 520px) and (pointer: coarse) {
+    /* Scroll enabled, no snap */
+    .mob-snap-container {
+      height: 100svh;
+      overflow-y: auto;
+    }
+
+    /* Hero: switch to a side-by-side layout */
+    .mob-hero-section {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 20px !important;
+      height: 100svh !important;
+      min-height: 100svh;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    /* Left column — logo + text */
+    .mob-hero-logo-wrap {
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+    .mob-hero-logo { width: 56px; }
+    .mob-hero-logo-glow { width: 80px; height: 80px; }
+
+    .mob-hero-text {
+      flex: 1;
+      padding: 0 12px 0 0;
+      margin-top: 0 !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      max-width: 55vw;
+    }
+    .mob-hero-subtitle { justify-content: flex-start; }
+    .mob-hero-title    { font-size: clamp(24px, 6vw, 38px); margin: 4px 0 0; }
+    .mob-hero-script   { font-size: clamp(22px, 5.5vw, 34px); margin-top: -4px; }
+    .mob-hero-desc     { font-size: 10px; max-width: 100%; }
+
+    /* Limit button group width */
+    .mob-neu-cta-group { margin-top: 12px !important; width: 100%; }
+    .mob-neu-btn-beige { width: 100%; font-size: 11px; padding: 8px 0; }
+
+    /* Right column — plate + deco */
+    .mob-hero-deco-wrapper { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+    /* Shrink deco images so they don't overflow */
+    .mob-hero-deco-flower-l { top: 15%; left: -12vw; width: 28vw; opacity: 0.4; }
+    .mob-hero-deco-flower-r { top: 8%;  right: -12vw; width: 28vw; opacity: 0.4; }
+    .mob-hero-deco-cup      { top: 2%;  right: -2vw;  width: 12vw; opacity: 0.35; }
+    .mob-hero-deco-leaves   { bottom: 20%; right: -8vw; width: 18vw; opacity: 0.3; }
+
+    /* Plate: smaller and positioned right */
+    .mob-animated-plate {
+      position: absolute !important;
+      right: -5vw;
+      left: auto !important;
+      top: 50% !important;
+      width: 52vw !important;
+      max-width: 380px !important;
+      transform: translate(0, -50%) !important;
+      transition: none !important;
+      z-index: 5;
+    }
+
+    /* Story sections stacked normally below hero */
+    .mob-story-section { padding: 40px 20px 30px; }
+    .mob-story-title   { font-size: 22px; }
+    .mob-craft-section { padding-top: 40px; }
+  }
 `;
 
 export default function MobileHome() {
@@ -317,7 +430,7 @@ export default function MobileHome() {
           <div
             ref={plateRef}
             className="mob-animated-plate flex items-center justify-center"
-            style={{ transform: 'translate(-50%, calc(-50% + 100vh - 90px))' }}
+            style={{ transform: 'translate(-50%, calc(-50% + 100vh + 10px))' }}
           >
             {/* Plate Image */}
             <img
@@ -329,31 +442,35 @@ export default function MobileHome() {
             />
           </div>
 
-          {/* Logo with golden glow */}
-          <div className="mob-hero-logo-wrap">
-            <div className="mob-hero-logo-glow" />
-            <img src="/Images/Logo.png" alt="Kasa Saffron Logo" className="mob-hero-logo" fetchPriority="high" decoding="sync" />
-          </div>
-
-          {/* Titles */}
-          <div className="mob-hero-text" style={{ marginTop: '30px' }}>
-            <div className="mob-hero-subtitle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M12 22C12 22 17 18 17 12C17 6 12 2 12 2C12 2 7 6 7 12C7 18 12 22 12 22Z" stroke="#B08D57" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 22V12" stroke="#B08D57" strokeWidth="1.5" /><path d="M12 12L9 9" stroke="#B08D57" strokeWidth="1.5" /><path d="M12 12L15 9" stroke="#B08D57" strokeWidth="1.5" />
-              </svg>
-              <span>{t('hero.handcrafted')}<br />{t('hero.pureSaffron')}</span>
+          {/* Left column: logo + text (wrapped for landscape two-column layout) */}
+          <div className="mob-hero-left-col" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 10 }}>
+            {/* Logo with golden glow */}
+            <div className="mob-hero-logo-wrap">
+              <div className="mob-hero-logo-glow" />
+              <img src="/Images/Logo.png" alt="Kasa Saffron Logo" className="mob-hero-logo" fetchPriority="high" decoding="sync" />
             </div>
-            <h1 className="mob-hero-title">{t('hero.croquetes')}</h1>
-            <h2 className="mob-hero-script">{t('hero.ambAmor')}</h2>
-            <p className="mob-hero-desc">
-              {t('hero.descLine1')} {t('hero.descLine2')} {t('hero.descLine3')}
-            </p>
-            <div className="mob-neu-cta-group" style={{ marginTop: '30px' }}>
-              <Link to="/flavours" className="mob-neu-btn-beige">Discover Our Flavours</Link>
+
+            {/* Titles */}
+            <div className="mob-hero-text" style={{ marginTop: '30px' }}>
+              <div className="mob-hero-subtitle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12 22C12 22 17 18 17 12C17 6 12 2 12 2C12 2 7 6 7 12C7 18 12 22 12 22Z" stroke="#B08D57" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M12 22V12" stroke="#B08D57" strokeWidth="1.5" /><path d="M12 12L9 9" stroke="#B08D57" strokeWidth="1.5" /><path d="M12 12L15 9" stroke="#B08D57" strokeWidth="1.5" />
+                </svg>
+                <span>{t('hero.handcrafted')}<br />{t('hero.pureSaffron')}</span>
+              </div>
+              <h1 className="mob-hero-title">{t('hero.croquetes')}</h1>
+              <h2 className="mob-hero-script">{t('hero.ambAmor')}</h2>
+              <p className="mob-hero-desc">
+                {t('hero.descLine1')} {t('hero.descLine2')} {t('hero.descLine3')}
+              </p>
+              <div className="mob-neu-cta-group" style={{ marginTop: '30px' }}>
+                <Link to="/flavours" className="mob-neu-btn-beige">Discover Our Flavours</Link>
+              </div>
             </div>
           </div>
         </section>
+
 
         {/* ═══════════ SECTION 2: OUR STORY ═══════════ */}
         <section className="mob-story-section">

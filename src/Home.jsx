@@ -24,7 +24,14 @@ const section2Elements = [
 ];
 
 export default function Home() {
-    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+    // Treat as mobile: width ≤ 768px (portrait) OR a touch device ≤ 1024px wide (landscape phone)
+    const checkIsMobile = () => {
+        if (typeof window === 'undefined') return false;
+        const w = window.innerWidth;
+        const isTouch = window.matchMedia('(pointer: coarse)').matches;
+        return w <= 768 || (isTouch && w <= 1024);
+    };
+    const [isMobile, setIsMobile] = useState(checkIsMobile);
     const { isDataLoading } = useAdmin();
 
     // ── Refs for static layout ──
@@ -75,9 +82,13 @@ export default function Home() {
 
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        const handleResize = () => setIsMobile(checkIsMobile());
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('orientationchange', handleResize);
+        };
     }, []);
 
     useEffect(() => {
