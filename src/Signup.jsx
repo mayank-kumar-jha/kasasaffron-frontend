@@ -6,11 +6,12 @@ import { login, register, forgotPassword, resetPassword, verifyRegistrationOtp }
 
 export default function Signup() {
   const { t } = useTranslation();
-  const [viewMode, setViewMode] = useState('login'); // 'login', 'signup', 'forgot', 'reset'
+  const [viewMode, setViewMode] = useState('login'); // 'login', 'signup', 'forgot', 'reset', 'verify-signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const [otp, setOtp] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,6 +19,20 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+
+  const handlePhoneChange = (e) => {
+    const raw = e.target.value;
+    // Allow only digits (and optional leading +)
+    const digitsOnly = raw.replace(/[^0-9]/g, '');
+    if (raw !== digitsOnly && raw.replace('+', '') !== digitsOnly) {
+      setPhoneError('Phone number must contain digits only.');
+    } else if (digitsOnly.length > 10) {
+      setPhoneError('Phone number cannot exceed 10 digits.');
+    } else {
+      setPhoneError('');
+    }
+    setPhone(digitsOnly.slice(0, 10));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +48,11 @@ export default function Signup() {
           setLoading(false);
           return;
         }
-        await register({ name, email, phone, password });
+        if (phoneError) {
+          setError(phoneError);
+          setLoading(false);
+          return;
+        }
         await register({ name, email, phone, password });
         setViewMode('verify-signup');
       } else if (viewMode === 'verify-signup') {
@@ -212,6 +231,7 @@ export default function Signup() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      autoComplete="off"
                       placeholder="Email Address"
                       className="w-full pl-10.5 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron/30 focus:border-saffron bg-white/70 shadow-sm transition-all text-gray-700 placeholder-gray-400 hover:border-gray-300 text-[13px]"
                     />
@@ -360,12 +380,21 @@ export default function Signup() {
                       </svg>
                     </div>
                     <input
-                      type="tel"
+                      type="text"
+                      inputMode="numeric"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="Phone Number (Optional)"
-                      className="w-full pl-10.5 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron/30 focus:border-saffron bg-white/70 shadow-sm transition-all text-gray-700 placeholder-gray-400 hover:border-gray-300 text-[13px]"
+                      onChange={handlePhoneChange}
+                      placeholder="Phone Number (Optional, max 10 digits)"
+                      className={`w-full pl-10.5 pr-4 py-2.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-saffron/30 focus:border-saffron bg-white/70 shadow-sm transition-all text-gray-700 placeholder-gray-400 text-[13px] ${
+                        phoneError ? 'border-red-400 focus:ring-red-200' : 'border-gray-200 hover:border-gray-300'
+                      }`}
                     />
+                    {phoneError && (
+                      <p className="text-[11px] text-red-500 mt-1 pl-2 flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        {phoneError}
+                      </p>
+                    )}
                   </div>
 
                   {/* Email Field */}
@@ -380,6 +409,7 @@ export default function Signup() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      autoComplete="off"
                       placeholder="Email Address"
                       className="w-full pl-10.5 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron/30 focus:border-saffron bg-white/70 shadow-sm transition-all text-gray-700 placeholder-gray-400 hover:border-gray-300 text-[13px]"
                     />
@@ -473,12 +503,7 @@ export default function Signup() {
                   </div>
                 </form>
 
-                {/* Divider */}
-                <div className="flex items-center my-8 w-full sm:w-[85%] mx-auto">
-                  <div className="flex-1 border-t border-[#d8c3af]"></div>
-                  <span className="px-4 text-[#a38f7e] text-xs font-bold tracking-widest">{t("auth.or")}</span>
-                  <div className="flex-1 border-t border-[#d8c3af]"></div>
-                </div>
+                {/* Divider hidden since Google is disabled */}
 
                 {/* Social Signup */}
                 {/* 
