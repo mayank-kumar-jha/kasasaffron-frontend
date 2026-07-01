@@ -283,7 +283,7 @@ export default function Signup() {
 
                 {/* Social Login */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-[90%] mx-auto">
-                  <button type="button" onClick={() => window.location.href = '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
+                  <button type="button" onClick={() => window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/auth/google` : '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-4 h-4" />
                     Google
                   </button>
@@ -478,7 +478,7 @@ export default function Signup() {
 
                 {/* Social Signup */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-[90%] mx-auto">
-                  <button type="button" onClick={() => window.location.href = '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
+                  <button type="button" onClick={() => window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/auth/google` : '/api/v1/auth/google'} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-[#e5d5c5] rounded-full hover:bg-white transition-all duration-300 bg-white/50 text-gray-600 font-medium text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-4 h-4" />
                     Google
                   </button>
