@@ -180,7 +180,7 @@ function AppContent() {
   );
 }
 
-const MAINTENANCE_MODE = import.meta.env.DEV ? true : false; // Temporary maintenance mode (only active on localhost)
+const MAINTENANCE_MODE = true; // Temporary maintenance mode (active everywhere including production)
 
 export default function App() {
   if (MAINTENANCE_MODE) {
