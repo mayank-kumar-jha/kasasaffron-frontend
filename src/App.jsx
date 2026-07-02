@@ -180,7 +180,13 @@ function AppContent() {
   );
 }
 
+const MAINTENANCE_MODE = import.meta.env.DEV ? true : false; // Temporary maintenance mode (only active on localhost)
+
 export default function App() {
+  if (MAINTENANCE_MODE) {
+    return <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000000', margin: 0, padding: 0, position: 'fixed', top: 0, left: 0, zIndex: 999999 }} />;
+  }
+
   const [loading, setLoading] = useState(typeof window !== 'undefined' ? window.innerWidth > 768 : true);
 
   return (
