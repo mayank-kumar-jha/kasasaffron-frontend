@@ -55,17 +55,17 @@ export default function ContactModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-12 font-sans">
       {/* Backdrop */}
-      <div 
+      <div
         className={`absolute inset-0 bg-[#160003]/80 backdrop-blur-sm transition-opacity duration-400 ease-in-out ${isClosing ? 'opacity-0' : 'opacity-100 animate-fadeIn'}`}
         onClick={handleClose}
       />
 
       {/* Modal Container */}
-      <div 
+      <div
         className={`relative w-full max-w-5xl bg-[#FDF6EE] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-400 ease-out transform ${isClosing ? 'opacity-0 scale-95 translate-y-8' : 'opacity-100 scale-100 translate-y-0 animate-slideUp'}`}
       >
         {/* Close Button */}
-        <button 
+        <button
           onClick={handleClose}
           className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/10 md:bg-[#160003]/5 hover:bg-[#160003]/10 backdrop-blur-md rounded-full flex items-center justify-center text-[#160003] transition-all duration-300 group"
         >
@@ -75,15 +75,15 @@ export default function ContactModal({ isOpen, onClose }) {
         </button>
 
         {/* Left Side: Contact Info */}
-        <div className="w-full md:w-[40%] bg-[#370611] text-white p-8 md:p-12 flex flex-col justify-between relative overflow-hidden">
+        <div className="w-full md:w-[40%] bg-[#370611] text-white p-4 md:p-12 flex flex-col justify-between relative overflow-hidden flex-shrink-0">
           {/* Subtle background patterns */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E6C587' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#E6C587] mb-2 font-light tracking-wide">Contact</h2>
-            <p className="text-[#FDF6EE]/70 font-light text-sm tracking-widest uppercase mb-12">We are here to help</p>
 
-            <div className="space-y-8">
+          <div className="relative z-10">
+            <h2 className="text-xl md:text-4xl font-serif text-[#E6C587] mb-0 md:mb-2 font-light tracking-wide">Contact</h2>
+            <p className="text-[#FDF6EE]/70 font-light text-[10px] md:text-sm tracking-widest uppercase mb-3 md:mb-12">We are here to help</p>
+
+            <div className="space-y-2 md:space-y-8">
               {/* Phone */}
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-[#E6C587]/10 flex items-center justify-center shrink-0">
@@ -134,7 +134,7 @@ export default function ContactModal({ isOpen, onClose }) {
         </div>
 
         {/* Right Side: Form */}
-        <div className="w-full md:w-[60%] p-8 md:p-12 relative bg-white flex flex-col justify-center">
+        <div className="w-full md:w-[60%] p-4 md:p-12 relative bg-white flex flex-col justify-center">
           {isSuccess ? (
             <div className="flex flex-col items-center justify-center text-center py-10 animate-fadeIn">
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
@@ -145,36 +145,36 @@ export default function ContactModal({ isOpen, onClose }) {
             </div>
           ) : (
             <>
-              <h3 className="text-2xl md:text-3xl font-serif text-[#370611] mb-8 font-bold">Send Message</h3>
+              <h3 className="text-lg md:text-3xl font-serif text-[#370611] mb-2 md:mb-8 font-bold">Send Message</h3>
               
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <form className="space-y-2 md:space-y-5" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
                   {/* Name */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-[#370611]/70">Name *</label>
-                    <input type="text" id="name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} required className="w-full px-4 py-3 text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="E.g. Maria Garcia" />
+                  <div className="flex flex-col gap-0.5 md:gap-1.5">
+                    <label htmlFor="name" className="text-[9px] md:text-xs font-bold uppercase tracking-widest text-[#370611]/70">Name *</label>
+                    <input type="text" id="name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} required className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-[11px] md:text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-lg md:rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="E.g. Maria Garcia" />
                   </div>
 
                   {/* Email */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-[#370611]/70">Email *</label>
-                    <input type="email" id="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required className="w-full px-4 py-3 text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="you@example.com" />
+                  <div className="flex flex-col gap-0.5 md:gap-1.5">
+                    <label htmlFor="email" className="text-[9px] md:text-xs font-bold uppercase tracking-widest text-[#370611]/70">Email *</label>
+                    <input type="email" id="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-[11px] md:text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-lg md:rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="you@example.com" />
                   </div>
                 </div>
 
                 {/* Phone */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-[#370611]/70">Phone</label>
-                  <input type="tel" id="phone" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="+34 600 000 000" />
+                <div className="flex flex-col gap-0.5 md:gap-1.5">
+                  <label htmlFor="phone" className="text-[9px] md:text-xs font-bold uppercase tracking-widest text-[#370611]/70">Phone</label>
+                  <input type="tel" id="phone" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-[11px] md:text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-lg md:rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all" placeholder="+34 600 000 000" />
                 </div>
 
                 {/* Message */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-[#370611]/70">Mensaje *</label>
-                  <textarea id="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} required rows="4" className="w-full px-4 py-3 text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all resize-none" placeholder="How can we help you?"></textarea>
+                <div className="flex flex-col gap-0.5 md:gap-1.5">
+                  <label htmlFor="message" className="text-[9px] md:text-xs font-bold uppercase tracking-widest text-[#370611]/70">Mensaje *</label>
+                  <textarea id="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} required rows="2" className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-[11px] md:text-sm text-[#370611] bg-[#fdf6ee]/50 border border-[#370611]/10 rounded-lg md:rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C587] focus:border-[#E6C587] transition-all resize-none" placeholder="How can we help you?"></textarea>
                 </div>
 
-                <button type="submit" disabled={isSubmitting} className="relative overflow-hidden group inline-flex items-center justify-center px-8 py-3.5 mt-4 text-sm font-bold text-white uppercase tracking-widest bg-[#370611] rounded-full hover:bg-[#560015] transition-colors shadow-lg disabled:opacity-50">
+                <button type="submit" disabled={isSubmitting} className="relative overflow-hidden group inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-3.5 mt-2 md:mt-4 text-[10px] md:text-sm font-bold text-white uppercase tracking-widest bg-[#370611] rounded-full hover:bg-[#560015] transition-colors shadow-lg disabled:opacity-50">
                   <span className="relative z-10">{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                   {!isSubmitting && <div className="absolute inset-0 h-full w-0 bg-[#BD561A] transition-all duration-400 ease-out group-hover:w-full z-0"></div>}
                 </button>
@@ -183,7 +183,7 @@ export default function ContactModal({ isOpen, onClose }) {
           )}
         </div>
       </div>
-      
+
       {/* Required CSS Animations */}
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
