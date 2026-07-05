@@ -5,13 +5,13 @@ export default function Preloader({ onComplete }) {
   const [phase, setPhase] = useState(1);
 
   useEffect(() => {
-    // Phase 1: Full "Kasa Saffron" with logo shown        (0 → 2.0s)
+    // Phase 1: Logo + "KS"                        (0 → 2.0s)
     const t1 = setTimeout(() => setPhase(2), 2000);
-    // Phase 2: Text retracts/collapses to "KS"            (2.0 → 3.6s)
+    // Phase 2: "KS" expands to "Kasa Saffron"     (2.0 → 3.6s)
     const t2 = setTimeout(() => setPhase(3), 3600);
-    // Phase 3: "KS" expands/scales up dramatically        (3.6 → 5.0s)
+    // Phase 3: "Kasa Saffron" expands/scales up   (3.6 → 5.0s)
     const t3 = setTimeout(() => setPhase(4), 5000);
-    // Phase 4: Entire screen fades out                    (5.0 → 5.8s)
+    // Phase 4: Entire screen fades out            (5.0 → 5.8s)
     const t4 = setTimeout(() => onComplete(), 5800);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, [onComplete]);
@@ -74,13 +74,10 @@ export default function Preloader({ onComplete }) {
       {/* ── Main content ── */}
       <div className="relative z-10 flex flex-col items-center justify-center">
 
-        {/*
-          LOGO WRAPPER — fixed height so when the logo fades out,
-          the text block below stays perfectly still (no upward jump).
-        */}
+        {/* LOGO WRAPPER */}
         <div className="h-32 md:h-40 flex items-center justify-center mb-2">
           <AnimatePresence>
-            {phase === 1 && (
+            {phase === 2 && (
               <motion.img
                 key="logo"
                 src="/Images/Logo.png"
@@ -100,9 +97,9 @@ export default function Preloader({ onComplete }) {
           initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
           animate={
             phase === 1
-              ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
+              ? { opacity: 1, y: 0, scale: 1.38, filter: 'blur(0px)' }
               : phase === 2
-                ? { opacity: 1, y: 0, scale: 1.38, filter: 'blur(0px)' }
+                ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
                 : phase === 3
                   ? { opacity: 1, y: 0, scale: 28, filter: 'blur(10px)' }
                   : { opacity: 0, y: 0, scale: 28, filter: 'blur(14px)' }
@@ -122,16 +119,17 @@ export default function Preloader({ onComplete }) {
             K
           </span>
 
-          {/* ── "asa " squeezes into K on phase 2 ── */}
+          {/* ── "asa " expands from K on phase 2 ── */}
           <AnimatePresence initial={false}>
-            {phase === 1 && (
+            {phase >= 2 && (
               <motion.span
                 key="asa"
-                initial={{ opacity: 1, width: '162px', x: 0 }}
+                initial={{ opacity: 0, width: '0px', x: -6 }}
+                animate={{ opacity: 1, width: '162px', x: 0 }}
                 exit={{ opacity: 0, width: '0px', x: -6 }}
                 transition={{
                   width: { duration: 0.95, ease: [0.4, 0, 0.1, 1] },
-                  opacity: { duration: 0.55, ease: 'easeIn' },
+                  opacity: { duration: 0.55, ease: 'easeOut', delay: 0.1 },
                   x: { duration: 0.95, ease: [0.4, 0, 0.1, 1] },
                 }}
                 className="overflow-hidden whitespace-pre leading-none select-none flex-shrink-0"
@@ -157,16 +155,17 @@ export default function Preloader({ onComplete }) {
             S
           </span>
 
-          {/* ── "affron" squeezes into S on phase 2 ── */}
+          {/* ── "affron" expands from S on phase 2 ── */}
           <AnimatePresence initial={false}>
-            {phase === 1 && (
+            {phase >= 2 && (
               <motion.span
                 key="affron"
-                initial={{ opacity: 1, width: '240px', x: 0 }}
+                initial={{ opacity: 0, width: '0px', x: -6 }}
+                animate={{ opacity: 1, width: '240px', x: 0 }}
                 exit={{ opacity: 0, width: '0px', x: -6 }}
                 transition={{
                   width: { duration: 0.95, ease: [0.4, 0, 0.1, 1] },
-                  opacity: { duration: 0.55, ease: 'easeIn', delay: 0.08 },
+                  opacity: { duration: 0.55, ease: 'easeOut', delay: 0.2 },
                   x: { duration: 0.95, ease: [0.4, 0, 0.1, 1] },
                 }}
                 className="overflow-hidden whitespace-pre leading-none select-none flex-shrink-0"
@@ -189,11 +188,11 @@ export default function Preloader({ onComplete }) {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={
-            phase === 1
+            phase >= 2 && phase < 3
               ? { opacity: 0.7, y: 0 }
               : { opacity: 0, y: -6 }
           }
-          transition={{ duration: 0.85, delay: phase === 1 ? 0.75 : 0.0, ease: 'easeOut' }}
+          transition={{ duration: 0.85, ease: 'easeOut' }}
           className="mt-5 text-[9px] md:text-[11px] tracking-[0.38em] uppercase select-none"
           style={{ fontFamily: "'Inter', sans-serif", color: '#ffffffff' }}
         >
@@ -203,7 +202,7 @@ export default function Preloader({ onComplete }) {
         {/* ── Thin gold progress bar ── */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: phase === 1 ? 1 : 0 }}
+          animate={{ opacity: phase < 3 ? 1 : 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-7 rounded-full overflow-hidden"
           style={{ width: '120px', height: '1px', backgroundColor: 'rgba(230,197,135,0.12)' }}
@@ -225,7 +224,7 @@ export default function Preloader({ onComplete }) {
         style={{ backgroundColor: '#E6C587' }}
         initial={{ width: '0%', opacity: 0 }}
         animate={
-          phase === 1
+          phase < 3
             ? { width: '100%', opacity: 0.2 }
             : { width: '100%', opacity: 0 }
         }
