@@ -135,6 +135,13 @@ export default function Checkout() {
 
   // Removed the strict on-mount redirect so guests can view their cart items
 
+  const getNextWeekday = () => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1); // start from tomorrow
+    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let newValue = value;
@@ -148,6 +155,14 @@ export default function Checkout() {
         error = 'Phone number cannot exceed 10 digits.';
       }
       newValue = digitsOnly.slice(0, 10);
+    }
+
+    if (name === 'pickupDate' && value) {
+      const day = new Date(value).getDay();
+      if (day === 0 || day === 6) {
+        error = 'Pickup is only available Monday to Friday. Please select a weekday.';
+        newValue = ''; // clear the value so they must pick again
+      }
     }
 
     setFormErrors(prev => ({ ...prev, [name]: error }));
@@ -367,7 +382,18 @@ export default function Checkout() {
                         Pickup date *
                       </span>
                     </label>
-                    <input type="date" name="pickupDate" value={formData.pickupDate} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm text-[#4A0E1A]" />
+                    <input 
+                      type="date" 
+                      name="pickupDate" 
+                      value={formData.pickupDate} 
+                      onChange={handleInputChange} 
+                      required 
+                      min={getNextWeekday()}
+                      className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm text-[#4A0E1A]" 
+                    />
+                    {formErrors.pickupDate && (
+                      <p className="mt-1 text-xs text-red-600">{formErrors.pickupDate}</p>
+                    )}
                   </div>
 
                   <div>
