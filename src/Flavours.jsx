@@ -31,9 +31,13 @@ const fadeUp = (delay = 0) => ({
    Large image display, beautiful PNGs, swipe-friendly
 ══════════════════════════════════════════════════════════════ */
 const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, diff, lang, t, onClick }) {
-  const name = flavour.name?.[lang] || t(`flavoursPage.items.${index}.name`) || flavour.name?.en || flavour.name;
-  const tagline = flavour.tagline?.[lang] || t(`flavoursPage.items.${index}.tagline`) || flavour.tagline?.en || flavour.tagline;
-  const description = flavour.description?.[lang] || t(`flavoursPage.items.${index}.description`) || flavour.description?.en || flavour.description;
+  const name = typeof flavour.name === 'object' && flavour.name !== null ? (flavour.name[lang] || flavour.name.en || flavour.name.es) : flavour.name;
+  const tagline = typeof flavour.tagline === 'object' && flavour.tagline !== null ? (flavour.tagline[lang] || flavour.tagline.en || flavour.tagline.es) : flavour.tagline;
+  const description = typeof flavour.description === 'object' && flavour.description !== null ? (flavour.description[lang] || flavour.description.en || flavour.description.es) : flavour.description;
+
+  const displayName = name || t(`flavoursPage.items.${index}.name`);
+  const displayTagline = tagline || t(`flavoursPage.items.${index}.tagline`);
+  const displayDescription = description || t(`flavoursPage.items.${index}.description`);
   const absDiff = Math.abs(diff);
 
   const offsetPct = diff * 90;
@@ -71,7 +75,7 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
 
         {/* Tagline header */}
         <div className="px-3 pt-3 pb-2 border-b border-[#E6C587]/10 flex items-center justify-between relative z-10">
-          <span className="text-[7px] tracking-[0.2em] font-bold text-[#E6C587]/70 uppercase">{tagline}</span>
+          <span className="text-[7px] tracking-[0.2em] font-bold text-[#E6C587]/70 uppercase">{displayTagline}</span>
           <svg className="w-3.5 h-3.5 text-[#E6C587] opacity-60 shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
             <path d="M10 18 L10 6"/><path d="M10 6 C8 4 5 1.5 4 1"/><path d="M10 6 C12 4 15 1.5 16 1"/>
             <circle cx="10" cy="6" r="1.2" fill="currentColor" opacity="0.8"/>
@@ -82,7 +86,7 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
         <div className="relative w-full overflow-hidden" style={{ height: '155px' }}>
           <img
             src={flavour.image}
-            alt={name}
+            alt={displayName}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"
@@ -101,7 +105,7 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#E6C587]/40"/>
           </div>
           <p className="text-[8px] font-serif italic text-[#E6C587]/80 tracking-wider mb-0.5">{flavour.spanishName}</p>
-          <h3 className="text-[11px] font-bold text-white font-serif leading-snug tracking-wide">{name}</h3>
+          <h3 className="text-[11px] font-bold text-white font-serif leading-snug tracking-wide">{displayName}</h3>
           <p className="text-[6px] text-[#E6C587]/30 font-bold tracking-widest uppercase mt-1.5">Kasa Saffron · #{flavour.id}</p>
         </div>
       </div>
@@ -112,9 +116,8 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
 /* ══════════════════════════════════════════════════════════════
    MAIN COMPONENT
 ══════════════════════════════════════════════════════════════ */
-export default function Flavours() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language || 'en';
+  const lang = (i18n.language || 'en').split('-')[0];
   const { addToCart } = useCart();
   const { flavours, isDataLoading } = useAdmin();
   const displayFlavours = flavours && flavours.length > 0 ? flavours : FLAVOURS;
@@ -404,7 +407,7 @@ export default function Flavours() {
                               </svg>
                             </div>
                             <span className="text-[9px] sm:text-[10px] font-serif italic text-[#E6C587]/90 tracking-wide font-light block mb-1">{flavour.spanishName || t(`flavoursPage.items.${index}.spanishName`)}</span>
-                            <h3 className="text-sm sm:text-base font-bold text-white font-serif tracking-wide text-center leading-tight">{flavour.name?.[lang] || t(`flavoursPage.items.${index}.name`) || flavour.name?.en}</h3>
+                            <h3 className="text-sm sm:text-base font-bold text-white font-serif tracking-wide text-center leading-tight">{displayName}</h3>
                           </div>
 
                           <div className="mt-1.5 flex justify-between items-center text-[6px] font-bold tracking-widest text-[#E6C587]/30 font-sans uppercase relative z-10">
@@ -422,12 +425,12 @@ export default function Flavours() {
                         {/* BACK FACE */}
                         <div className="flip-face flip-face-back rounded-2xl bg-[#140003] flex flex-col overflow-hidden h-full w-full absolute top-0 left-0">
                           <div className="w-full h-[50%] relative shrink-0">
-                            <img src={flavour.image} alt={flavour.name} loading="lazy" className="w-full h-full object-cover" />
+                            <img src={flavour.image} alt={displayName} loading="lazy" className="w-full h-full object-cover" />
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#140003] opacity-90" />
                           </div>
                           <div className="flex-1 p-3 flex flex-col items-center justify-center text-center border-t border-[#E6C587]/15">
-                            <h3 className="text-xs sm:text-sm font-bold text-[#E6C587] font-serif tracking-wide mb-1.5">{flavour.name?.[lang] || t(`flavoursPage.items.${index}.name`) || flavour.name?.en}</h3>
-                            <p className="text-[9px] sm:text-[10px] text-[#f6e5dd]/85 font-sans leading-relaxed line-clamp-4">{flavour.description?.[lang] || t(`flavoursPage.items.${index}.description`) || flavour.description?.en}</p>
+                            <h3 className="text-xs sm:text-sm font-bold text-[#E6C587] font-serif tracking-wide mb-1.5">{displayName}</h3>
+                            <p className="text-[9px] sm:text-[10px] text-[#f6e5dd]/85 font-sans leading-relaxed line-clamp-4">{displayDescription}</p>
                           </div>
                         </div>
                       </div>
@@ -474,10 +477,10 @@ export default function Flavours() {
                     {displayFlavours[activeIndex].spanishName}
                   </p>
                   <h2 className="text-lg font-serif text-[#E6C587] tracking-wide leading-snug mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
-                    {displayFlavours[activeIndex].name?.[lang] || t(`flavoursPage.items.${activeIndex}.name`) || displayFlavours[activeIndex].name?.en || displayFlavours[activeIndex].name}
+                    {typeof displayFlavours[activeIndex].name === 'object' && displayFlavours[activeIndex].name !== null ? (displayFlavours[activeIndex].name[lang] || displayFlavours[activeIndex].name.en || displayFlavours[activeIndex].name.es) : (displayFlavours[activeIndex].name || t(`flavoursPage.items.${activeIndex}.name`))}
                   </h2>
                   <p className="text-[11px] text-white/50 font-sans leading-relaxed mb-4 line-clamp-2">
-                    {displayFlavours[activeIndex].description?.[lang] || t(`flavoursPage.items.${activeIndex}.description`) || displayFlavours[activeIndex].description?.en || displayFlavours[activeIndex].description}
+                    {typeof displayFlavours[activeIndex].description === 'object' && displayFlavours[activeIndex].description !== null ? (displayFlavours[activeIndex].description[lang] || displayFlavours[activeIndex].description.en || displayFlavours[activeIndex].description.es) : (displayFlavours[activeIndex].description || t(`flavoursPage.items.${activeIndex}.description`))}
                   </p>
                   <button
                     onClick={() => { setExpandedCard(displayFlavours[activeIndex]); setSelectedQuantity(1); setSelectedSize('1kg'); }}
@@ -538,13 +541,13 @@ export default function Flavours() {
                 {/* Scrollable Content */}
                 <div className="flex-1 overflow-y-auto px-6 pt-4 pb-32 flex flex-col items-center text-center">
                   <span className="inline-block text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/70 uppercase mb-3">
-                    {expandedCard.tagline?.[lang] || expandedCard.tagline?.en || ''}
+                    {typeof expandedCard.tagline === 'object' && expandedCard.tagline !== null ? (expandedCard.tagline[lang] || expandedCard.tagline.en || expandedCard.tagline.es || '') : expandedCard.tagline}
                   </span>
                   <h3 className="text-3xl font-serif text-[#E6C587] mb-3 leading-tight" style={{ fontFamily: "'Cinzel', serif" }}>
-                    {expandedCard.name?.[lang] || expandedCard.name?.en || ''}
+                    {typeof expandedCard.name === 'object' && expandedCard.name !== null ? (expandedCard.name[lang] || expandedCard.name.en || expandedCard.name.es || '') : expandedCard.name}
                   </h3>
                   <p className="text-white/70 text-sm mb-6 leading-relaxed font-light">
-                    {expandedCard.description?.[lang] || expandedCard.description?.en || ''}
+                    {typeof expandedCard.description === 'object' && expandedCard.description !== null ? (expandedCard.description[lang] || expandedCard.description.en || expandedCard.description.es || '') : expandedCard.description}
                   </p>
 
                   {/* Size Selector */}
@@ -620,14 +623,14 @@ export default function Flavours() {
                 <div className="w-full md:w-[55%] p-12 flex flex-col bg-[#fdfbf7] overflow-y-auto">
                   <div className="mt-auto mb-auto">
                     <span className="inline-block text-xs font-bold tracking-[0.25em] text-[#BD561A] bg-[#BD561A]/10 px-3 py-1 rounded-full uppercase mb-4">
-                      {expandedCard.tagline?.[lang] || expandedCard.tagline?.en || ''}
+                      {typeof expandedCard.tagline === 'object' && expandedCard.tagline !== null ? (expandedCard.tagline[lang] || expandedCard.tagline.en || expandedCard.tagline.es || '') : expandedCard.tagline}
                     </span>
                     <h3 className="text-5xl font-serif text-[#140003] mb-5 leading-[1.1]">
-                      {expandedCard.name?.[lang] || expandedCard.name?.en || ''}
+                      {typeof expandedCard.name === 'object' && expandedCard.name !== null ? (expandedCard.name[lang] || expandedCard.name.en || expandedCard.name.es || '') : expandedCard.name}
                     </h3>
                     <div className="w-16 h-[2px] bg-[#E6C587] mb-6"></div>
                     <p className="text-[#2c0107]/70 text-base mb-8 leading-relaxed font-sans font-medium">
-                      {expandedCard.description?.[lang] || expandedCard.description?.en || ''}
+                      {typeof expandedCard.description === 'object' && expandedCard.description !== null ? (expandedCard.description[lang] || expandedCard.description.en || expandedCard.description.es || '') : expandedCard.description}
                     </p>
 
                     {/* Size Selector */}
