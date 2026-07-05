@@ -64,6 +64,39 @@ function ScrollToTop() {
   return null;
 }
 
+class GlobalErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error("Caught error:", error);
+    // If it's a chunk load error (Vercel deploy happened), force a page reload to get new JS chunks
+    if (error.name === 'ChunkLoadError' || error.message.includes('dynamically imported module') || error.message.includes('Failed to fetch dynamically imported module')) {
+      window.location.reload();
+    }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="w-full h-screen bg-[#140003] flex items-center justify-center text-[#E6C587] font-serif p-6 text-center">
+          <div>
+            <h2 className="text-2xl mb-4" style={{ fontFamily: "'Cinzel', serif" }}>Updating Kasa Saffron...</h2>
+            <p className="text-white/60 mb-6 font-sans text-sm">We just published a new update. Please refresh the page to continue.</p>
+            <button onClick={() => window.location.reload()} className="px-6 py-2 border border-[#E6C587]/40 rounded-full hover:bg-[#E6C587] hover:text-[#140003] transition-colors font-sans text-xs font-bold uppercase tracking-widest">
+              Refresh Now
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 import Preloader from './Preloader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -211,9 +244,11 @@ export default function App() {
         
         <div className={loading ? 'pause-animations' : ''} style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.5s ease-in', minHeight: '100%' }}>
           <Suspense fallback={<SkeletonPage />}>
-            <Router>
-              <AppContent />
-            </Router>
+            <GlobalErrorBoundary>
+              <Router>
+                <AppContent />
+              </Router>
+            </GlobalErrorBoundary>
           </Suspense>
         </div>
       </AdminProvider>
