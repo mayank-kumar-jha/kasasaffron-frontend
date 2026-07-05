@@ -84,7 +84,7 @@ export default function ImageUploader({ value, onChange, label = "Image", placeh
           className="hidden" 
         />
 
-        {value ? (
+        {value && value !== 'null' ? (
           <div className="relative w-full h-full flex flex-col items-center">
             <div className="relative w-full max-w-[200px] aspect-video rounded-lg overflow-hidden bg-black/50 mb-3">
               <img src={value} alt="Preview" className="w-full h-full object-contain" />

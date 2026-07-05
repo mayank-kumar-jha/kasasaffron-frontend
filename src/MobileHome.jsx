@@ -404,6 +404,8 @@ export default function MobileHome() {
 
   return (
     <>
+      {/* SECURITY NOTE: mobileStyles is a hardcoded constant defined in this file.
+          DO NOT pass dynamic or user-supplied data to dangerouslySetInnerHTML. */}
       <style dangerouslySetInnerHTML={{ __html: mobileStyles }} />
       {/* ═══════════ FIXED BACKGROUND LAYER ═══════════ */}
       <div className="mob-fixed-bg">
@@ -507,24 +509,27 @@ export default function MobileHome() {
           <div className="mob-founder-block mob-reveal">
             <div className="mob-neu-card">
               <div className="mob-founder-img-wrap">
-                <img
-                  src={(typeof aboutData?.lovieshImage === 'string' && aboutData.lovieshImage.trim() !== '' && aboutData.lovieshImage !== "null") ? aboutData.lovieshImage : "/Images/gordanramsi png.png"}
-                  alt="Loviesh Bali"
-                  className="mob-founder-img"
-                  fetchPriority="high"
-                  decoding="sync"
-                />
+                {typeof aboutData?.lovieshImage === 'string' && aboutData.lovieshImage.trim() !== '' && aboutData.lovieshImage !== "null" && (
+                  <img
+                    src={aboutData.lovieshImage}
+                    alt="Loviesh Bali"
+                    className="mob-founder-img"
+                    fetchPriority="high"
+                    decoding="sync"
+                  />
+                )}
               </div>
-              <div className="mob-founder-info">
-                <h3 className="mob-founder-name">Loviesh Bali</h3>
-                <span className="mob-founder-role">{aboutData?.lovieshRole?.[lang] || t('stories.lovieshRole') || aboutData?.lovieshRole?.en}</span>
-                <div className="mob-founder-line" />
-                <p className="mob-founder-quote">
-                  "{aboutData?.lovieshP1?.[lang] || t('stories.lovieshP1') || aboutData?.lovieshP1?.en}"
-                </p>
+                <div className="mob-founder-info">
+                  <h3 className="mob-founder-name">Loviesh Bali</h3>
+                  <span className="mob-founder-role">{aboutData?.lovieshRole?.[lang] || t('stories.lovieshRole') || aboutData?.lovieshRole?.en}</span>
+                  <div className="mob-founder-line" />
+                  <p className="mob-founder-quote">
+                    "{aboutData?.lovieshP1?.[lang] || t('stories.lovieshP1') || aboutData?.lovieshP1?.en}"
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+
         </section>
 
         {/* ═══════════ SECTION 3: WHAT WE DO ═══════════ */}

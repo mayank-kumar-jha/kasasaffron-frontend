@@ -20,11 +20,11 @@ const StoryCards = memo(({ card1PhotoRef, card1InfoRef, card2PhotoRef, card2Info
         ? aboutData.founderImage
         : '/Images/founder_pngggg.png';
 
-    const lovieshImg = (typeof aboutData?.lovieshImage === 'string'
-        && aboutData.lovieshImage.trim() !== ''
-        && aboutData.lovieshImage !== 'null')
-        ? aboutData.lovieshImage
-        : '/Images/gordanramsi png.png';
+    const showLoviesh = typeof aboutData?.lovieshImage === 'string' 
+        && aboutData.lovieshImage.trim() !== '' 
+        && aboutData.lovieshImage !== 'null';
+
+    const lovieshImg = showLoviesh ? aboutData.lovieshImage : '/Images/gordanramsi png.png';
 
     return (
         <>
@@ -91,12 +91,13 @@ const StoryCards = memo(({ card1PhotoRef, card1InfoRef, card2PhotoRef, card2Info
                 </div>
             </div>
 
-            {/* ═══════════════════════════════════════
-                CARD 2 — PHOTO HALF (slides from RIGHT)
-                Kitchen BG + Loviesh PNG
-            ═══════════════════════════════════════ */}
-            <div ref={card2PhotoRef} className="sc-photo-half" style={HALF_INIT}>
-                <div className="sc-bg-layer">
+
+                    {/* ═══════════════════════════════════════
+                        CARD 2 — PHOTO HALF (slides from RIGHT)
+                        Kitchen BG + Loviesh PNG
+                    ═══════════════════════════════════════ */}
+                    <div ref={card2PhotoRef} className="sc-photo-half" style={HALF_INIT}>
+                        <div className="sc-bg-layer">
                     <img
                         src="/Images/about_bg_2.jpg"
                         alt=""
@@ -111,13 +112,15 @@ const StoryCards = memo(({ card1PhotoRef, card1InfoRef, card2PhotoRef, card2Info
 
 
                 <div className="sc-png-layer">
-                    <img
-                        src={lovieshImg}
-                        alt="Loviesh Bali - Executive Chef"
-                        className="sc-person-png"
-                        loading="lazy"
-                        decoding="async"
-                    />
+                    {showLoviesh && (
+                        <img
+                            src={lovieshImg}
+                            alt="Loviesh Bali - Executive Chef"
+                            className="sc-person-png"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    )}
                 </div>
             </div>
 

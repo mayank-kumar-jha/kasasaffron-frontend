@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="space-y-5">
             <img src="/Images/Logo.png" alt="Kasa Saffron Logo" loading="lazy" className="w-20 lg:w-24 drop-shadow-md opacity-90" />
             <p className="text-xs leading-relaxed text-[#f6e5dd]/50 font-light">
-              Crafting premium, Spanish croquetas infused with the elegance of hand-picked saffron threads. Bringing culinary heritage to professional kitchens and gourmet retailers.
+              Crafting premium, authentic Spanish croquetas. Bringing culinary heritage to professional kitchens and gourmet retailers.
             </p>
             {/* Social Icons */}
             <div className="flex gap-4 pt-2">

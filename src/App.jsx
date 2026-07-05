@@ -135,15 +135,24 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    // Check for OAuth tokens in URL
+    // Handle OAuth callback — token is set as httpOnly cookie by the server,
+    // we just need to fetch user info via the cookie-authenticated endpoint
     const searchParams = new URLSearchParams(location.search);
-    const token = searchParams.get('token');
-    const user = searchParams.get('user');
+    const oauthSuccess = searchParams.get('oauth');
     
-    if (token && user) {
-      localStorage.setItem('kasa_access_token', token);
-      localStorage.setItem('kasa_user', decodeURIComponent(user));
-      window.dispatchEvent(new Event('userStateChange'));
+    if (oauthSuccess === 'success') {
+      // Fetch user data using the httpOnly cookie that was already set
+      import('./api/auth.service.js').then(({ getCurrentUser }) => {
+        getCurrentUser().then((response) => {
+          if (response?.data) {
+            localStorage.setItem('kasa_user', JSON.stringify(response.data));
+            window.dispatchEvent(new Event('userStateChange'));
+          }
+        }).catch(() => {
+          // OAuth cookie may not have been set properly
+          console.error('Failed to fetch user after OAuth');
+        });
+      });
       // Remove query params from URL without reloading
       window.history.replaceState({}, document.title, location.pathname);
     }
@@ -180,7 +189,7 @@ function AppContent() {
   );
 }
 
-const MAINTENANCE_MODE = true; // Temporary maintenance mode (active everywhere including production)
+const MAINTENANCE_MODE = import.meta.env.PROD; // Active in production, disabled in local dev
 
 export default function App() {
   if (MAINTENANCE_MODE) {

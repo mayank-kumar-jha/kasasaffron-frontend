@@ -155,7 +155,7 @@ export default function Signup() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="absolute top-[28px] xl:top-[60px] z-20"
         >
-          <img src="/Images/Logo.png" alt="Kasa Saffron" className="w-24 xl:w-32 drop-shadow-md hover:scale-105 transition-transform duration-300 cursor-pointer" />
+          <img src="/Images/Logo.png" alt="Kasa Saffron" className="w-24 xl:w-32 drop-shadow-[0_10px_15px_rgba(0,0,0,0.6)] hover:scale-105 transition-transform duration-300 cursor-pointer" />
         </motion.div>
 
         {/* Content Wrapper inside the ribbon area */}
@@ -172,7 +172,7 @@ export default function Signup() {
               whileHover={{ scale: 1.05, rotate: 2 }}
               src="/Images/Croquettes_Dipping.png"
               alt="Croquettes with dipping sauce"
-              className="w-[350px] xl:w-[450px] object-contain drop-shadow-2xl z-10 relative cursor-pointer"
+              className="w-[350px] xl:w-[450px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] z-10 relative cursor-pointer"
             />
 
             {/* Saffron threads accent removed */}
