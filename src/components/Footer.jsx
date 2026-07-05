@@ -67,11 +67,11 @@ export default function Footer() {
             <ul className="space-y-3.5 text-xs font-light">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E6C587]/60 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                <span>Carrer de Mallorca, Barcelona, Spain</span>
+                <span>Gran Via Corts Catalanes 162, Local 27<br />08038 Barcelona, Spain</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E6C587]/60 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                <a href="mailto:kasasaffron@outlook.com" className="hover:text-[#E6C587] transition-colors">kasasaffron@outlook.com</a>
+                <a href="mailto:info@kasasaffron.com" className="hover:text-[#E6C587] transition-colors">info@kasasaffron.com</a>
               </li>
               <li className="pt-2">
                 <button onClick={() => setIsContactOpen(true)} className="inline-flex items-center gap-2 px-4 py-2 mt-1 rounded-full border border-[#E6C587]/40 text-[#E6C587] hover:bg-[#E6C587] hover:text-[#1a0104] transition-all duration-300 text-[10px] font-bold uppercase tracking-widest">
