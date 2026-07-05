@@ -35,12 +35,13 @@ export default function B2b() {
     const transTagline = t(`flavoursPage.items.${i}.tagline`);
     const transDesc = t(`flavoursPage.items.${i}.description`);
 
-    // Safely extract string values in case backend returned multilingual objects
-    const fName = typeof f.name === 'object' && f.name !== null ? (f.name.en || f.name.es || '') : f.name;
-    const fTagline = typeof f.tagline === 'object' && f.tagline !== null ? (f.tagline.en || f.tagline.es || '') : f.tagline;
-    const fDesc = typeof f.description === 'object' && f.description !== null ? (f.description.en || f.description.es || '') : f.description;
-    const fNotes = typeof f.notes === 'object' && f.notes !== null ? (f.notes.en || f.notes.es || '') : f.notes;
-    const fIngredients = typeof f.ingredients === 'object' && f.ingredients !== null ? (f.ingredients.en || f.ingredients.es || '') : f.ingredients;
+    // Safely extract string values using the current language
+    const lang = i18n.language || 'en';
+    const fName = typeof f.name === 'object' && f.name !== null ? (f.name[lang] || f.name.en || f.name.es || '') : f.name;
+    const fTagline = typeof f.tagline === 'object' && f.tagline !== null ? (f.tagline[lang] || f.tagline.en || f.tagline.es || '') : f.tagline;
+    const fDesc = typeof f.description === 'object' && f.description !== null ? (f.description[lang] || f.description.en || f.description.es || '') : f.description;
+    const fNotes = typeof f.notes === 'object' && f.notes !== null ? (f.notes[lang] || f.notes.en || f.notes.es || '') : f.notes;
+    const fIngredients = typeof f.ingredients === 'object' && f.ingredients !== null ? (f.ingredients[lang] || f.ingredients.en || f.ingredients.es || '') : f.ingredients;
 
     // Fallback to static b2bData if backend doesn't provide these
     const staticFlavour = FLAVOURS.find(sf => {
