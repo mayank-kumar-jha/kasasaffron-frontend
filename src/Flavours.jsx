@@ -116,6 +116,7 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
 /* ══════════════════════════════════════════════════════════════
    MAIN COMPONENT
 ══════════════════════════════════════════════════════════════ */
+export default function Flavours() {
   const { t, i18n } = useTranslation();
   const lang = (i18n.language || 'en').split('-')[0];
   const { addToCart } = useCart();
