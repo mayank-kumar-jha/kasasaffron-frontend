@@ -5,13 +5,15 @@ export default function Preloader({ onComplete }) {
   const [phase, setPhase] = useState(1);
 
   useEffect(() => {
-    // Phase 1: Logo + "Kasa Saffron" fully shown  (0 → 2.0s)
+    // Phase 1: Full "Kasa Saffron" with logo shown        (0 → 2.0s)
     const t1 = setTimeout(() => setPhase(2), 2000);
-    // Phase 2: Logo fades, text collapses to "KS" and scales up (2.0 → 3.6s)
+    // Phase 2: Text retracts/collapses to "KS"            (2.0 → 3.6s)
     const t2 = setTimeout(() => setPhase(3), 3600);
-    // Phase 3: Entire screen fades out               (3.6 → 4.6s)
-    const t3 = setTimeout(() => onComplete(), 4600);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    // Phase 3: "KS" expands/scales up dramatically        (3.6 → 5.0s)
+    const t3 = setTimeout(() => setPhase(4), 5000);
+    // Phase 4: Entire screen fades out                    (5.0 → 5.8s)
+    const t4 = setTimeout(() => onComplete(), 5800);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, [onComplete]);
 
   return (
@@ -19,16 +21,21 @@ export default function Preloader({ onComplete }) {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: '#0e0003' }}
       initial={{ opacity: 1 }}
-      animate={{ opacity: phase === 3 ? 0 : 1 }}
-      transition={{ duration: 1.0, ease: 'easeInOut' }}
+      animate={{ opacity: phase === 4 ? 0 : 1 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       {/* ── Grain overlay ── */}
       <div className="absolute inset-0 bg-grain z-0 opacity-40 pointer-events-none" />
 
       {/* ── Warm radial ambient glow ── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div
+        <motion.div
           className="w-[560px] h-[560px] rounded-full"
+          animate={{
+            scale: phase === 3 ? 1.8 : 1,
+            opacity: phase === 3 ? 0.6 : 1,
+          }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           style={{
             background: 'radial-gradient(circle, rgba(189,86,26,0.18) 0%, rgba(114,3,3,0.12) 45%, transparent 72%)',
             filter: 'blur(55px)',
@@ -96,10 +103,12 @@ export default function Preloader({ onComplete }) {
               ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
               : phase === 2
                 ? { opacity: 1, y: 0, scale: 1.38, filter: 'blur(0px)' }
-                : { opacity: 0, y: 0, scale: 28, filter: 'blur(10px)' }
+                : phase === 3
+                  ? { opacity: 1, y: 0, scale: 28, filter: 'blur(10px)' }
+                  : { opacity: 0, y: 0, scale: 28, filter: 'blur(14px)' }
           }
           transition={{
-            duration: phase === 3 ? 1.05 : 1.15,
+            duration: phase === 3 ? 1.3 : phase === 4 ? 0.6 : 1.15,
             ease: phase === 3 ? [0.76, 0, 0.24, 1] : [0.22, 1, 0.36, 1],
           }}
           className="relative flex items-center overflow-visible"
