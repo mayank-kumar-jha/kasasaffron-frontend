@@ -189,7 +189,7 @@ function AppContent() {
   );
 }
 
-const MAINTENANCE_MODE = import.meta.env.PROD; // Active in production, disabled in local dev
+const MAINTENANCE_MODE = false;
 
 export default function App() {
   if (MAINTENANCE_MODE) {
