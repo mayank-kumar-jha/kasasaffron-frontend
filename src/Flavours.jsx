@@ -295,6 +295,18 @@ export default function Flavours() {
                   const isActive = diff === 0;
                   const isFlipped = flippedCard === index;
 
+                  const nameObj = typeof flavour.name === 'object' && flavour.name !== null ? flavour.name : null;
+                  const taglineObj = typeof flavour.tagline === 'object' && flavour.tagline !== null ? flavour.tagline : null;
+                  const descObj = typeof flavour.description === 'object' && flavour.description !== null ? flavour.description : null;
+
+                  const nameStr = nameObj ? (nameObj[lang] || nameObj.en || nameObj.es) : flavour.name;
+                  const taglineStr = taglineObj ? (taglineObj[lang] || taglineObj.en || taglineObj.es) : flavour.tagline;
+                  const descStr = descObj ? (descObj[lang] || descObj.en || descObj.es) : flavour.description;
+
+                  const displayName = nameStr || t(`flavoursPage.items.${index}.name`);
+                  const displayTagline = taglineStr || t(`flavoursPage.items.${index}.tagline`);
+                  const displayDescription = descStr || t(`flavoursPage.items.${index}.description`);
+
                   return (
                     <motion.div
                       key={flavour.id}
@@ -353,7 +365,7 @@ export default function Flavours() {
                           </svg>
 
                           <div className="flex justify-between items-center mb-2 border-b border-[#E6C587]/10 pb-1.5 relative z-10">
-                            <span className="text-[7px] md:text-[8px] tracking-[0.25em] font-extrabold text-[#E6C587]/70 uppercase font-sans">{flavour.tagline?.[lang] || t(`flavoursPage.items.${index}.tagline`) || flavour.tagline?.en}</span>
+                            <span className="text-[7px] md:text-[8px] tracking-[0.25em] font-extrabold text-[#E6C587]/70 uppercase font-sans">{displayTagline}</span>
                             {/* Premium saffron stamen SVG */}
                             <svg className="w-3.5 h-3.5 text-[#E6C587] opacity-60" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
                               <path d="M10 18 L10 6"/>
