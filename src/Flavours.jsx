@@ -538,13 +538,13 @@ export default function Flavours() {
                 {/* Scrollable Content */}
                 <div className="flex-1 overflow-y-auto px-6 pt-2 pb-32">
                   <span className="inline-block text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/70 uppercase mb-3">
-                    {expandedCard.tagline?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.tagline`) || expandedCard.tagline?.en}
+                    {expandedCard.tagline?.[lang] || expandedCard.tagline?.en || ''}
                   </span>
                   <h3 className="text-3xl font-serif text-[#E6C587] mb-3 leading-tight" style={{ fontFamily: "'Cinzel', serif" }}>
-                    {expandedCard.name?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.name`) || expandedCard.name?.en}
+                    {expandedCard.name?.[lang] || expandedCard.name?.en || ''}
                   </h3>
                   <p className="text-white/70 text-sm mb-6 leading-relaxed font-light">
-                    {expandedCard.description?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.description`) || expandedCard.description?.en}
+                    {expandedCard.description?.[lang] || expandedCard.description?.en || ''}
                   </p>
 
                   {/* Size Selector */}
@@ -620,14 +620,14 @@ export default function Flavours() {
                 <div className="w-full md:w-[55%] p-12 flex flex-col bg-[#fdfbf7] overflow-y-auto">
                   <div className="mt-auto mb-auto">
                     <span className="inline-block text-xs font-bold tracking-[0.25em] text-[#BD561A] bg-[#BD561A]/10 px-3 py-1 rounded-full uppercase mb-4">
-                      {expandedCard.tagline?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.tagline`) || expandedCard.tagline?.en}
+                      {expandedCard.tagline?.[lang] || expandedCard.tagline?.en || ''}
                     </span>
                     <h3 className="text-5xl font-serif text-[#140003] mb-5 leading-[1.1]">
-                      {expandedCard.name?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.name`) || expandedCard.name?.en}
+                      {expandedCard.name?.[lang] || expandedCard.name?.en || ''}
                     </h3>
                     <div className="w-16 h-[2px] bg-[#E6C587] mb-6"></div>
                     <p className="text-[#2c0107]/70 text-base mb-8 leading-relaxed font-sans font-medium">
-                      {expandedCard.description?.[lang] || t(`flavoursPage.items.${expandedCard.id - 1}.description`) || expandedCard.description?.en}
+                      {expandedCard.description?.[lang] || expandedCard.description?.en || ''}
                     </p>
 
                     {/* Size Selector */}
