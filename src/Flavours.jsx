@@ -595,7 +595,7 @@ export default function Flavours() {
                 animate={{ y: 0, scale: 1, opacity: 1 }}
                 exit={{ y: 30, scale: 0.95, opacity: 0 }}
                 transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                className="relative z-10 w-full md:max-w-5xl md:h-[650px] overflow-hidden bg-[#fdfbf7] md:rounded-[2rem] md:shadow-[0_30px_60px_-15px_rgba(20,0,3,0.5)] border border-[#2c0107]/10 flex flex-col md:flex-row"
+                className="relative z-10 w-full md:max-w-5xl md:max-h-[85vh] overflow-hidden bg-[#fdfbf7] md:rounded-[2rem] md:shadow-[0_30px_60px_-15px_rgba(20,0,3,0.5)] border border-[#2c0107]/10 flex flex-col md:flex-row"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close Button */}
