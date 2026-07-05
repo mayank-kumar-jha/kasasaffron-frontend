@@ -536,7 +536,7 @@ export default function Flavours() {
                 </div>
 
                 {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto px-6 pt-2 pb-32">
+                <div className="flex-1 overflow-y-auto px-6 pt-4 pb-32 flex flex-col items-center text-center">
                   <span className="inline-block text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/70 uppercase mb-3">
                     {expandedCard.tagline?.[lang] || expandedCard.tagline?.en || ''}
                   </span>
@@ -548,16 +548,16 @@ export default function Flavours() {
                   </p>
 
                   {/* Size Selector */}
-                  <div className="mb-6">
+                  <div className="mb-6 w-full flex flex-col items-center">
                     <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Select Size</p>
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 w-full max-w-[200px]">
                       <button onClick={() => setSelectedSize('500g')} className={`flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '500g' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>500g</button>
                       <button onClick={() => setSelectedSize('1kg')} className={`flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '1kg' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>1kg</button>
                     </div>
                   </div>
 
                   {/* Quantity Selector */}
-                  <div className="mb-6">
+                  <div className="mb-6 w-full flex flex-col items-center">
                     <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Quantity</p>
                     <div className="flex items-center w-fit bg-[#130004] border border-[#E6C587]/20 rounded-xl overflow-hidden shadow-sm">
                       <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} className="w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light disabled:opacity-30 disabled:hover:bg-transparent" disabled={selectedQuantity <= 1}>−</button>

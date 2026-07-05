@@ -52,9 +52,9 @@ export default function B2b() {
 
     return {
       ...f,
-      name: (transName && transName !== `flavoursPage.items.${i}.name`) ? transName : fName,
-      tagline: (transTagline && transTagline !== `flavoursPage.items.${i}.tagline`) ? transTagline : fTagline,
-      description: (transDesc && transDesc !== `flavoursPage.items.${i}.description`) ? transDesc : fDesc,
+      name: fName || (transName && transName !== `flavoursPage.items.${i}.name` ? transName : staticFlavour.name),
+      tagline: fTagline || (transTagline && transTagline !== `flavoursPage.items.${i}.tagline` ? transTagline : staticFlavour.tagline),
+      description: fDesc || (transDesc && transDesc !== `flavoursPage.items.${i}.description` ? transDesc : staticFlavour.description),
       notes: fNotes || staticFlavour.notes,
       ingredients: fIngredients || staticFlavour.ingredients,
     };
@@ -744,7 +744,7 @@ export default function B2b() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-4 md:p-5">
+                  <div className="p-4 md:p-5 flex flex-col items-center text-center">
                     <h3 className="text-sm md:text-base font-bold text-[#E6C587] mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
                       {flavour.name}
                     </h3>
@@ -753,15 +753,15 @@ export default function B2b() {
                     </p>
 
                     {/* Flavor notes */}
-                    <div className="flex items-center gap-2 mb-2 min-h-[14px]">
+                    <div className="flex justify-center items-center gap-2 mb-2 min-h-[14px]">
                       <span className="text-[7.5px] font-bold tracking-[0.15em] text-[#BD561A] uppercase font-sans">Notes:</span>
                       <span className="text-[9.5px] text-[#f6e5dd]/90 font-sans italic">{flavour.notes || '—'}</span>
                     </div>
                     {/* Divider */}
-                    <div className="w-full h-[1px] bg-[#E6C587]/15 mb-2.5" />
+                    <div className="w-12 h-[1px] bg-[#E6C587]/15 mb-2.5 mx-auto" />
                     {/* Ingredients */}
-                    <div className="flex items-start gap-2 min-h-[14px]">
-                      <span className="text-[7.5px] font-bold tracking-[0.15em] text-[#BD561A] uppercase mt-0.5 shrink-0">Key:</span>
+                    <div className="flex flex-col items-center gap-1 min-h-[14px]">
+                      <span className="text-[7.5px] font-bold tracking-[0.15em] text-[#BD561A] uppercase mt-0.5 shrink-0">Key Ingredients:</span>
                       <span className="text-[9.5px] text-[#f6e5dd]/70 font-sans">{flavour.ingredients || '—'}</span>
                     </div>
                   </div>
