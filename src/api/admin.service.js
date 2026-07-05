@@ -3,7 +3,7 @@ import api from './client.js';
 // ─── Products / Flavours ────────────────────────────────────────────────────
 
 export const adminGetProducts = async () => {
-  const { data } = await api.get('/products?all=true');
+  const { data } = await api.get(`/products?all=true&t=${Date.now()}`);
   return data;
 };
 
@@ -40,7 +40,7 @@ export const adminUploadImage = async (file) => {
 // ─── Events ──────────────────────────────────────────────────────────────────
 
 export const adminGetEvents = async () => {
-  const { data } = await api.get('/admin/events');
+  const { data } = await api.get(`/admin/events?t=${Date.now()}`);
   return data;
 };
 
@@ -62,7 +62,7 @@ export const adminDeleteEvent = async (id) => {
 // ─── CMS Content (About, Gallery, etc.) ─────────────────────────────────────
 
 export const adminGetContent = async (section) => {
-  const { data } = await api.get(`/admin/content/${section}`);
+  const { data } = await api.get(`/admin/content/${section}?t=${Date.now()}`);
   return data;
 };
 
@@ -74,7 +74,7 @@ export const adminUpdateContent = async (section, contentData) => {
 // ─── Gallery ─────────────────────────────────────────────────────────────────
 
 export const adminGetGallery = async () => {
-  const { data } = await api.get('/admin/gallery');
+  const { data } = await api.get(`/admin/gallery?t=${Date.now()}`);
   return data;
 };
 
