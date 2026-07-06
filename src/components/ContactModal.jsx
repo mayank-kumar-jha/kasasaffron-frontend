@@ -56,13 +56,13 @@ export default function ContactModal({ isOpen, onClose }) {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-12 font-sans">
       {/* Backdrop */}
       <div
-        className={`absolute inset-0 bg-[#160003]/80 backdrop-blur-sm transition-opacity duration-400 ease-in-out ${isClosing ? 'opacity-0' : 'opacity-100 animate-fadeIn'}`}
+        className={`absolute inset-0 bg-[#160003]/80 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${isClosing ? 'opacity-0' : 'opacity-100 animate-fadeIn'}`}
         onClick={handleClose}
       />
 
       {/* Modal Container */}
       <div
-        className={`relative w-full max-w-5xl bg-[#FDF6EE] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-400 ease-out transform ${isClosing ? 'opacity-0 scale-95 translate-y-8' : 'opacity-100 scale-100 translate-y-0 animate-slideUp'}`}
+        className={`relative w-full max-w-5xl bg-[#FDF6EE] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 ease-out transform ${isClosing ? 'opacity-0 scale-95 translate-y-8' : 'opacity-100 scale-100 translate-y-0 animate-slideUp'}`}
       >
         {/* Close Button */}
         <button

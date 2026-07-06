@@ -8,13 +8,23 @@ import SEO from './components/SEO';
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: 'easeout', delay },
+  transition: { duration: 0.7, ease: 'easeOut', delay },
 });
 
 export default function Gallery() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language || 'en';
   const { galleryImages, isDataLoading } = useAdmin();
+
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsPaused(document.hidden);
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
 
   if (isDataLoading) return <SkeletonPage />;
 
@@ -51,8 +61,8 @@ export default function Gallery() {
         
         <div className="flex gap-3 md:gap-4 h-full relative z-10">
           {/* Column 1 */}
-          <div className="flex-1 overflow-hidden relative">
-            <div className="animate-scroll-up flex flex-col gap-3 md:gap-4">
+          <div className="flex-1 overflow-hidden relative" style={{ willChange: 'transform' }}>
+            <div className={`animate-scroll-up flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images, ...images].map((f, i) => (
                 <div key={`col1-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '200px' : i % 3 === 1 ? '260px' : '180px' }}>
                   <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -67,8 +77,8 @@ export default function Gallery() {
           </div>
 
           {/* Column 2 */}
-          <div className="flex-1 overflow-hidden relative">
-            <div className="animate-scroll-down flex flex-col gap-3 md:gap-4">
+          <div className="flex-1 overflow-hidden relative" style={{ willChange: 'transform' }}>
+            <div className={`animate-scroll-down flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(3), ...images, ...images.slice(0, 3)].map((f, i) => (
                 <div key={`col2-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '240px' : i % 3 === 1 ? '180px' : '220px' }}>
                   <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -83,8 +93,8 @@ export default function Gallery() {
           </div>
 
           {/* Column 3 */}
-          <div className="flex-1 overflow-hidden relative hidden sm:block">
-            <div className="animate-scroll-up-slow flex flex-col gap-3 md:gap-4">
+          <div className="flex-1 overflow-hidden relative hidden sm:block" style={{ willChange: 'transform' }}>
+            <div className={`animate-scroll-up-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(5), ...images, ...images.slice(0, 5)].map((f, i) => (
                 <div key={`col3-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '180px' : i % 3 === 1 ? '240px' : '200px' }}>
                   <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -99,8 +109,8 @@ export default function Gallery() {
           </div>
 
           {/* Column 4 */}
-          <div className="flex-1 overflow-hidden relative hidden lg:block">
-            <div className="animate-scroll-down-slow flex flex-col gap-3 md:gap-4">
+          <div className="flex-1 overflow-hidden relative hidden lg:block" style={{ willChange: 'transform' }}>
+            <div className={`animate-scroll-down-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(1), ...images, ...images.slice(0, 1)].map((f, i) => (
                 <div key={`col4-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '220px' : i % 3 === 1 ? '190px' : '250px' }}>
                   <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

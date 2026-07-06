@@ -153,7 +153,7 @@ export const CartProvider = ({ children }) => {
       {children}
       {/* Toast Notification */}
       <div 
-        className={`fixed top-[90px] right-6 z-[9999] transition-all duration-500 ease-out flex items-center gap-3 bg-gradient-to-r from-[#2c0107] to-[#140003] text-white px-5 py-3 rounded-xl border border-[#E6C587]/30 shadow-[0_10px_30px_rgba(81,12,27,0.4)] ${
+        className={`fixed top-24 md:top-[90px] right-4 md:right-6 z-[9999] transition-all duration-500 ease-out flex items-center gap-3 bg-gradient-to-r from-[#2c0107] to-[#140003] text-white px-5 py-3 rounded-xl border border-[#E6C587]/30 shadow-[0_10px_30px_rgba(81,12,27,0.4)] ${
           toast.visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'
         }`}
       >

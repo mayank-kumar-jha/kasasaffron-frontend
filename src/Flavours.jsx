@@ -23,7 +23,7 @@ const FLAVOURS = [
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: 'easeout', delay },
+  transition: { duration: 0.7, ease: 'easeOut', delay },
 });
 
 /* ══════════════════════════════════════════════════════════════
@@ -529,7 +529,8 @@ export default function Flavours() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: '100%', opacity: 0 }}
                 transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                className="relative z-10 w-full h-[88vh] overflow-hidden bg-[#0a0001] rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#E6C587]/20 flex flex-col"
+                className="relative z-10 w-full overflow-hidden bg-[#0a0001] rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#E6C587]/20 flex flex-col"
+                style={{ height: '88vh', height: '88dvh' }}
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Drag Handle */}
@@ -567,8 +568,8 @@ export default function Flavours() {
                   <div className="mb-6 w-full flex flex-col items-center">
                     <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Select Size</p>
                     <div className="flex gap-3 w-full max-w-[200px]">
-                      <button onClick={() => setSelectedSize('500g')} className={`flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '500g' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>500g</button>
-                      <button onClick={() => setSelectedSize('1kg')} className={`flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '1kg' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>1kg</button>
+                      <button onClick={() => setSelectedSize('500g')} className={`cursor-pointer touch-manipulation flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '500g' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>500g</button>
+                      <button onClick={() => setSelectedSize('1kg')} className={`cursor-pointer touch-manipulation flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '1kg' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>1kg</button>
                     </div>
                   </div>
 
@@ -576,16 +577,16 @@ export default function Flavours() {
                   <div className="mb-6 w-full flex flex-col items-center">
                     <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Quantity</p>
                     <div className="flex items-center w-fit bg-[#130004] border border-[#E6C587]/20 rounded-xl overflow-hidden shadow-sm">
-                      <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} className="w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light disabled:opacity-30 disabled:hover:bg-transparent" disabled={selectedQuantity <= 1}>−</button>
+                      <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} className="cursor-pointer touch-manipulation w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light disabled:opacity-30 disabled:hover:bg-transparent" disabled={selectedQuantity <= 1}>−</button>
                       <span className="w-12 h-10 flex items-center justify-center text-white font-bold text-sm bg-black/20">{selectedQuantity}</span>
-                      <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light">+</button>
+                      <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="cursor-pointer touch-manipulation w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light">+</button>
                     </div>
                   </div>
                 </div>
 
                 {/* Sticky Mobile Footer */}
-                <div className="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#0a0001] via-[#0a0001] to-[#0a0001]/0 pb-6 border-t border-[#E6C587]/10 backdrop-blur-md">
-                  <div className="flex items-center justify-between gap-4">
+                <div className="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#0a0001] via-[#0a0001] to-[#0a0001]/0 pb-6 border-t border-[#E6C587]/10 backdrop-blur-md pointer-events-none">
+                  <div className="flex items-center justify-between gap-4 pointer-events-auto">
                     <div className="flex flex-col">
                       <span className="text-[9px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-1">Total Price</span>
                       <span className="text-2xl font-serif text-[#E6C587] leading-none drop-shadow-sm">

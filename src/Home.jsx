@@ -72,11 +72,13 @@ export default function Home() {
         backContentRef.current = node;
         if (node) {
             backContentHeightRef.current = node.scrollHeight;
-            const ro = new ResizeObserver(() => {
-                backContentHeightRef.current = node.scrollHeight;
-                window.dispatchEvent(new Event('resize'));
-            });
-            ro.observe(node);
+            if (typeof ResizeObserver !== 'undefined') {
+                const ro = new ResizeObserver(() => {
+                    backContentHeightRef.current = node.scrollHeight;
+                    window.dispatchEvent(new Event('resize'));
+                });
+                ro.observe(node);
+            }
         }
     }, []);
 

@@ -71,7 +71,7 @@ export default function Navbar() {
                     </button>
 
                     {/* Center: Language Capsule */}
-                    <div className="mob-lang-capsule">
+                    <div className="mob-lang-capsule notranslate" translate="no">
                         <button onClick={() => changeLanguage('es')} className={i18n.language === 'es' ? 'active' : ''}>ES</button>
                         <span className="mob-lang-sep">|</span>
                         <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'active' : ''}>EN</button>
@@ -199,7 +199,7 @@ export default function Navbar() {
 
     // ── DESKTOP NAVBAR (unchanged) ──
     return (
-        <header className="fixed bottom-0 md:bottom-auto md:top-0 left-0 w-full z-[100] bg-[#faecdf]/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-t border-[#4A0E1B]/10 md:border-none pointer-events-none px-4 md:px-12 py-3 md:py-6 flex justify-between items-center shadow-[0_-5px_20px_rgba(0,0,0,0.05)] md:shadow-none">
+        <header className="fixed bottom-0 md:bottom-auto md:top-0 left-0 w-full z-[100] bg-[#faecdf]/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-t border-[#4A0E1B]/10 md:border-none px-4 md:px-12 py-3 md:py-6 flex justify-between items-center shadow-[0_-5px_20px_rgba(0,0,0,0.05)] md:shadow-none">
             {/* Empty left spacer on desktop to balance the right side for perfect centering */}
             <div className="hidden md:flex flex-1 pointer-events-none"></div>
 
@@ -257,7 +257,7 @@ export default function Navbar() {
                 )}
 
                 <div className="lang-switcher">
-                    <div className="lang-options">
+                    <div className="lang-options notranslate" translate="no">
                         <button onClick={() => changeLanguage('es')} className={i18n.language === 'es' ? 'active' : ''}>ES</button>
                         <span className="separator">|</span>
                         <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'active' : ''}>EN</button>

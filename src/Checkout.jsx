@@ -158,7 +158,8 @@ export default function Checkout() {
     }
 
     if (name === 'pickupDate' && value) {
-      const day = new Date(value).getDay();
+      const [y, m, d] = value.split('-').map(Number);
+      const day = new Date(y, m - 1, d).getDay();
       if (day === 0 || day === 6) {
         error = 'Pickup is only available Monday to Friday. Please select a weekday.';
         newValue = ''; // clear the value so they must pick again
