@@ -56,7 +56,7 @@ const ClocheIcon = () => (
   </svg>
 );
 
-const StampBadge = () => (
+const StampBadge = ({ t }) => (
   <div className="who-stamp-badge">
     <svg viewBox="0 0 80 80" width="100%" height="100%">
       <defs>
@@ -65,10 +65,10 @@ const StampBadge = () => (
       </defs>
       <circle cx="40" cy="40" r="31" fill="none" stroke="#B8893A" strokeWidth="0.8" strokeDasharray="2 3" />
       <text fill="#B8893A" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="7" letterSpacing="2.5">
-        <textPath href="#topArc" startOffset="8%">ARTISANAL KITCHEN •</textPath>
+        <textPath href="#topArc" startOffset="8%">{t('history.badges.artisanalKitchen', 'ARTISANAL KITCHEN •')}</textPath>
       </text>
       <text fill="#B8893A" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="7" letterSpacing="2.5">
-        <textPath href="#botArc" startOffset="8%">PREMIUM QUALITY •</textPath>
+        <textPath href="#botArc" startOffset="8%">{t('history.badges.premiumQuality', 'PREMIUM QUALITY •')}</textPath>
       </text>
       <text x="40" y="47" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontWeight="700" fontSize="28" fill="#4A0E1A">K</text>
     </svg>
@@ -81,10 +81,10 @@ const HistorySection = memo(({ backRef, backContentCallback, isMobileView }) => 
   const { aboutData } = useAdmin();
 
   const statsItems = [
-    { icon: <LeafIcon />, label: 'SELECTED\nINGREDIENTS' },
-    { icon: <ChefHatIcon />, label: 'ARTISANAL\nMETHOD' },
-    { icon: <RibbonIcon />, label: 'PREMIUM\nQUALITY' },
-    { icon: <HeartIcon />, label: 'PASSION FOR\nDETAIL' },
+    { icon: <LeafIcon />, label: t('history.stats.selectedIngredients', 'SELECTED\\nINGREDIENTS') },
+    { icon: <ChefHatIcon />, label: t('history.stats.artisanalMethod', 'ARTISANAL\\nMETHOD') },
+    { icon: <RibbonIcon />, label: t('history.stats.premiumQuality', 'PREMIUM\\nQUALITY') },
+    { icon: <HeartIcon />, label: t('history.stats.passionForDetail', 'PASSION FOR\\nDETAIL') },
   ];
 
   return (
@@ -163,7 +163,7 @@ const HistorySection = memo(({ backRef, backContentCallback, isMobileView }) => 
                   />
                 </div>
               </div>
-              <StampBadge />
+              <StampBadge t={t} />
             </div>
 
             {/* ── RIGHT: Text + Cards ── */}
@@ -207,14 +207,14 @@ const HistorySection = memo(({ backRef, backContentCallback, isMobileView }) => 
           {/* ── ACTION BUTTONS ── */}
           <div className="who-action-buttons">
             <Link to="/flavours" className="who-btn who-btn-primary">
-              <span className="who-btn-text">Our Flavours</span>
+              <span className="who-btn-text">{t('history.buttons.ourFlavours', 'Our Flavours')}</span>
               <span className="who-btn-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </span>
               <div className="who-btn-glow"></div>
             </Link>
             <Link to="/b2b" className="who-btn who-btn-secondary">
-              <span className="who-btn-text">Become Our Partner</span>
+              <span className="who-btn-text">{t('history.buttons.becomePartner', 'Become Our Partner')}</span>
               <span className="who-btn-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </span>

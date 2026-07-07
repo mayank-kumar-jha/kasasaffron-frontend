@@ -5,7 +5,8 @@
     "ourFlavours": "ELS NOSTRES SABORS",
     "b2bBusiness": "NEGOCI B2B",
     "gallery": "GALERIA",
-    "events": "PROPERS ESDEVENIMENTS"
+    "events": "PROPERS ESDEVENIMENTS",
+    "whatsNew": "NOVETATS"
   },
   "hero": {
     "handcrafted": "FETES A MÀ AMB",
@@ -40,7 +41,21 @@
     "feat3Title": "Innovació Gurmet",
     "feat3Desc": "Sabors clàssics i combinacions creatives adaptadas al mercat actual.",
     "feat4Title": "Enfocament B2B i Retail",
-    "feat4Desc": "Servei dissenyat per a restaurants, càterings i supermercats a Barcelona."
+    "feat4Desc": "Servei dissenyat per a restaurants, càterings i supermercats a Barcelona.",
+    "stats": {
+      "selectedIngredients": "INGREDIENTS\nSELECCIONATS",
+      "artisanalMethod": "MÈTODE\nARTESANAL",
+      "premiumQuality": "QUALITAT\nPRÈMIUM",
+      "passionForDetail": "PASSIÓ PEL\nDETALL"
+    },
+    "buttons": {
+      "ourFlavours": "Els Nostres Sabors",
+      "becomePartner": "Fes-te Soci"
+    },
+    "badges": {
+      "artisanalKitchen": "CUINA ARTESANAL •",
+      "premiumQuality": "QUALITAT PRÈMIUM •"
+    }
   },
   "stories": {
     "chetnaRole": "Xef / Directora / Fundadora",
@@ -287,7 +302,10 @@
     "subtitle": "Des de nous sabors fins a ampliacions de cuina: estigues al dia amb l'última hora de Kasa Saffron.",
     "readMore": "Llegir més",
     "readLess": "Llegir menys",
-    "noEvents": "No hi ha esdeveniments planejats en aquest moment."
+    "noEvents": "Encara no hi ha anuncis.",
+    "stayTuned": "Estigues atent a les emocionants notícies de Kasa Saffron!",
+    "curious": "Tens curiositat per les nostres creacions?",
+    "exploreFlavours": "Explora Els Nostres Sabors"
   },
   "checkout": {
     "title": "La Teva Comanda",
@@ -335,7 +353,8 @@
     "explore": "Explorar",
     "kitchen": "Cuina i Contacte",
     "contact": "Contacta'ns",
-    "follow": "Segueix-nos"
+    "follow": "Segueix-nos",
+    "description": "Elaborant croquetes espanyoles autèntiques i de primera qualitat. Portant el patrimoni culinari a cuines professionals i minoristes gurmet."
   },
   "navAuth": {
     "changeAccount": "Canviar compte",

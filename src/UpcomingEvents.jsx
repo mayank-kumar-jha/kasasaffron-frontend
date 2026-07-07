@@ -249,16 +249,16 @@ export default function UpcomingEvents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
               </svg>
             </div>
-            <p className="text-white/30 text-lg mb-3 font-light">No announcements yet.</p>
-            <p className="text-white/15 text-sm">Stay tuned for exciting news from Kasa Saffron!</p>
+            <p className="text-white/30 text-lg mb-3 font-light">{t('events.noEvents')}</p>
+            <p className="text-white/15 text-sm">{t('events.stayTuned')}</p>
           </div>
         )}
 
         {/* ═══ Bottom CTA ═══ */}
         <div className="mt-20 md:mt-28 text-center pb-12 border-b border-[#E6C587]/[0.06]">
-          <p className="text-white/40 mb-6 text-base font-light">Curious about our creations?</p>
+          <p className="text-white/40 mb-6 text-base font-light">{t('events.curious')}</p>
           <Link to="/flavours" className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-[#E6C587]/30 text-[#E6C587] rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#E6C587]/[0.06] hover:border-[#E6C587]/50 transition-all duration-300">
-            <span>Explore Our Flavours</span>
+            <span>{t('events.exploreFlavours')}</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </div>

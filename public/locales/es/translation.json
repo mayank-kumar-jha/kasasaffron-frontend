@@ -5,7 +5,8 @@
     "ourFlavours": "NUESTROS SABORES",
     "b2bBusiness": "NEGOCIO B2B",
     "gallery": "GALERÍA",
-    "events": "PRÓXIMOS EVENTOS"
+    "events": "PRÓXIMOS EVENTOS",
+    "whatsNew": "NOVEDADES"
   },
   "hero": {
     "handcrafted": "HECHAS A MANO CON",
@@ -40,7 +41,21 @@
     "feat3Title": "Innovación Gourmet",
     "feat3Desc": "Sabores clásicos y combinaciones creativas adaptadas al mercado actual.",
     "feat4Title": "Enfoque B2B y Retail",
-    "feat4Desc": "Servicio diseñado para restaurantes, caterings y supermercados en Barcelona."
+    "feat4Desc": "Servicio diseñado para restaurantes, caterings y supermercados en Barcelona.",
+    "stats": {
+      "selectedIngredients": "INGREDIENTES\nSELECCIONADOS",
+      "artisanalMethod": "MÉTODO\nARTESANAL",
+      "premiumQuality": "CALIDAD\nPREMIUM",
+      "passionForDetail": "PASIÓN POR\nEL DETALLE"
+    },
+    "buttons": {
+      "ourFlavours": "Nuestros Sabores",
+      "becomePartner": "Conviértete en Socio"
+    },
+    "badges": {
+      "artisanalKitchen": "COCINA ARTESANAL •",
+      "premiumQuality": "CALIDAD PREMIUM •"
+    }
   },
   "stories": {
     "chetnaRole": "Chef / Directora / Fundadora",
@@ -287,7 +302,10 @@
     "subtitle": "Desde nuevos sabores hasta ampliaciones de cocina: mantente al día con lo último de Kasa Saffron.",
     "readMore": "Leer más",
     "readLess": "Leer menos",
-    "noEvents": "No hay eventos planeados en este momento."
+    "noEvents": "No hay anuncios todavía.",
+    "stayTuned": "¡Mantente atento a las emocionantes noticias de Kasa Saffron!",
+    "curious": "¿Tienes curiosidad por nuestras creaciones?",
+    "exploreFlavours": "Explora Nuestros Sabores"
   },
   "checkout": {
     "title": "Tu Pedido",
@@ -335,7 +353,8 @@
     "explore": "Explorar",
     "kitchen": "Cocina y Contacto",
     "contact": "Contáctanos",
-    "follow": "Síguenos"
+    "follow": "Síguenos",
+    "description": "Elaborando croquetas españolas auténticas y de primera calidad. Llevando el patrimonio culinario a cocinas profesionales y minoristas gourmet."
   },
   "navAuth": {
     "changeAccount": "Cambiar cuenta",

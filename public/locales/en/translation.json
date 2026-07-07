@@ -5,7 +5,8 @@
     "ourFlavours": "OUR FLAVOURS",
     "b2bBusiness": "B2B BUSINESS",
     "gallery": "GALLERY",
-    "events": "UPCOMING EVENTS"
+    "events": "UPCOMING EVENTS",
+    "whatsNew": "WHAT'S NEW"
   },
   "hero": {
     "handcrafted": "HANDCRAFTED WITH",
@@ -40,7 +41,21 @@
     "feat3Title": "Gourmet Innovation",
     "feat3Desc": "Classic flavors and creative combinations adapted to today's market.",
     "feat4Title": "B2B & Retail Focus",
-    "feat4Desc": "Service designed for restaurants, caterings, and supermarkets in Barcelona."
+    "feat4Desc": "Service designed for restaurants, caterings, and supermarkets in Barcelona.",
+    "stats": {
+      "selectedIngredients": "SELECTED\nINGREDIENTS",
+      "artisanalMethod": "ARTISANAL\nMETHOD",
+      "premiumQuality": "PREMIUM\nQUALITY",
+      "passionForDetail": "PASSION FOR\nDETAIL"
+    },
+    "buttons": {
+      "ourFlavours": "Our Flavours",
+      "becomePartner": "Become Our Partner"
+    },
+    "badges": {
+      "artisanalKitchen": "ARTISANAL KITCHEN •",
+      "premiumQuality": "PREMIUM QUALITY •"
+    }
   },
   "stories": {
     "chetnaRole": "Chef / Director / Founder",
@@ -287,7 +302,10 @@
     "subtitle": "From new flavour launches to kitchen expansions — stay updated with the latest from Kasa Saffron.",
     "readMore": "Read more",
     "readLess": "Read less",
-    "noEvents": "No events planned at the moment."
+    "noEvents": "No announcements yet.",
+    "stayTuned": "Stay tuned for exciting news from Kasa Saffron!",
+    "curious": "Curious about our creations?",
+    "exploreFlavours": "Explore Our Flavours"
   },
   "checkout": {
     "title": "Your Order",
@@ -335,7 +353,8 @@
     "explore": "Explore",
     "kitchen": "Kitchen & Contact",
     "contact": "Contact Us",
-    "follow": "Follow Us"
+    "follow": "Follow Us",
+    "description": "Crafting premium, authentic Spanish croquetas. Bringing culinary heritage to professional kitchens and gourmet retailers."
   },
   "navAuth": {
     "changeAccount": "Change account",
