@@ -8,17 +8,255 @@ import { getCurrentUserLocal } from './api/auth.service';
 import SkeletonPage from './components/SkeletonPage';
 import SEO from './components/SEO';
 
-/* ─── Static fallback data ─── */
+/* â”€â”€â”€ Static fallback data â”€â”€â”€ */
 const FLAVOURS = [
-  { id: 1, name: "Classic Jamón Ibérico", tagline: "The Soul of Spain", description: "Traditional Spanish croqueta filled with rich, savory Iberian cured ham in a creamy, melt-in-your-mouth bechamel sauce.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/b673c1e0-5ef3-46e8-b80c-761dcb98a422.jpg", spanishName: "Croquetas de Jamón Ibérico" },
-  { id: 2, name: "Earthy Boletus Mushrooms", tagline: "Wild & Velvety", description: "Sautéed wild porcini mushrooms blended into a smooth cream — a vegetarian specialty rich in deep forest aroma.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/05d19617-71ac-4d56-b725-7a97d472753a.jpg", spanishName: "Croquetas de Ceps" },
+  { id: 1, name: "Classic JamÃ³n IbÃ©rico", tagline: "The Soul of Spain", description: "Traditional Spanish croqueta filled with rich, savory Iberian cured ham in a creamy, melt-in-your-mouth bechamel sauce.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/b673c1e0-5ef3-46e8-b80c-761dcb98a422.jpg", spanishName: "Croquetas de JamÃ³n IbÃ©rico" },
+  { id: 2, name: "Earthy Boletus Mushrooms", tagline: "Wild & Velvety", description: "SautÃ©ed wild porcini mushrooms blended into a smooth cream â€” a vegetarian specialty rich in deep forest aroma.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/05d19617-71ac-4d56-b725-7a97d472753a.jpg", spanishName: "Croquetas de Ceps" },
   { id: 3, name: "Traditional Cod (Bacalao)", tagline: "A Coastal Heritage", description: "A coastal tapas classic featuring finely flaked salted cod, garlic, and fresh parsley, fried to crisp golden perfection.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/aae40670-49c9-4429-a7ef-6b03d30f607d.jpg", spanishName: "Croquetas de Bacalao" },
   { id: 4, name: "Signature Chicken & Saffron", tagline: "Infused with Elegance", description: "Our house specialty: tender slow-roasted chicken breast infused with the delicate aroma of premium hand-picked saffron threads.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/e498b324-4ad5-4846-ab19-090e600c327d.jpg", spanishName: "Croquetas de Pollo Rustido" },
   { id: 5, name: "Creamy Cabrales Blue Cheese", tagline: "Bold & Indulgent", description: "A daring bite featuring Spanish blue cheese, beautifully balanced with sweet caramelized onions for a sweet-savory harmony.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/c524ba36-7841-4226-9dec-5f968db77dbe.jpg", spanishName: "Croquetas de Queso Azul" },
   { id: 6, name: "Spinach & Roasted Pine Nuts", tagline: "Clean & Crispy", description: "Fresh spinach leaves and toasted Spanish pine nuts folded into our light bechamel, offering a clean, nutty finish.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/d943190d-131f-4f4d-b77c-52fee772d387.png", spanishName: "Croquetas de Espinaca" },
   { id: 7, name: "Slow-Cooked oxtail (Rabo de Toro)", tagline: "Rich & Deep", description: "Melt-in-your-mouth shredded oxtail beef braised in Spanish red wine, encased in an ultra-crispy breadcrumb crust.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/68a46dec-c542-41ba-a695-31b8e3934df3.jpeg", spanishName: "Croquetas de Cocido" },
-  { id: 8, name: "Garlic Shrimp (Gambas al Ajillo)", tagline: "Zesty Tapas Sensation", description: "Plump prawns sautéed in garlic-infused olive oil with a touch of red pepper flakes, bringing hot tapas direct to you.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/9c49d2af-323a-454b-82f1-9301da2b74a7.jpg", spanishName: "Croquetas de Rape y Gambas" }
+  { id: 8, name: "Garlic Shrimp (Gambas al Ajillo)", tagline: "Zesty Tapas Sensation", description: "Plump prawns sautÃ©ed in garlic-infused olive oil with a touch of red pepper flakes, bringing hot tapas direct to you.", image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/9c49d2af-323a-454b-82f1-9301da2b74a7.jpg", spanishName: "Croquetas de Rape y Gambas" }
 ];
+
+/* â”€â”€â”€ Allergen data per flavour â€” matched by name keyword â”€â”€â”€ */
+const ALLERGEN_DATA = [
+  {
+    keywords: ['jamÃ³n', 'jamon', 'ham', 'ibÃ©rico', 'iberico'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['boletus', 'mushroom', 'cep', 'mush'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['cod', 'bacalao', 'bacallÃ '],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk, Fish' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche, Pescado' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet, Peix' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['chicken', 'pollo', 'pollastre', 'saffron', 'azafrÃ¡n'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'cheese'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['spinach', 'espinaca', 'espinac', 'pine nut', 'pine'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['oxtail', 'rabo', 'cocido', "carn d'olla", 'slow-cook'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+  {
+    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'crustacean'],
+    rows: [
+      { langCode: 'en', allergens: 'Gluten (Wheat), Milk, Fish, Crustaceans' },
+      { langCode: 'es', allergens: 'Gluten (Trigo), Leche, Pescado, CrustÃ¡ceos' },
+      { langCode: 'ca', allergens: 'Gluten (Blat), Llet, Peix, Crustacis' },
+    ],
+    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+  },
+];
+
+/* ─── Ingredients Data ─── */
+const PREP_DATA = {
+  prep: {
+    en: 'Fry directly (or previously thawed) in abundant oil at 170º-180ºC.',
+    es: 'Freír directamente (o previa descongelación) en aceite abundante a 170º-180ºC.',
+    ca: 'Fregir directament (o prèvia descongelació) en oli abundant a 170º-180ºC.'
+  },
+  cons: {
+    en: 'At -18ºC (once thawed do not refreeze, cook and consume within 48h.)',
+    es: 'A -18ºC (una vez descongelado no volver a congelar, cocinar y consumir antes de 48h.)',
+    ca: 'A -18ºC (un cop descongelat no tornar a congelar, cuinar i consumir abans de 48h.)'
+  },
+  qty: {
+    en: '15 units (approx. 500g)',
+    es: '15 udes. (500g aprox.)',
+    ca: '15 udes. (500g aprox.)'
+  }
+};
+
+const INGREDIENTS_DATA = [
+  {
+    keywords: ['jamón', 'jamon', 'ham', 'ibérico', 'iberico'],
+    ingredients: {
+      en: 'Milk, 50% Iberian breed bait ham (12%) (salt, preservatives: E-252; E-250), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), gelatin, garlic, salt and pepper.',
+      es: 'Leche, jamón cebo ibérico 50% raza ibérica (12%) (sal, conservantes: E-252; E-250), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), gelatina, ajo, sal y pimienta.',
+      ca: 'Llet, pernil cebo ibèric 50% raça ibèrica (12%)(sal, conservants: E-252; E-250), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espessant E-412), gelatina, all, sal i pebre.'
+    }
+  },
+  {
+    keywords: ['boletus', 'mushroom', 'cep', 'mush'],
+    ingredients: {
+      en: 'Milk, boletus edulis (14%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, salt, garlic, boletus edulis powder, vegetable gelling agent and pepper.',
+      es: 'Leche, boletus edulis (14%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, sal, ajo, boletus edulis en polvo, gelificante vegetal y pimienta.',
+      ca: 'Llet, boletus edulis (14%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, sal, all, boletus edulis en pols, gelificant vegetal i pebre.'
+    }
+  },
+  {
+    keywords: ['cod', 'bacalao', 'bacallà'],
+    ingredients: {
+      en: 'Milk, cod (14%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, gelatin, salt, garlic and pepper.',
+      es: 'Leche, bacalao (14%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, gelatina, sal, ajo y pimienta.',
+      ca: 'Llet, bacallà (14%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, gelatina, sal, all i pebre.'
+    }
+  },
+  {
+    keywords: ['chicken', 'pollo', 'pollastre'],
+    ingredients: {
+      en: 'Milk, chicken (22%) (water, sunflower oil, salt, dextrose, starch, wine, spices, olive oil, yeast extract, acidity regulator (citric acid) and natural flavoring), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, gelatin, salt, garlic and pepper.',
+      es: 'Leche, pollo (22%) (agua, aceite de girasol, sal, dextrosa, almidón, vino, especias, aceite de oliva, extracto de levadura, corrector de acidez (acido citrico) y aroma natural), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, gelatina, sal, ajo y pimienta.',
+      ca: 'Llet, pollastre (22%) (aigua, oli de girasol, sal, dextrosa, midó, vi, espècies, oli d\'oliva, extracte de llevat, corrector d\'acidesa (acid citric) i aroma natural), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espessant E-412), mantega, gelatina, sal, all i pebre.'
+    }
+  },
+  {
+    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'cheese'],
+    ingredients: {
+      en: 'Milk, blue cheese (15%) (pasteurized cow\'s milk, salt, microbial rennet, lactic ferments and mold cultures (Penicillium Roqueforti)), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, salt, vegetable gelling agent and pepper.',
+      es: 'Leche, queso azul (15%)(leche de vaca pasteurizada, sal, cuajo microbiano, fermentos lácticos y cultivos floridura (Penicillium Roqueforti)), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, sal, gelificante vegetal y pimienta.',
+      ca: 'Llet, formatge blau (15%)(llet de vaca pasteuritzada, sal, quall microbià, ferments làctics i cultius floridura (Penicillium Roqueforti)), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, sal, gelificant vegetal i pebre.'
+    }
+  },
+  {
+    keywords: ['spinach', 'espinaca', 'espinac', 'pine nut', 'pine'],
+    ingredients: {
+      en: 'Milk 54%, Spinach (21%) Butter 3% Sun-dried tomato 2% (E-320 and E-321), paprika, salt, ripening regulators (sugar and dextrose), stabilizer (E-451), spices, antioxidant (E-301) and preservative (E-252)), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), EDAM cheese (6%) (milk, salt, lactic and ripening ferments), gelatin, salt, garlic and pepper.',
+      es: 'Leche 54%, Espinaca (21%) Mantequilla 3% Tomate seco 2% (E-320 y E-321), pimentón, sal, reguladores de maduración (azúcar y dextrosa), estabilizador (E-451), especias, antioxidante (E-301) y conservador (E-252)), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), queso EDAM (6%) (leche, sal, fermentos lácticos y de maduración), gelatina, sal, ajo y pimienta.',
+      ca: 'Llet 54%, Espinac (21%) Mantega 3% Tomaquet sec 2% (antioxidants E-320 i E-321, pebre vermell, sal, reguladors de maduració (sucre i dextrosa), estabilitzador (E-451), espècies, antioxidant (E-301) i conservador (E-252)), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), Queso Edam (6%) (llet, sal, ferments làctics i de maduració), gelatina, sal, all i pebre.'
+    }
+  },
+  {
+    keywords: ['oxtail', 'rabo', 'cocido', "carn d'olla", 'slow-cook'],
+    ingredients: {
+      en: 'Milk, Pork (5.0%), chicken (3%), Iberian bait shoulder (2.7%) (salt, antioxidants: E-331iii, E-301, preservatives: E-250, sugars and dextrose), chickpeas (2.5%), cabbage (2.2%), carrot (1%), leek (0.3%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, breadcrumbs, water, thickener E-412), E-415 and E-464, gelatin, garlic, salt and pepper.',
+      es: 'Leche, Cerdo (5.0%), pollo (3%), paleta ibérica cebo (2,7%) (sal, antioxidantes: E-331iii, E-301, conservantes: E-250, azúcares y dextrosa), garbanzos (2,5%), col (2,2%), zanahoria (1%), puerro (0,3%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, pan rallado, agua, espesante E-412), E-415 Y E-464, gelatina, ajo, sal y pimienta.',
+      ca: 'llet, Porc (5,0%), pollastre (3%), paleta ibèrica cebo (2,7%) (sal, antioxidants: E-331iii, E-301, conservants: E-250, sucres i dextrosa), cigrons (2,5%), col (2,2%), pastanaga (1%), porro (0,3%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (pa ratllat (farina de BLAT, aigua, sal i llevat), sal, estabilitzants (E-412, E-415 i E-464), conservant (E-202)), gelatina, all, sal i pebre.'
+    }
+  },
+  {
+    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'crustacean'],
+    ingredients: {
+      en: 'Milk, monkfish (12.5%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, binder (wheat flour, wheat starch, water, thickener E-412), extra virgin olive oil, prawn (4.2%), butter, shrimp (1.6%), salt, gelatin, garlic, prawn extract and pepper.',
+      es: 'Leche, rape (12,5%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), aceite de oliva virgen extra, gamba (4,2%), mantequilla, camarón (1,6%), sal, gelatina, ajo, extracto de gamba y pimienta.',
+      ca: 'Llet, rap (12,5%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, encolant (farina de blat, midó de blat, aigua, espessant E-412), oli d\'oliva verge extra, gamba (4,2%), mantega, gambeta (1,6%), sal, gelatina, all, extracte de gamba i pebre.'
+    }
+  }
+];
+
+function getIngredientsData(flavour) {
+  if (!flavour) return null;
+  const nameParts = [
+    typeof flavour.name === 'object' && flavour.name !== null
+      ? Object.values(flavour.name).join(' ')
+      : (flavour.name || ''),
+    flavour.spanishName || '',
+  ].join(' ').toLowerCase();
+  return INGREDIENTS_DATA.find((entry) =>
+    entry.keywords.some((kw) => nameParts.includes(kw.toLowerCase()))
+  ) || null;
+}
+
+/** Return the allergen entry that best matches a flavour object (works for both
+ *  static fallback IDs and API-loaded flavours with arbitrary IDs). */
+function getAllergenData(flavour) {
+  if (!flavour) return null;
+  const nameParts = [
+    typeof flavour.name === 'object' && flavour.name !== null
+      ? Object.values(flavour.name).join(' ')
+      : (flavour.name || ''),
+    flavour.spanishName || '',
+  ].join(' ').toLowerCase();
+  return ALLERGEN_DATA.find((entry) =>
+    entry.keywords.some((kw) => nameParts.includes(kw.toLowerCase()))
+  ) || null;
+}
+
+/* â”€â”€â”€ SVG icons keyed by first word of allergen (lowercase, no parens) â”€â”€â”€ */
+const AllergenSVG = {
+  gluten: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <path d="M12 2C8 5 6 8 6 12s2 7 6 10c4-3 6-6 6-10S16 5 12 2z"/>
+      <path d="M12 2v20M9 7l3-2 3 2M9 12l3-2 3 2M9 17l3-2 3 2"/>
+    </svg>
+  ),
+  milk: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <path d="M8 3h8l1 4H7L8 3z"/><path d="M7 7l-2 13h14L17 7"/>
+      <circle cx="12" cy="14" r="2"/>
+    </svg>
+  ),
+  fish: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <path d="M22 12C18 6 10 4 4 8l4 4-4 4c6 4 14 2 18-4z"/><circle cx="18" cy="10" r="1" fill="currentColor"/>
+    </svg>
+  ),
+  crustaceans: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <path d="M12 8c-2 0-4 1.5-4 4s2 4 4 4 4-1.5 4-4-2-4-4-4z"/>
+      <path d="M8 8L5 5M16 8l3-3M8 16l-3 3M16 16l3 3M12 8V4M12 20v-4M4 12H2M22 12h-2"/>
+    </svg>
+  ),
+  default: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>
+    </svg>
+  ),
+};
+
+const ALLERGEN_ICONS = {
+  gluten: AllergenSVG.gluten,
+  milk: AllergenSVG.milk,
+  fish: AllergenSVG.fish,
+  crustaceans: AllergenSVG.crustaceans,
+  default: AllergenSVG.default,
+};
+
+const ALLERGEN_SUBTITLES = {
+  gluten: 'Wheat based',
+  milk: 'Dairy product',
+  fish: 'Seafood origin',
+  crustaceans: 'Shellfish',
+  default: 'Allergen',
+};
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -26,14 +264,15 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: 'easeOut', delay },
 });
 
-/* ══════════════════════════════════════════════════════════════
-   MOBILE CARD — Fully optimized: CSS transforms only, no Framer Motion
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE CARD â€” Fully optimized: CSS transforms only, no Framer Motion
    Large image display, beautiful PNGs, swipe-friendly
-══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, diff, lang, t, onClick }) {
-  const name = typeof flavour.name === 'object' && flavour.name !== null ? (flavour.name[lang] || flavour.name.en || flavour.name.es) : flavour.name;
-  const tagline = typeof flavour.tagline === 'object' && flavour.tagline !== null ? (flavour.tagline[lang] || flavour.tagline.en || flavour.tagline.es) : flavour.tagline;
-  const description = typeof flavour.description === 'object' && flavour.description !== null ? (flavour.description[lang] || flavour.description.en || flavour.description.es) : flavour.description;
+  const dbLang = lang === 'cat' ? 'ca' : lang;
+  const name = typeof flavour.name === 'object' && flavour.name !== null ? (flavour.name[dbLang] || flavour.name.en || flavour.name.es) : flavour.name;
+  const tagline = typeof flavour.tagline === 'object' && flavour.tagline !== null ? (flavour.tagline[dbLang] || flavour.tagline.en || flavour.tagline.es) : flavour.tagline;
+  const description = typeof flavour.description === 'object' && flavour.description !== null ? (flavour.description[dbLang] || flavour.description.en || flavour.description.es) : flavour.description;
 
   const displayName = name || t(`flavoursPage.items.${index}.name`);
   const displayTagline = tagline || t(`flavoursPage.items.${index}.tagline`);
@@ -82,7 +321,7 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
           </svg>
         </div>
 
-        {/* Full image — large & beautiful */}
+        {/* Full image â€” large & beautiful */}
         <div className="relative w-full overflow-hidden" style={{ height: '155px' }}>
           <img
             src={flavour.image}
@@ -106,28 +345,35 @@ const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, di
           </div>
           <p className="text-[8px] font-serif italic text-[#E6C587]/80 tracking-wider mb-0.5">{flavour.spanishName}</p>
           <h3 className="text-[11px] font-bold text-white font-serif leading-snug tracking-wide">{displayName}</h3>
-          <p className="text-[6px] text-[#E6C587]/30 font-bold tracking-widest uppercase mt-1.5">Kasa Saffron · #{flavour.id}</p>
+          <p className="text-[6px] text-[#E6C587]/30 font-bold tracking-widest uppercase mt-1.5">Kasa Saffron Â· #{flavour.id}</p>
         </div>
       </div>
     </div>
   );
 });
 
-/* ══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    MAIN COMPONENT
-══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 export default function Flavours() {
   const { t, i18n } = useTranslation();
   const lang = (i18n.language || 'en').split('-')[0];
+  const dbLang = lang === 'cat' ? 'ca' : lang;
   const { addToCart } = useCart();
   const { flavours, isDataLoading } = useAdmin();
   const displayFlavours = flavours && flavours.length > 0 ? flavours : FLAVOURS;
+
+  useEffect(() => {
+    console.log("DEBUG FLAVOURS:", displayFlavours);
+    console.log("DEBUG GALLERY:", typeof galleryImages !== 'undefined' ? galleryImages : "galleryImages not found");
+  }, [displayFlavours]);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedCard, setExpandedCard] = useState(null);
   const [flippedCard, setFlippedCard] = useState(null);
   const [selectedSize, setSelectedSize] = useState('1kg');
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [showIngredients, setShowIngredients] = useState(false);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const navigate = useNavigate();
@@ -209,7 +455,7 @@ export default function Flavours() {
     return diff;
   };
 
-  // ── DESKTOP card styles (original) ──
+  // â”€â”€ DESKTOP card styles (original) â”€â”€
   const getCardStyles = (index) => {
     const diff = getDiff(index);
     const absDiff = Math.abs(diff);
@@ -226,7 +472,7 @@ export default function Flavours() {
   return (
     <>
       <SEO title="Our Flavours" description="Explore our handcrafted gourmet saffron croquettes." />
-      {/* Fixed Background — deep maroon on mobile, cream on desktop */}
+      {/* Fixed Background â€” deep maroon on mobile, cream on desktop */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Mobile: deep maroon gradient matching home page */}
         <div className="block md:hidden w-full h-full" style={{ background: 'linear-gradient(160deg, #140003 0%, #1a0008 40%, #0d0002 100%)' }}>
@@ -262,7 +508,7 @@ export default function Flavours() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
             </button>
 
-            {/* ══ MOBILE carousel stage ══ */}
+            {/* â•â• MOBILE carousel stage â•â• */}
             {isMobile ? (
               <div
                 className="relative w-full flex items-center justify-center select-none overflow-hidden"
@@ -287,7 +533,7 @@ export default function Flavours() {
                 })}
               </div>
             ) : (
-              /* ══ DESKTOP carousel stage — ORIGINAL UNCHANGED ══ */
+              /* â•â• DESKTOP carousel stage â€” ORIGINAL UNCHANGED â•â• */
               <div className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center overflow-visible select-none" style={{ perspective: '1400px' }}>
                 {displayFlavours.map((flavour, index) => {
                   const styles = getCardStyles(index);
@@ -299,9 +545,9 @@ export default function Flavours() {
                   const taglineObj = typeof flavour.tagline === 'object' && flavour.tagline !== null ? flavour.tagline : null;
                   const descObj = typeof flavour.description === 'object' && flavour.description !== null ? flavour.description : null;
 
-                  const nameStr = nameObj ? (nameObj[lang] || nameObj.en || nameObj.es) : flavour.name;
-                  const taglineStr = taglineObj ? (taglineObj[lang] || taglineObj.en || taglineObj.es) : flavour.tagline;
-                  const descStr = descObj ? (descObj[lang] || descObj.en || descObj.es) : flavour.description;
+                  const nameStr = nameObj ? (nameObj[dbLang] || nameObj.en || nameObj.es) : flavour.name;
+                  const taglineStr = taglineObj ? (taglineObj[dbLang] || taglineObj.en || taglineObj.es) : flavour.tagline;
+                  const descStr = descObj ? (descObj[dbLang] || descObj.en || descObj.es) : flavour.description;
 
                   const displayName = nameStr || t(`flavoursPage.items.${index}.name`);
                   const displayTagline = taglineStr || t(`flavoursPage.items.${index}.tagline`);
@@ -462,7 +708,7 @@ export default function Flavours() {
             </button>
           </div>
 
-          {/* ── MOBILE ONLY: dot indicators + active name + CTA ── */}
+          {/* â”€â”€ MOBILE ONLY: dot indicators + active name + CTA â”€â”€ */}
           {isMobile && (
             <div className="flex flex-col items-center mt-4 px-4 w-full">
               {/* Dots */}
@@ -490,10 +736,10 @@ export default function Flavours() {
                     {displayFlavours[activeIndex].spanishName}
                   </p>
                   <h2 className="text-lg font-serif text-[#E6C587] tracking-wide leading-snug mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
-                    {typeof displayFlavours[activeIndex].name === 'object' && displayFlavours[activeIndex].name !== null ? (displayFlavours[activeIndex].name[lang] || displayFlavours[activeIndex].name.en || displayFlavours[activeIndex].name.es) : (displayFlavours[activeIndex].name || t(`flavoursPage.items.${activeIndex}.name`))}
+                    {typeof displayFlavours[activeIndex].name === 'object' && displayFlavours[activeIndex].name !== null ? (displayFlavours[activeIndex].name[dbLang] || displayFlavours[activeIndex].name.en || displayFlavours[activeIndex].name.es) : (displayFlavours[activeIndex].name || t(`flavoursPage.items.${activeIndex}.name`))}
                   </h2>
                   <p className="text-[11px] text-white/50 font-sans leading-relaxed mb-4 line-clamp-2">
-                    {typeof displayFlavours[activeIndex].description === 'object' && displayFlavours[activeIndex].description !== null ? (displayFlavours[activeIndex].description[lang] || displayFlavours[activeIndex].description.en || displayFlavours[activeIndex].description.es) : (displayFlavours[activeIndex].description || t(`flavoursPage.items.${activeIndex}.description`))}
+                    {typeof displayFlavours[activeIndex].description === 'object' && displayFlavours[activeIndex].description !== null ? (displayFlavours[activeIndex].description[dbLang] || displayFlavours[activeIndex].description.en || displayFlavours[activeIndex].description.es) : (displayFlavours[activeIndex].description || t(`flavoursPage.items.${activeIndex}.description`))}
                   </p>
                   <button
                     onClick={() => { setExpandedCard(displayFlavours[activeIndex]); setSelectedQuantity(1); setSelectedSize('1kg'); }}
@@ -510,193 +756,248 @@ export default function Flavours() {
         </div>
       </section>
 
-      {/* ── Expanded Card Modal (shared desktop + mobile) ── */}
+      {/* â•â• EXPANDED CARD MODAL â•â• */}
       <AnimatePresence>
-        {expandedCard && (
-          <div className="fixed inset-0 z-[1000] flex items-end md:items-center justify-center p-0 md:p-8">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0 }} 
-              className="absolute inset-0 bg-[#140003]/60 backdrop-blur-md cursor-pointer" 
-              onClick={() => setExpandedCard(null)} 
-            />
+        {expandedCard && (() => {
+          const allergenDisclaimer = {
+            en: "Production notice: Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.",
+            es: "Aviso de producción: Elaborado en unas instalaciones que procesan leche, gluten (trigo), pescado y crustáceos. Puede haber contacto cruzado.",
+            ca: "Avís de producció: Elaborat en unes instal·lacions que processen llet, gluten (blat), peix i crustacis. Hi pot haver contacte creuat."
+          };
+          const handcraftedText = {
+            en: "Handcrafted with Care",
+            es: "Elaborado a Mano con Cuidado",
+            ca: "Elaborat a Mà amb Cura"
+          };
+          const ae = getAllergenData(expandedCard);
+          const allergenRow = ae ? (ae.rows.find(r => r.langCode === dbLang) || ae.rows[0]) : null;
+          const allergenItems = allergenRow ? allergenRow.allergens.split(',').map(s => s.trim()) : [];
+          
+          const ingData = getIngredientsData(expandedCard);
+          const ingText = ingData ? (ingData.ingredients[dbLang] || ingData.ingredients.en) : '';
+          const prepText = PREP_DATA.prep[dbLang] || PREP_DATA.prep.en;
+          const consText = PREP_DATA.cons[dbLang] || PREP_DATA.cons.en;
+          const qtyText = PREP_DATA.qty[dbLang] || PREP_DATA.qty.en;
 
-            {isMobile ? (
-              <motion.div
-                initial={{ y: '100%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: '100%', opacity: 0 }}
-                transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                className="relative z-10 w-full overflow-hidden bg-[#0a0001] rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#E6C587]/20 flex flex-col"
-                style={{ height: '88vh', height: '88dvh' }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Drag Handle */}
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-[#E6C587]/30 rounded-full z-50 pointer-events-none" />
-                
-                {/* Close Button */}
-                <button
-                  onClick={() => setExpandedCard(null)}
-                  className="absolute top-4 right-4 z-50 w-8 h-8 flex items-center justify-center rounded-full bg-[#130004]/80 backdrop-blur-md border border-[#E6C587]/20 text-[#E6C587] hover:bg-[#E6C587] hover:text-[#130004]"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
+          const cardName = typeof expandedCard.name === 'object' && expandedCard.name !== null
+            ? (expandedCard.name[dbLang] || expandedCard.name.en || expandedCard.name.es || '')
+            : expandedCard.name;
+          const cardTagline = typeof expandedCard.tagline === 'object' && expandedCard.tagline !== null
+            ? (expandedCard.tagline[dbLang] || expandedCard.tagline.en || '')
+            : expandedCard.tagline;
+          const cardDesc = typeof expandedCard.description === 'object' && expandedCard.description !== null
+            ? (expandedCard.description[dbLang] || expandedCard.description.en || '')
+            : expandedCard.description;
+          const price = selectedSize === '500g' ? expandedCard.price500g || 12 : expandedCard.price1kg || 20;
 
-                {/* Image Header */}
-                <div className="w-full h-[32vh] shrink-0 relative">
-                  <motion.div layoutId={`flavour-image-${expandedCard.id}`} className="absolute inset-0">
-                    <img src={expandedCard.image} alt={expandedCard.name} loading="lazy" className="w-full h-full object-cover" />
-                  </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0001] via-[#0a0001]/40 to-transparent pointer-events-none" />
-                </div>
+          return (
+            <div key="modal" className="fixed inset-0 z-[1000] flex items-end md:items-center justify-center p-0 md:p-6">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-[#140003]/70 backdrop-blur-md cursor-pointer"
+                onClick={() => { setExpandedCard(null); setShowIngredients(false); }} />
 
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto px-6 pt-4 pb-32 flex flex-col items-center text-center">
-                  <span className="inline-block text-[9px] font-bold tracking-[0.25em] text-[#E6C587]/70 uppercase mb-3">
-                    {typeof expandedCard.tagline === 'object' && expandedCard.tagline !== null ? (expandedCard.tagline[lang] || expandedCard.tagline.en || expandedCard.tagline.es || '') : expandedCard.tagline}
-                  </span>
-                  <h3 className="text-3xl font-serif text-[#E6C587] mb-3 leading-tight" style={{ fontFamily: "'Cinzel', serif" }}>
-                    {typeof expandedCard.name === 'object' && expandedCard.name !== null ? (expandedCard.name[lang] || expandedCard.name.en || expandedCard.name.es || '') : expandedCard.name}
-                  </h3>
-                  <p className="text-white/70 text-sm mb-6 leading-relaxed font-light">
-                    {typeof expandedCard.description === 'object' && expandedCard.description !== null ? (expandedCard.description[lang] || expandedCard.description.en || expandedCard.description.es || '') : expandedCard.description}
-                  </p>
-
-                  {/* Size Selector */}
-                  <div className="mb-6 w-full flex flex-col items-center">
-                    <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Select Size</p>
-                    <div className="flex gap-3 w-full max-w-[200px]">
-                      <button onClick={() => setSelectedSize('500g')} className={`cursor-pointer touch-manipulation flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '500g' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>500g</button>
-                      <button onClick={() => setSelectedSize('1kg')} className={`cursor-pointer touch-manipulation flex-1 py-3 px-3 rounded-xl border text-xs font-bold tracking-wider uppercase transition-all duration-300 ${selectedSize === '1kg' ? 'border-[#E6C587] bg-[#E6C587] text-[#140003] shadow-[0_0_15px_rgba(230,197,135,0.4)]' : 'border-[#E6C587]/20 bg-[#130004] text-[#E6C587]/60'}`}>1kg</button>
+              {isMobile ? (
+                <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }}
+                  transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+                  className="relative z-10 w-full bg-[#08000f] rounded-t-[2rem] border-t border-[#E6C587]/20 shadow-[0_-24px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
+                  style={{ maxHeight: '90dvh' }} onClick={e => e.stopPropagation()}>
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-[#E6C587]/25 rounded-full pointer-events-none z-10" />
+                  <button onClick={() => { setExpandedCard(null); setShowIngredients(false); }} className="absolute top-3 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-[#E6C587]/15 text-[#E6C587]/70 hover:bg-[#E6C587]/15">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  </button>
+                  <div className="relative w-full shrink-0" style={{ height: '42vw', maxHeight: '180px', minHeight: '110px' }}>
+                    <img src={expandedCard.image} alt={cardName} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#08000f] via-[#08000f]/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 px-5 pb-3">
+                      <p className="text-[7px] tracking-[0.3em] text-[#E6C587]/55 uppercase font-bold mb-0.5">{cardTagline}</p>
+                      <h3 className="text-2xl font-serif text-[#E6C587] leading-tight">{cardName}</h3>
                     </div>
                   </div>
-
-                  {/* Quantity Selector */}
-                  <div className="mb-6 w-full flex flex-col items-center">
-                    <p className="text-[10px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-3">Quantity</p>
-                    <div className="flex items-center w-fit bg-[#130004] border border-[#E6C587]/20 rounded-xl overflow-hidden shadow-sm">
-                      <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} className="cursor-pointer touch-manipulation w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light disabled:opacity-30 disabled:hover:bg-transparent" disabled={selectedQuantity <= 1}>−</button>
-                      <span className="w-12 h-10 flex items-center justify-center text-white font-bold text-sm bg-black/20">{selectedQuantity}</span>
-                      <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="cursor-pointer touch-manipulation w-12 h-10 flex items-center justify-center text-[#E6C587] hover:bg-[#E6C587]/10 transition-colors text-xl font-light">+</button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Sticky Mobile Footer */}
-                <div className="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#0a0001] via-[#0a0001] to-[#0a0001]/0 pb-6 border-t border-[#E6C587]/10 backdrop-blur-md pointer-events-none">
-                  <div className="flex items-center justify-between gap-4 pointer-events-auto">
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-[#E6C587]/50 uppercase tracking-[0.2em] mb-1">Total Price</span>
-                      <span className="text-2xl font-serif text-[#E6C587] leading-none drop-shadow-sm">
-                        €{((selectedSize === '500g' ? expandedCard.price500g || 12 : expandedCard.price1kg || 20) * selectedQuantity).toFixed(2)}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => {
-                        addToCart({ id: expandedCard.id, name: expandedCard.name?.[lang] || expandedCard.name?.en || expandedCard.name, image: expandedCard.image, size: selectedSize, price: selectedSize === '500g' ? expandedCard.price500g || 12 : expandedCard.price1kg || 20, quantity: selectedQuantity });
-                        setExpandedCard(null);
-                      }}
-                      className="flex-1 max-w-[200px] py-3.5 bg-[#E6C587] text-[#140003] text-xs font-bold tracking-widest uppercase rounded-full shadow-[0_4px_15px_rgba(230,197,135,0.4)] active:scale-95 transition-transform flex items-center justify-center gap-2"
-                    >
-                      Add to Cart
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ y: 30, scale: 0.95, opacity: 0 }}
-                animate={{ y: 0, scale: 1, opacity: 1 }}
-                exit={{ y: 30, scale: 0.95, opacity: 0 }}
-                transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                className="relative z-10 w-full md:max-w-5xl md:h-[85vh] overflow-hidden bg-[#fdfbf7] md:rounded-[2rem] md:shadow-[0_30px_60px_-15px_rgba(20,0,3,0.5)] border border-[#2c0107]/10 flex flex-col md:flex-row"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setExpandedCard(null)}
-                  className="absolute top-4 right-4 md:top-6 md:right-6 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-[#f6e5dd]/90 backdrop-blur-md shadow-sm border border-[#2c0107]/10 text-[#2c0107] hover:bg-[#2c0107] hover:text-[#E6C587] hover:shadow-md transition-all duration-300"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
-
-                {/* Image Section */}
-                <div className="w-full md:w-[45%] h-full relative p-6 pr-0 shrink-0">
-                  <div className="w-full h-full relative rounded-[1.5rem] overflow-hidden shadow-[0_8px_30px_rgba(44,1,7,0.15)] border border-[#E6C587]/40">
-                    <motion.div layoutId={`flavour-image-${expandedCard.id}`} className="absolute inset-0">
-                      <img src={expandedCard.image} alt={expandedCard.name} loading="lazy" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out" />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#140003]/30 via-transparent to-transparent pointer-events-none"></div>
-                  </div>
-                </div>
-
-                {/* Details Section */}
-                <div className="w-full md:w-[55%] p-12 flex flex-col bg-[#fdfbf7] overflow-y-auto">
-                  <div className="mt-auto mb-auto">
-                    <span className="inline-block text-xs font-bold tracking-[0.25em] text-[#BD561A] bg-[#BD561A]/10 px-3 py-1 rounded-full uppercase mb-4">
-                      {typeof expandedCard.tagline === 'object' && expandedCard.tagline !== null ? (expandedCard.tagline[lang] || expandedCard.tagline.en || expandedCard.tagline.es || '') : expandedCard.tagline}
-                    </span>
-                    <h3 className="text-5xl font-serif text-[#140003] mb-5 leading-[1.1]">
-                      {typeof expandedCard.name === 'object' && expandedCard.name !== null ? (expandedCard.name[lang] || expandedCard.name.en || expandedCard.name.es || '') : expandedCard.name}
-                    </h3>
-                    <div className="w-16 h-[2px] bg-[#E6C587] mb-6"></div>
-                    <p className="text-[#2c0107]/70 text-base mb-8 leading-relaxed font-sans font-medium">
-                      {typeof expandedCard.description === 'object' && expandedCard.description !== null ? (expandedCard.description[lang] || expandedCard.description.en || expandedCard.description.es || '') : expandedCard.description}
-                    </p>
-
-                    {/* Size Selector */}
-                    <div className="mb-6">
-                      <p className="text-[10px] font-bold text-[#2c0107]/50 uppercase tracking-[0.2em] mb-3">Select Size</p>
-                      <div className="flex gap-4">
-                        <button onClick={() => setSelectedSize('500g')} className={`flex-1 py-3.5 px-4 rounded-xl border text-sm font-bold tracking-wide transition-all duration-300 ${selectedSize === '500g' ? 'border-[#2c0107] bg-[#2c0107] text-[#E6C587] shadow-[0_8px_20px_rgba(44,1,7,0.2)] transform scale-[1.02]' : 'border-[#2c0107]/15 bg-white text-[#2c0107]/70 hover:border-[#2c0107]/40 hover:bg-[#f6e5dd]'}`}>500g</button>
-                        <button onClick={() => setSelectedSize('1kg')} className={`flex-1 py-3.5 px-4 rounded-xl border text-sm font-bold tracking-wide transition-all duration-300 ${selectedSize === '1kg' ? 'border-[#2c0107] bg-[#2c0107] text-[#E6C587] shadow-[0_8px_20px_rgba(44,1,7,0.2)] transform scale-[1.02]' : 'border-[#2c0107]/15 bg-white text-[#2c0107]/70 hover:border-[#2c0107]/40 hover:bg-[#f6e5dd]'}`}>1kg</button>
+                  <div className="flex-1 overflow-y-auto overscroll-contain px-5 pt-3 pb-28 flex flex-col gap-3">
+                    <p className="text-white/45 text-[11px] leading-relaxed line-clamp-2">{cardDesc}</p>
+                    {allergenItems.length > 0 && (
+                      <div className="relative">
+                        <div className="flex justify-between items-center mb-2">
+                          <p className="text-[7.5px] font-extrabold tracking-[0.25em] text-[#E6C587]/35 uppercase">Contains Allergens</p>
+                          {ingText && (
+                            <button onClick={() => setShowIngredients(!showIngredients)} className="text-[7px] font-bold tracking-widest text-[#E6C587] underline decoration-[#E6C587]/30 hover:decoration-[#E6C587] transition-all">
+                              {dbLang === 'es' ? 'VER INGREDIENTES' : dbLang === 'ca' ? 'VEURE INGREDIENTS' : 'VIEW INGREDIENTS'}
+                            </button>
+                          )}
+                        </div>
+                        <AnimatePresence>
+                          {showIngredients && (
+                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden mb-3">
+                              <div className="p-4 rounded-xl bg-[#2c0107] border border-[#E6C587]/15 shadow-xl">
+                                <h4 className="text-[8px] font-bold text-[#E6C587] uppercase tracking-widest mb-1.5">{dbLang === 'es' ? 'Ingredientes' : dbLang === 'ca' ? 'Ingredients' : 'Ingredients'}</h4>
+                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-3">{ingText}</p>
+                                <h4 className="text-[8px] font-bold text-[#E6C587] uppercase tracking-widest mb-1.5">{dbLang === 'es' ? 'Preparación / Conservación' : dbLang === 'ca' ? 'Preparació / Conservació' : 'Preparation / Conservation'}</h4>
+                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-1">{prepText}</p>
+                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-1">{consText}</p>
+                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed font-bold mt-2">{qtyText}</p>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        <div className="flex flex-wrap gap-1.5">
+                          {allergenItems.map((item, i) => {
+                            const key = item.toLowerCase().replace(/[()]/g, '').split(' ')[0];
+                            return (
+                              <div key={i} className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-[#E6C587]/15 bg-[#E6C587]/5">
+                                <div className="w-5 h-5 flex items-center justify-center rounded-full bg-[#E6C587]/10 text-[#E6C587]/70 shrink-0">{ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}</div>
+                                <span className="text-[9px] font-bold text-[#E6C587]/75 uppercase tracking-wider">{item}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {ae && <p className="text-[8px] text-[#E6C587]/60 italic mt-2 leading-relaxed">{allergenDisclaimer[dbLang] || allergenDisclaimer.en}</p>}
                       </div>
-                    </div>
-
-                    {/* Quantity Selector */}
-                    <div className="mb-10">
-                      <p className="text-[10px] font-bold text-[#2c0107]/50 uppercase tracking-[0.2em] mb-3">Quantity</p>
-                      <div className="flex items-center w-fit bg-white border border-[#2c0107]/15 rounded-xl overflow-hidden shadow-sm">
-                        <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} className="w-14 h-12 flex items-center justify-center text-[#2c0107] hover:bg-[#f6e5dd] transition-colors text-2xl font-light disabled:opacity-30 disabled:hover:bg-white" disabled={selectedQuantity <= 1}>−</button>
-                        <span className="w-14 h-12 flex items-center justify-center text-[#140003] font-bold text-base bg-gray-50/50">{selectedQuantity}</span>
-                        <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-14 h-12 flex items-center justify-center text-[#2c0107] hover:bg-[#f6e5dd] transition-colors text-2xl font-light">+</button>
-                      </div>
-                    </div>
-
-                    {/* Price & Action */}
-                    <div className="flex items-center justify-between gap-6 pt-6 border-t border-[#2c0107]/10">
-                      <div className="flex flex-col">
-                        <span className="text-[10px] font-bold text-[#2c0107]/50 uppercase tracking-[0.2em] mb-1">Total Price</span>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-4xl font-serif text-[#140003] leading-none">
-                            €{((selectedSize === '500g' ? expandedCard.price500g || 12 : expandedCard.price1kg || 20) * selectedQuantity).toFixed(2)}
-                          </span>
+                    )}
+                    <div className="flex gap-3 items-end">
+                      <div className="flex-1">
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/35 uppercase tracking-[0.2em] mb-1.5">Size</p>
+                        <div className="flex gap-2">
+                          {['500g', '1kg'].map(s => (
+                            <button key={s} onClick={() => setSelectedSize(s)} className={`flex-1 py-2 rounded-lg border text-[11px] font-bold uppercase tracking-wide transition-all ${selectedSize === s ? 'border-[#E6C587] bg-[#E6C587] text-[#140003]' : 'border-[#E6C587]/18 bg-transparent text-[#E6C587]/50'}`}>{s}</button>
+                          ))}
                         </div>
                       </div>
-                      <button
-                        onClick={() => {
-                          addToCart({ id: expandedCard.id, name: expandedCard.name?.[lang] || expandedCard.name?.en || expandedCard.name, image: expandedCard.image, size: selectedSize, price: selectedSize === '500g' ? expandedCard.price500g || 12 : expandedCard.price1kg || 20, quantity: selectedQuantity });
-                          setExpandedCard(null);
-                        }}
-                        className="group relative px-8 py-5 bg-[#2c0107] text-[#E6C587] text-sm font-bold tracking-[0.15em] uppercase rounded-xl overflow-hidden shadow-[0_10px_25px_rgba(44,1,7,0.3)] hover:shadow-[0_15px_35px_rgba(44,1,7,0.4)] transition-all duration-300 hover:-translate-y-1 w-auto text-center"
-                      >
-                        <span className="relative z-10 flex items-center justify-center gap-3">
-                          Add to Cart
-                          <svg className="w-5 h-5 transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#4a020d] to-[#140003] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div>
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/35 uppercase tracking-[0.2em] mb-1.5">Qty</p>
+                        <div className="flex items-center bg-[#130004] border border-[#E6C587]/18 rounded-lg overflow-hidden">
+                          <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-9 h-8 flex items-center justify-center text-[#E6C587]/80 text-lg font-light hover:bg-[#E6C587]/10 disabled:opacity-30">-</button>
+                          <span className="w-8 h-8 flex items-center justify-center text-white font-bold text-xs bg-black/20">{selectedQuantity}</span>
+                          <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-9 h-8 flex items-center justify-center text-[#E6C587]/80 text-lg font-light hover:bg-[#E6C587]/10">+</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-[#08000f] via-[#08000f]/98 to-transparent border-t border-[#E6C587]/8">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[7px] font-bold text-[#E6C587]/35 uppercase tracking-widest mb-0.5">Total</p>
+                        <span className="text-[1.6rem] font-serif text-[#E6C587] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
+                      </div>
+                      <button onClick={() => { addToCart({ id: expandedCard.id, name: cardName, image: expandedCard.image, size: selectedSize, price, quantity: selectedQuantity }); setExpandedCard(null); }}
+                        className="flex-1 max-w-[175px] py-3 bg-[#E6C587] text-[#140003] text-[10.5px] font-bold tracking-widest uppercase rounded-full shadow-[0_4px_20px_rgba(230,197,135,0.25)] active:scale-95 transition-transform flex items-center justify-center gap-2">
+                        Add to Cart
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       </button>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            )}
-          </div>
-        )}
+                </motion.div>
+
+              ) : (
+                <motion.div
+                  initial={{ y: 20, scale: 0.97, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 20, scale: 0.97, opacity: 0 }}
+                  transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+                  className="relative z-10 w-full max-w-[1000px] rounded-[1.75rem] shadow-[0_32px_80px_rgba(20,0,3,0.7)] flex flex-row bg-[#fdfaf5]"
+                  style={{ height: 'min(75vh, 500px)' }} onClick={e => e.stopPropagation()}>
+                  {/* Left: image */}
+                  <div className="relative w-[42%] shrink-0 overflow-hidden rounded-l-[1.75rem]">
+                    <img src={expandedCard.image} alt={cardName} className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#fdfaf5]/10" />
+                    <div className="absolute bottom-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)] flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[#E6C587]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                      <span className="text-[9px] font-bold text-white uppercase tracking-widest">{handcraftedText[dbLang] || handcraftedText.en}</span>
+                    </div>
+                  </div>
+                  {/* Right: details */}
+                  <div className="flex-1 flex flex-col justify-center py-2 relative">
+                    <button onClick={() => { setExpandedCard(null); setShowIngredients(false); }} className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#2c0107]/10 text-[#2c0107] hover:bg-[#2c0107] hover:text-[#E6C587] transition-all shadow-sm">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                    <div className="px-7 pt-7 pb-4 shrink-0 border-b border-[#2c0107]/6">
+                      <h3 className="text-3xl font-serif text-[#2c0107] leading-tight mb-1">{cardName}</h3>
+                      <div className="w-8 h-[2px] bg-[#E6C587] mb-3 mt-3" />
+                      <p className="text-[#2c0107]/60 text-[12.5px] leading-relaxed line-clamp-3">{cardDesc}</p>
+                    </div>
+                    {allergenItems.length > 0 && (
+                      <div className="px-7 py-4 shrink-0 border-b border-[#2c0107]/6 relative">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-1.5">
+                            <svg className="w-3 h-3 text-[#BD561A] shrink-0" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a.75.75 0 110 1.5A.75.75 0 018 4zm0 3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V8a.75.75 0 01.75-.75z"/></svg>
+                            <span className="text-[8px] font-extrabold tracking-[0.25em] text-[#BD561A] uppercase">Allergen Information</span>
+                          </div>
+                          {ingText && (
+                            <div className="relative" onMouseEnter={() => setShowIngredients(true)} onMouseLeave={() => setShowIngredients(false)}>
+                              <button className="text-[7.5px] font-bold tracking-widest text-[#2c0107] border border-[#2c0107]/20 rounded-full px-3 py-1.5 hover:bg-[#2c0107] hover:text-[#E6C587] transition-all">
+                                {dbLang === 'es' ? 'VER INGREDIENTES' : dbLang === 'ca' ? 'VEURE INGREDIENTS' : 'VIEW INGREDIENTS'}
+                              </button>
+                              <AnimatePresence>
+                                {showIngredients && (
+                                  <motion.div initial={{ opacity: 0, y: -10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -5, scale: 0.95 }} transition={{ duration: 0.2 }}
+                                    className="absolute top-full right-0 mt-3 w-[380px] p-5 rounded-2xl bg-[#2c0107] border border-[#E6C587]/15 shadow-[0_20px_60px_rgba(44,1,7,0.45)] z-50 cursor-default">
+                                    <div className="absolute -top-2 right-8 w-4 h-4 bg-[#2c0107] border-t border-l border-[#E6C587]/15 rotate-45" />
+                                    <h4 className="text-[9px] font-bold text-[#E6C587] uppercase tracking-widest mb-2">{dbLang === 'es' ? 'Ingredientes' : dbLang === 'ca' ? 'Ingredients' : 'Ingredients'}</h4>
+                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-4">{ingText}</p>
+                                    <h4 className="text-[9px] font-bold text-[#E6C587] uppercase tracking-widest mb-2">{dbLang === 'es' ? 'Preparación / Conservación' : dbLang === 'ca' ? 'Preparació / Conservació' : 'Preparation / Conservation'}</h4>
+                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-1.5">{prepText}</p>
+                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-3">{consText}</p>
+                                    <p className="text-[#E6C587]/90 text-[9.5px] leading-relaxed font-bold tracking-wide">{qtyText}</p>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {allergenItems.map((item, i) => {
+                            const key = item.toLowerCase().replace(/[()]/g, '').split(' ')[0];
+                            return (
+                              <div key={i} className="flex items-center gap-2 pl-2 pr-3 py-2 rounded-xl bg-white border border-[#2c0107]/8 shadow-[0_1px_4px_rgba(44,1,7,0.05)]">
+                                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#BD561A]/8 text-[#BD561A] shrink-0">{ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}</div>
+                                <div className="leading-none">
+                                  <p className="text-[9px] font-extrabold text-[#2c0107] tracking-wide uppercase">{item}</p>
+                                  <p className="text-[7px] text-[#2c0107]/40 font-medium mt-0.5">{ALLERGEN_SUBTITLES[key] || 'Allergen'}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {ae && <p className="text-[8px] text-[#2c0107]/70 italic mt-2.5 leading-relaxed font-medium">{allergenDisclaimer[dbLang] || allergenDisclaimer.en}</p>}
+                      </div>
+                    )}
+                    <div className="flex flex-col px-7 py-6 gap-4">
+                      <div className="flex gap-5 items-end">
+                        <div className="flex-1">
+                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Size</p>
+                          <div className="flex gap-2">
+                            {['500g', '1kg'].map(s => (
+                              <button key={s} onClick={() => setSelectedSize(s)} className={`flex-1 py-2.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 ${selectedSize === s ? 'border-[#2c0107] bg-[#2c0107] text-[#E6C587]' : 'border-[#2c0107]/10 bg-white text-[#2c0107]/55 hover:border-[#2c0107]/25 hover:bg-[#f6e5dd]/50'}`}>{s}</button>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Qty</p>
+                          <div className="flex items-center bg-white border border-[#2c0107]/10 rounded-lg overflow-hidden shadow-sm">
+                            <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-10 h-9 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70 disabled:opacity-30">-</button>
+                            <span className="w-10 h-9 flex items-center justify-center text-[#140003] font-bold text-sm border-x border-[#2c0107]/8 bg-gray-50/40">{selectedQuantity}</span>
+                            <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-10 h-9 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70">+</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between gap-4 pt-4 border-t border-[#2c0107]/8">
+                        <div>
+                          <p className="text-[7.5px] font-bold text-[#2c0107]/35 uppercase tracking-widest mb-0.5">Total</p>
+                          <span className="text-[1.9rem] font-serif text-[#140003] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
+                        </div>
+                        <button onClick={() => { addToCart({ id: expandedCard.id, name: cardName, image: expandedCard.image, size: selectedSize, price, quantity: selectedQuantity }); setExpandedCard(null); }}
+                          className="group relative px-7 py-3.5 bg-[#2c0107] text-[#E6C587] text-[11px] font-bold tracking-[0.18em] uppercase rounded-xl overflow-hidden shadow-[0_8px_22px_rgba(44,1,7,0.25)] hover:shadow-[0_12px_30px_rgba(44,1,7,0.35)] transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2.5">
+                          <span className="relative z-10">Add to Cart</span>
+                          <svg className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#4a020d] to-[#1a0003] opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          );
+        })()}
       </AnimatePresence>
     </>
   );
 }
+
