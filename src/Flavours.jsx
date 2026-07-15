@@ -147,7 +147,7 @@ const ALLERGEN_DATA = [
     notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
   },
   {
-    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'cheese'],
+    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'roquefort'],
     rows: [
       { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
       { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
@@ -237,7 +237,7 @@ const INGREDIENTS_DATA = [
     }
   },
   {
-    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'cheese'],
+    keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'roquefort'],
     ingredients: {
       en: 'Milk, blue cheese (15%) (pasteurized cow\'s milk, salt, microbial rennet, lactic ferments and mold cultures (Penicillium Roqueforti)), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, salt, vegetable gelling agent and pepper.',
       es: 'Leche, queso azul (15%)(leche de vaca pasteurizada, sal, cuajo microbiano, fermentos lácticos y cultivos floridura (Penicillium Roqueforti)), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, sal, gelificante vegetal y pimienta.',
