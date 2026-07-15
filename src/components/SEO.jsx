@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, name = 'Kasa Saffron', type = 'website' }) => {
   const pageTitle = title ? `${title} | ${name}` : name;
-  const defaultDesc = 'At Kasa Saffron Croqueteria Y Catering, we transform a traditional Spanish recipe into a contemporary gourmet experience using premium ingredients.';
+  const defaultDesc = 'At Kasa Saffron Croqueteria and Catering, we transform a traditional Spanish recipe into a contemporary gourmet experience using premium ingredients.';
   const pageDescription = description || defaultDesc;
 
   return (
