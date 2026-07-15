@@ -30,11 +30,20 @@ export default function Gallery() {
 
   const getGalleryData = () => {
     if (!galleryImages || galleryImages.length === 0) return [];
-    return galleryImages.map(img => ({
-      name: img.name?.[lang] || img.name?.en || img.name,
-      tagline: img.tagline?.[lang] || img.tagline?.en || img.tagline,
-      image: img.image
-    }));
+    return galleryImages.map(img => {
+      // Helper to safely extract string from multilingual object or fallback to empty string
+      const extractString = (field) => {
+        if (!field) return "";
+        if (typeof field === "string") return field;
+        return field[lang] || field.en || "";
+      };
+      
+      return {
+        name: extractString(img.name),
+        tagline: extractString(img.tagline),
+        image: img.image
+      };
+    });
   };
 
   const images = getGalleryData();
