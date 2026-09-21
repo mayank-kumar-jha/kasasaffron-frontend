@@ -464,7 +464,7 @@ export default function MobileHome() {
               <h1 className="mob-hero-title">{t('hero.croquetes')}</h1>
               <h2 className="mob-hero-script">{t('hero.ambAmor')}</h2>
               <p className="mob-hero-desc">
-                {t('hero.descLine1')} {t('hero.descLine2')} {t('hero.descLine3')}
+                {t('hero.descLine1')} {t('hero.descLine2')} {t('hero.descLine3')} {t('hero.descLine4')}
               </p>
               <div className="mob-neu-cta-group" style={{ marginTop: '30px' }}>
                 <Link to="/flavours" className="mob-neu-btn-beige">Discover Our Flavours</Link>

@@ -68,7 +68,8 @@ const HeroSection = memo(({ leftGroupRef, rightGroupRef, topGroupRef, textRef, f
                 <p className="description">
                     {t('hero.descLine1')}<br />
                     {t('hero.descLine2')}<br />
-                    {t('hero.descLine3')}
+                    {t('hero.descLine3')}<br />
+                    {t('hero.descLine4')}
                 </p>
             </main>
 
