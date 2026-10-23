@@ -7,8 +7,8 @@ import { useAdmin } from './context/AdminContext';
 import { getCurrentUserLocal } from './api/auth.service';
 import SkeletonPage from './components/SkeletonPage';
 import SEO from './components/SEO';
+import { FLAVOUR_IMAGES, getFlavourImage } from './utils/flavourImages';
 
-/* â”€â”€â”€ Static fallback data â”€â”€â”€ */
 const FLAVOURS = [
   { 
     id: 1, 
@@ -19,7 +19,7 @@ const FLAVOURS = [
       es: "Exquisito jamón ibérico mezclado con una cremosa bechamel y un rebozado dorado y crujiente.", 
       ca: "Exquisit pernil ibèric barrejat amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120671/kasa_saffron/vdlwjxi41zjeywwu9tgh.webp", 
+    image: "/assets/flavours/croquetas-jamon-iberico-kasa-saffron.webp", 
     spanishName: "Croquetas de Jamón Ibérico" 
   },
   { 
@@ -31,7 +31,7 @@ const FLAVOURS = [
       es: "Selectas setas Boletus edulis integradas en una cremosa bechamel con un intenso sabor a bosque.", 
       ca: "Selectes bolets Boletus edulis integrats en una cremosa beixamel amb un intens sabor de bosc." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120854/kasa_saffron/gqdhk8bjlb7rswvmip89.webp", 
+    image: "/assets/flavours/croquetas-boletus-edulis-kasa-saffron.webp", 
     spanishName: "Croquetas de Boletus Edulis" 
   },
   { 
@@ -43,7 +43,7 @@ const FLAVOURS = [
       es: "Delicado bacalao incorporado a una suave bechamel y recubierto con un ligero rebozado crujiente.", 
       ca: "Delicat bacallà incorporat a una suau beixamel i recobert amb un lleuger arrebossat cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120187/kasa_saffron/xcl3m7ch8trpwmbyb5og.webp", 
+    image: "/assets/flavours/croquetas-bacalao-puerro-tomate-seco-kasa-saffron.webp", 
     spanishName: "Croquetas de Bacalao" 
   },
   { 
@@ -55,7 +55,7 @@ const FLAVOURS = [
       es: "Tierno pollo rustido combinado con una cremosa bechamel y un crujiente acabado dorado.", 
       ca: "Tendre pollastre rostit combinat amb una cremosa beixamel i un cruixent acabat daurat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784121031/kasa_saffron/duybf2jdqd2nxcil4cvt.webp", 
+    image: "/assets/flavours/croquetas-pollo-rustico-kasa-saffron.webp", 
     spanishName: "Croquetas de Pollo Rustido" 
   },
   { 
@@ -67,7 +67,7 @@ const FLAVOURS = [
       es: "Intenso queso azul integrado en una suave bechamel, con un irresistible rebozado crujiente.", 
       ca: "Intens formatge blau integrat en una suau beixamel amb un irresistible arrebossat cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120219/kasa_saffron/gjxhvdse6zyozbofw8mg.webp", 
+    image: "/assets/flavours/croquetas-queso-azul-nueces-kasa-saffron.webp", 
     spanishName: "Croquetas de Queso Azul" 
   },
   { 
@@ -79,7 +79,7 @@ const FLAVOURS = [
       es: "Espinacas frescas, queso Edam y tomate seco unidos en una cremosa bechamel con un crujiente rebozado.", 
       ca: "Espinacs frescos, formatge Edam i tomàquet sec units en una cremosa beixamel amb un cruixent arrebossat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784123027/kasa_saffron/lhtk9nsysck1mmlme6be.webp", 
+    image: "/assets/flavours/croquetas-espinacas-tomate-seco-queso-emmental-kasa-saffron.webp", 
     spanishName: "Croquetas de Espinaca, Queso Edam y Tomate Seco" 
   },
   { 
@@ -91,7 +91,7 @@ const FLAVOURS = [
       es: "Carnes de cocido cocinadas lentamente, mezcladas con una cremosa bechamel y un rebozado dorado.", 
       ca: "Carns cuinades lentament, barrejades amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120789/kasa_saffron/yovsivfl0ltdzok6qyiu.webp", 
+    image: "/assets/flavours/croquetas-cocido-kasa-saffron.webp", 
     spanishName: "Croquetas de Cocido" 
   },
   { 
@@ -103,7 +103,7 @@ const FLAVOURS = [
       es: "Delicado rape y jugosas gambas mezclados con una cremosa bechamel y un crujiente rebozado dorado.", 
       ca: "Delicat rap i sucoses gambes barrejats amb una cremosa beixamel i un cruixent arrebossat daurat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784119774/kasa_saffron/pdra04b67ujncjfysiqx.webp", 
+    image: "/assets/flavours/croquetas-rape-gamba-kasa-saffron.webp", 
     spanishName: "Croquetas de Rape y Gambas" 
   }
 ];
@@ -427,17 +427,64 @@ const ALLERGEN_ICONS = {
 };
 
 const ALLERGEN_SUBTITLES = {
-  gluten: 'Wheat based',
-  milk: 'Dairy product',
-  fish: 'Fish origin',
-  crustaceans: 'Shellfish',
-  sulphites: 'Sulphites',
-  soy: 'Soy bean',
-  mustard: 'Mustard',
-  celery: 'Celery',
-  molluscs: 'Molluscs',
-  default: 'Allergen',
+  gluten: {
+    en: 'Wheat based',
+    es: 'A base de trigo',
+    ca: 'A base de blat',
+  },
+  milk: {
+    en: 'Dairy product',
+    es: 'Producto lácteo',
+    ca: 'Producte lacti',
+  },
+  fish: {
+    en: 'Fish origin',
+    es: 'Origen pescado',
+    ca: 'Origen peix',
+  },
+  crustaceans: {
+    en: 'Shellfish',
+    es: 'Marisco',
+    ca: 'Marisc',
+  },
+  sulphites: {
+    en: 'Sulphites',
+    es: 'Sulfitos',
+    ca: 'Sulfits',
+  },
+  soy: {
+    en: 'Soy bean',
+    es: 'Soja',
+    ca: 'Soja',
+  },
+  mustard: {
+    en: 'Mustard',
+    es: 'Mostaza',
+    ca: 'Mostassa',
+  },
+  celery: {
+    en: 'Celery',
+    es: 'Apio',
+    ca: 'Api',
+  },
+  molluscs: {
+    en: 'Molluscs',
+    es: 'Moluscos',
+    ca: 'Mol·luscs',
+  },
+  default: {
+    en: 'Allergen',
+    es: 'Alérgeno',
+    ca: 'Al·lèrgen',
+  },
 };
+
+function getAllergenSubtitle(key, lang) {
+  const sub = ALLERGEN_SUBTITLES[key] || ALLERGEN_SUBTITLES.default;
+  if (!sub) return '';
+  if (typeof sub === 'string') return sub;
+  return sub[lang] || sub.es || sub.en || '';
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -542,7 +589,11 @@ export default function Flavours() {
   const dbLang = lang === 'cat' ? 'ca' : lang;
   const { addToCart } = useCart();
   const { flavours, isDataLoading } = useAdmin();
-  const displayFlavours = flavours && flavours.length > 0 ? flavours : FLAVOURS;
+  const rawFlavours = flavours && flavours.length > 0 ? flavours : FLAVOURS;
+  const displayFlavours = rawFlavours.map(f => ({
+    ...f,
+    image: getFlavourImage(f),
+  }));
 
 
 
@@ -988,6 +1039,26 @@ export default function Flavours() {
               es: 'Información de Alérgenos',
               ca: 'Informació d\'Al·lèrgens',
             },
+            size: {
+              en: 'Size',
+              es: 'Tamaño',
+              ca: 'Mida',
+            },
+            qty: {
+              en: 'Qty',
+              es: 'Cant.',
+              ca: 'Quant.',
+            },
+            total: {
+              en: 'Total',
+              es: 'Total',
+              ca: 'Total',
+            },
+            addToCart: {
+              en: 'Add to Cart',
+              es: 'Añadir al Carrito',
+              ca: 'Afegir a la Cistella',
+            },
           };
 
           const ae = getAllergenData(expandedCard);
@@ -1118,7 +1189,7 @@ export default function Flavours() {
                     {/* Size Selector with Pieces */}
                     <div className="flex gap-3 items-end pt-1">
                       <div className="flex-1">
-                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">Size</p>
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">{modalI18n.size[dbLang] || modalI18n.size.en}</p>
                         <div className="flex gap-2">
                           {['500g', '1kg'].map(s => {
                             const pcsText = s === '500g' ? (modalI18n.pieces500g[dbLang] || modalI18n.pieces500g.en) : (modalI18n.pieces1kg[dbLang] || modalI18n.pieces1kg.en);
@@ -1132,7 +1203,7 @@ export default function Flavours() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">Qty</p>
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">{modalI18n.qty[dbLang] || modalI18n.qty.en}</p>
                         <div className="flex items-center bg-[#130004] border border-[#E6C587]/18 rounded-lg overflow-hidden">
                           <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-9 h-8 flex items-center justify-center text-[#E6C587]/80 text-lg font-light hover:bg-[#E6C587]/10 disabled:opacity-30">-</button>
                           <span className="w-8 h-8 flex items-center justify-center text-white font-bold text-xs bg-black/20">{selectedQuantity}</span>
@@ -1146,12 +1217,12 @@ export default function Flavours() {
                   <div className="absolute bottom-0 left-0 right-0 px-5 py-3.5 bg-gradient-to-t from-[#08000f] via-[#08000f]/98 to-transparent border-t border-[#E6C587]/10">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <p className="text-[7px] font-bold text-[#E6C587]/35 uppercase tracking-widest mb-0.5">Total</p>
+                        <p className="text-[7px] font-bold text-[#E6C587]/35 uppercase tracking-widest mb-0.5">{modalI18n.total[dbLang] || modalI18n.total.en}</p>
                         <span className="text-[1.6rem] font-serif text-[#E6C587] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
                       </div>
                       <button onClick={() => { addToCart({ id: expandedCard.id, name: cardName, image: expandedCard.image, size: selectedSize, price, quantity: selectedQuantity }); setExpandedCard(null); }}
                         className="flex-1 max-w-[175px] py-3 bg-[#E6C587] text-[#140003] text-[10.5px] font-bold tracking-widest uppercase rounded-full shadow-[0_4px_20px_rgba(230,197,135,0.25)] active:scale-95 transition-transform flex items-center justify-center gap-2">
-                        Add to Cart
+                        {modalI18n.addToCart[dbLang] || modalI18n.addToCart.en}
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       </button>
                     </div>
@@ -1217,7 +1288,7 @@ export default function Flavours() {
                                     </div>
                                     <div className="leading-none">
                                       <p className="text-[9px] font-extrabold text-[#2c0107] uppercase tracking-wide">{item}</p>
-                                      <p className="text-[7px] text-[#BD561A] font-medium mt-0.5">{ALLERGEN_SUBTITLES[key] || 'Allergen'}</p>
+                                      <p className="text-[7px] text-[#BD561A] font-medium mt-0.5">{getAllergenSubtitle(key, dbLang)}</p>
                                     </div>
                                   </div>
                                 );
@@ -1278,7 +1349,7 @@ export default function Flavours() {
                     <div className="shrink-0 px-7 py-4 border-t border-[#2c0107]/8 bg-[#fdfaf5]">
                       <div className="flex gap-4 items-end mb-3">
                         <div className="flex-1">
-                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Size</p>
+                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">{modalI18n.size[dbLang] || modalI18n.size.en}</p>
                           <div className="flex gap-2">
                             {['500g', '1kg'].map(s => {
                               const pcsText = s === '500g' ? (modalI18n.pieces500g[dbLang] || modalI18n.pieces500g.en) : (modalI18n.pieces1kg[dbLang] || modalI18n.pieces1kg.en);
@@ -1293,7 +1364,7 @@ export default function Flavours() {
                           </div>
                         </div>
                         <div>
-                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Qty</p>
+                          <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">{modalI18n.qty[dbLang] || modalI18n.qty.en}</p>
                           <div className="flex items-center bg-white border border-[#2c0107]/10 rounded-lg overflow-hidden shadow-sm">
                             <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-10 h-8 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70 disabled:opacity-30">-</button>
                             <span className="w-9 h-8 flex items-center justify-center text-[#140003] font-bold text-sm border-x border-[#2c0107]/8 bg-gray-50/40">{selectedQuantity}</span>
@@ -1304,12 +1375,12 @@ export default function Flavours() {
 
                       <div className="flex items-center justify-between gap-4 pt-3 border-t border-[#2c0107]/8">
                         <div>
-                          <p className="text-[7.5px] font-bold text-[#2c0107]/35 uppercase tracking-widest mb-0.5">Total</p>
+                          <p className="text-[7.5px] font-bold text-[#2c0107]/35 uppercase tracking-widest mb-0.5">{modalI18n.total[dbLang] || modalI18n.total.en}</p>
                           <span className="text-[1.8rem] font-serif text-[#140003] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
                         </div>
                         <button onClick={() => { addToCart({ id: expandedCard.id, name: cardName, image: expandedCard.image, size: selectedSize, price, quantity: selectedQuantity }); setExpandedCard(null); }}
                           className="group relative px-7 py-3 bg-[#2c0107] text-[#E6C587] text-[11px] font-bold tracking-[0.18em] uppercase rounded-xl overflow-hidden shadow-[0_8px_22px_rgba(44,1,7,0.25)] hover:shadow-[0_12px_30px_rgba(44,1,7,0.35)] transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2.5">
-                          <span className="relative z-10">Add to Cart</span>
+                          <span className="relative z-10">{modalI18n.addToCart[dbLang] || modalI18n.addToCart.en}</span>
                           <svg className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                           <div className="absolute inset-0 bg-gradient-to-r from-[#4a020d] to-[#1a0003] opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
                         </button>

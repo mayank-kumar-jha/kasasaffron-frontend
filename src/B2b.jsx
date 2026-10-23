@@ -11,6 +11,7 @@ import { getCurrentUserLocal } from './api/auth.service';
 gsap.registerPlugin(ScrollTrigger);
 
 import { FLAVOURS, BENEFITS, PARTNERS, STATS, PROCESS } from './data/b2bData';
+import { getFlavourImage } from './utils/flavourImages';
 import AnimatedNumber from './components/B2b/AnimatedNumber';
 import BenefitIcon from './components/B2b/BenefitIcon';
 import PartnerIcon from './components/B2b/PartnerIcon';
@@ -47,11 +48,23 @@ export default function B2b() {
     const staticFlavour = FLAVOURS.find(sf => {
       const sfNameEn = typeof sf.name === 'object' && sf.name !== null ? sf.name.en : sf.name;
       const fNameEn = typeof f.name === 'object' && f.name !== null ? f.name.en : f.name;
-      return sfNameEn === fNameEn;
+      if (sfNameEn === fNameEn) return true;
+      const s1 = JSON.stringify(sf.name || '').toLowerCase();
+      const s2 = JSON.stringify(f.name || '').toLowerCase();
+      if ((s1.includes('cod') || s1.includes('bacalao') || s1.includes('bacallà')) && (s2.includes('cod') || s2.includes('bacalao') || s2.includes('bacallà'))) return true;
+      if ((s1.includes('jamon') || s1.includes('jamón') || s1.includes('iberic')) && (s2.includes('jamon') || s2.includes('jamón') || s2.includes('iberic'))) return true;
+      if ((s1.includes('boletus') || s1.includes('mushroom')) && (s2.includes('boletus') || s2.includes('mushroom'))) return true;
+      if ((s1.includes('chicken') || s1.includes('pollo')) && (s2.includes('chicken') || s2.includes('pollo'))) return true;
+      if ((s1.includes('cheese') || s1.includes('azul')) && (s2.includes('cheese') || s2.includes('azul'))) return true;
+      if ((s1.includes('spinach') || s1.includes('espinaca')) && (s2.includes('spinach') || s2.includes('espinaca'))) return true;
+      if ((s1.includes('cocido') || s1.includes('stew')) && (s2.includes('cocido') || s2.includes('stew'))) return true;
+      if ((s1.includes('prawn') || s1.includes('rape') || s1.includes('monkfish')) && (s2.includes('prawn') || s2.includes('rape') || s2.includes('monkfish'))) return true;
+      return false;
     }) || {};
 
     return {
       ...f,
+      image: getFlavourImage(f) || staticFlavour.image || f.image,
       name: fName || (transName && transName !== `flavoursPage.items.${i}.name` ? transName : staticFlavour.name),
       tagline: fTagline || (transTagline && transTagline !== `flavoursPage.items.${i}.tagline` ? transTagline : staticFlavour.tagline),
       description: fDesc || (transDesc && transDesc !== `flavoursPage.items.${i}.description` ? transDesc : staticFlavour.description),

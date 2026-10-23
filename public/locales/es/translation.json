@@ -219,6 +219,7 @@
   "flavoursPage": {
     "badge": "••• Nuestros Sabores •••",
     "title": "Elaborados para cada antojo",
+    "addToOrder": "Añadir al Pedido",
     "items": [
       {
         "name": "Clásico Jamón Ibérico",

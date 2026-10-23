@@ -219,6 +219,7 @@
   "flavoursPage": {
     "badge": "••• Els Nostres Sabors •••",
     "title": "Elaborats per a cada caprici",
+    "addToOrder": "Afegir a la Comanda",
     "items": [
       {
         "name": "Clàssic Pernil Ibèric",

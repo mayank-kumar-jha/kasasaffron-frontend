@@ -9,7 +9,7 @@ export const FLAVOURS = [
       ca: "Exquisit pernil ibèric barrejat amb una cremosa beixamel i un arrebossat daurat i cruixent.",
       cat: "Exquisit pernil ibèric barrejat amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120671/kasa_saffron/vdlwjxi41zjeywwu9tgh.webp",
+    image: "/assets/flavours/croquetas-jamon-iberico-kasa-saffron.webp",
     notes: { en: "Savory · Umami · Rich", es: "Sabroso · Umami · Rico", ca: "Saborós · Umami · Ric", cat: "Saborós · Umami · Ric" },
     ingredients: { en: "Iberian ham, whole milk, butter, flour, nutmeg", es: "Jamón ibérico, leche entera, mantequilla, harina, nuez moscada", ca: "Pernil ibèric, llet sencera, mantega, farina, nou moscada", cat: "Pernil ibèric, llet sencera, mantega, farina, nou moscada" }
   },
@@ -23,13 +23,13 @@ export const FLAVOURS = [
       ca: "Selectes bolets Boletus edulis integrats en una cremosa beixamel amb un intens sabor de bosc.",
       cat: "Selectes bolets Boletus edulis integrats en una cremosa beixamel amb un intens sabor de bosc." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120854/kasa_saffron/gqdhk8bjlb7rswvmip89.webp",
+    image: "/assets/flavours/croquetas-boletus-edulis-kasa-saffron.webp",
     notes: { en: "Earthy · Umami · Delicate", es: "Tierra · Umami · Delicado", ca: "Terra · Umami · Delicat", cat: "Terra · Umami · Delicat" },
     ingredients: { en: "Porcini mushrooms, cream, shallots, thyme", es: "Boletus, nata, chalotas, tomillo", ca: "Ceps, nata, escalunyes, farigola", cat: "Ceps, nata, escalunyes, farigola" }
   },
   {
     id: 3, 
-    name: { en: "Salt Cod Croquettes", es: "Croquetas de Bacalao", ca: "Croquetes de Bacallà", cat: "Croquetes de Bacallà" }, 
+    name: { en: "Salt Cod Croquettes with Sun Dried Tomatoes and leak", es: "Croquetas de bacalao  Tomates Secos y Puerro", ca: "Croquetes de Bacallà amb tomàquets secs I porro", cat: "Croquetes de Bacallà amb tomàquets secs I porro" }, 
     tagline: { en: "A Coastal Heritage", es: "Herencia Costera", ca: "Herència Costanera", cat: "Herència Costanera" }, 
     description: { 
       en: "Delicate salt cod mixed into a creamy béchamel, coated in a light and crunchy golden crust.", 
@@ -37,7 +37,7 @@ export const FLAVOURS = [
       ca: "Delicat bacallà incorporat a una suau beixamel i recobert amb un lleuger arrebossat cruixent.",
       cat: "Delicat bacallà incorporat a una suau beixamel i recobert amb un lleuger arrebossat cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120187/kasa_saffron/xcl3m7ch8trpwmbyb5og.webp",
+    image: "/assets/flavours/croquetas-bacalao-puerro-tomate-seco-kasa-saffron.webp",
     notes: { en: "Briny · Fresh · Classic", es: "Salino · Fresco · Clásico", ca: "Salí · Fresc · Clàssic", cat: "Salí · Fresc · Clàssic" },
     ingredients: { en: "Salted cod, garlic, parsley, olive oil, bechamel", es: "Bacalao salado, ajo, perejil, aceite de oliva, bechamel", ca: "Bacallà salat, all, julivert, oli d'oliva, beixamel", cat: "Bacallà salat, all, julivert, oli d'oliva, beixamel" }
   },
@@ -51,7 +51,7 @@ export const FLAVOURS = [
       ca: "Tendre pollastre rostit combinat amb una cremosa beixamel i un cruixent acabat daurat.",
       cat: "Tendre pollastre rostit combinat amb una cremosa beixamel i un cruixent acabat daurat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784121031/kasa_saffron/duybf2jdqd2nxcil4cvt.webp",
+    image: "/assets/flavours/croquetas-pollo-rustico-kasa-saffron.webp",
     notes: { en: "Aromatic · Golden · Warm", es: "Aromático · Dorado · Cálido", ca: "Aromàtic · Daurat · Càlid", cat: "Aromàtic · Daurat · Càlid" },
     ingredients: { en: "Free-range chicken, saffron threads, cream, onion", es: "Pollo campero, hebras de azafrán, nata, cebolla", ca: "Pollastre pagès, brins de safrà, nata, ceba", cat: "Pollastre pagès, brins de safrà, nata, ceba" }
   },
@@ -65,7 +65,7 @@ export const FLAVOURS = [
       ca: "Intens formatge blau integrat en una suau beixamel amb un irresistible arrebossat cruixent.",
       cat: "Intens formatge blau integrat en una suau beixamel amb un irresistible arrebossat cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120219/kasa_saffron/gjxhvdse6zyozbofw8mg.webp",
+    image: "/assets/flavours/croquetas-queso-azul-nueces-kasa-saffron.webp",
     notes: { en: "Bold · Tangy · Complex", es: "Audaz · Picante · Complejo", ca: "Audaç · Picant · Complex", cat: "Audaç · Picant · Complex" },
     ingredients: { en: "Cabrales cheese, caramelized onion, cream", es: "Queso Cabrales, cebolla caramelizada, nata", ca: "Formatge Cabrales, ceba caramel·litzada, nata", cat: "Formatge Cabrales, ceba caramel·litzada, nata" }
   },
@@ -79,7 +79,7 @@ export const FLAVOURS = [
       ca: "Espinacs frescos, formatge Edam i tomàquet sec units en una cremosa beixamel amb un cruixent arrebossat.",
       cat: "Espinacs frescos, formatge Edam i tomàquet sec units en una cremosa beixamel amb un cruixent arrebossat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784123027/kasa_saffron/lhtk9nsysck1mmlme6be.webp",
+    image: "/assets/flavours/croquetas-espinacas-tomate-seco-queso-emmental-kasa-saffron.webp",
     notes: { en: "Nutty · Herbal · Light", es: "Nuez · Herbal · Ligero", ca: "Nou · Herbal · Lleuger", cat: "Nou · Herbal · Lleuger" },
     ingredients: { en: "Fresh spinach, toasted pine nuts, bechamel, garlic", es: "Espinacas frescas, piñones tostados, bechamel, ajo", ca: "Espinacs frescos, pinyons torrats, beixamel, all", cat: "Espinacs frescos, pinyons torrats, beixamel, all" }
   },
@@ -93,7 +93,7 @@ export const FLAVOURS = [
       ca: "Carns cuinades lentament, barrejades amb una cremosa beixamel i un arrebossat daurat i cruixent.",
       cat: "Carns cuinades lentament, barrejades amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120789/kasa_saffron/yovsivfl0ltdzok6qyiu.webp",
+    image: "/assets/flavours/croquetas-cocido-kasa-saffron.webp",
     notes: { en: "Rich · Wine-braised · Intense", es: "Rico · Estofado al vino · Intenso", ca: "Ric · Estofat al vi · Intens", cat: "Ric · Estofat al vi · Intens" },
     ingredients: { en: "Oxtail, red wine, root vegetables, bay leaf", es: "Rabo de toro, vino tinto, tubérculos, hoja de laurel", ca: "Cua de bou, vi negre, tubercles, fulla de llorer", cat: "Cua de bou, vi negre, tubercles, fulla de llorer" }
   },
@@ -107,7 +107,7 @@ export const FLAVOURS = [
       ca: "Delicat rap i sucoses gambes barrejats amb una cremosa beixamel i un cruixent arrebossat daurat.",
       cat: "Delicat rap i sucoses gambes barrejats amb una cremosa beixamel i un cruixent arrebossat daurat." 
     }, 
-    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784119774/kasa_saffron/pdra04b67ujncjfysiqx.webp",
+    image: "/assets/flavours/croquetas-rape-gamba-kasa-saffron.webp",
     notes: { en: "Zesty · Garlicky · Bright", es: "Cítrico · Ajo · Brillante", ca: "Cítric · All · Brillant", cat: "Cítric · All · Brillant" },
     ingredients: { en: "Prawns, garlic, olive oil, chili, parsley", es: "Gambas, ajo, aceite de oliva, guindilla, perejil", ca: "Gambes, all, oli d'oliva, bitxo, julivert", cat: "Gambes, all, oli d'oliva, bitxo, julivert" }
   }

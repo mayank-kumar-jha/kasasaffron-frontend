@@ -219,6 +219,7 @@
   "flavoursPage": {
     "badge": "••• Our Flavours •••",
     "title": "Crafted for Every Craving",
+    "addToOrder": "Add to Order",
     "items": [
       {
         "name": "Classic Jamón Ibérico",
