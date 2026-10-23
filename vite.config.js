@@ -8,8 +8,9 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://kasa-saffron-backend.vercel.app',
         changeOrigin: true,
+        secure: true,
       }
     }
   },

@@ -19,7 +19,7 @@ const FLAVOURS = [
       es: "Exquisito jamón ibérico mezclado con una cremosa bechamel y un rebozado dorado y crujiente.", 
       ca: "Exquisit pernil ibèric barrejat amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/b673c1e0-5ef3-46e8-b80c-761dcb98a422.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120671/kasa_saffron/vdlwjxi41zjeywwu9tgh.webp", 
     spanishName: "Croquetas de Jamón Ibérico" 
   },
   { 
@@ -31,7 +31,7 @@ const FLAVOURS = [
       es: "Selectas setas Boletus edulis integradas en una cremosa bechamel con un intenso sabor a bosque.", 
       ca: "Selectes bolets Boletus edulis integrats en una cremosa beixamel amb un intens sabor de bosc." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/05d19617-71ac-4d56-b725-7a97d472753a.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120854/kasa_saffron/gqdhk8bjlb7rswvmip89.webp", 
     spanishName: "Croquetas de Boletus Edulis" 
   },
   { 
@@ -43,7 +43,7 @@ const FLAVOURS = [
       es: "Delicado bacalao incorporado a una suave bechamel y recubierto con un ligero rebozado crujiente.", 
       ca: "Delicat bacallà incorporat a una suau beixamel i recobert amb un lleuger arrebossat cruixent." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/aae40670-49c9-4429-a7ef-6b03d30f607d.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120187/kasa_saffron/xcl3m7ch8trpwmbyb5og.webp", 
     spanishName: "Croquetas de Bacalao" 
   },
   { 
@@ -55,7 +55,7 @@ const FLAVOURS = [
       es: "Tierno pollo rustido combinado con una cremosa bechamel y un crujiente acabado dorado.", 
       ca: "Tendre pollastre rostit combinat amb una cremosa beixamel i un cruixent acabat daurat." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/e498b324-4ad5-4846-ab19-090e600c327d.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784121031/kasa_saffron/duybf2jdqd2nxcil4cvt.webp", 
     spanishName: "Croquetas de Pollo Rustido" 
   },
   { 
@@ -67,7 +67,7 @@ const FLAVOURS = [
       es: "Intenso queso azul integrado en una suave bechamel, con un irresistible rebozado crujiente.", 
       ca: "Intens formatge blau integrat en una suau beixamel amb un irresistible arrebossat cruixent." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/c524ba36-7841-4226-9dec-5f968db77dbe.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120219/kasa_saffron/gjxhvdse6zyozbofw8mg.webp", 
     spanishName: "Croquetas de Queso Azul" 
   },
   { 
@@ -79,7 +79,7 @@ const FLAVOURS = [
       es: "Espinacas frescas, queso Edam y tomate seco unidos en una cremosa bechamel con un crujiente rebozado.", 
       ca: "Espinacs frescos, formatge Edam i tomàquet sec units en una cremosa beixamel amb un cruixent arrebossat." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/d943190d-131f-4f4d-b77c-52fee772d387.png", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784123027/kasa_saffron/lhtk9nsysck1mmlme6be.webp", 
     spanishName: "Croquetas de Espinaca, Queso Edam y Tomate Seco" 
   },
   { 
@@ -91,7 +91,7 @@ const FLAVOURS = [
       es: "Carnes de cocido cocinadas lentamente, mezcladas con una cremosa bechamel y un rebozado dorado.", 
       ca: "Carns cuinades lentament, barrejades amb una cremosa beixamel i un arrebossat daurat i cruixent." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/68a46dec-c542-41ba-a695-31b8e3934df3.jpeg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784120789/kasa_saffron/yovsivfl0ltdzok6qyiu.webp", 
     spanishName: "Croquetas de Cocido" 
   },
   { 
@@ -103,171 +103,212 @@ const FLAVOURS = [
       es: "Delicado rape y jugosas gambas mezclados con una cremosa bechamel y un crujiente rebozado dorado.", 
       ca: "Delicat rap i sucoses gambes barrejats amb una cremosa beixamel i un cruixent arrebossat daurat." 
     }, 
-    image: "https://kasasaffron.com/api/files/kasa-saffron/uploads/9c49d2af-323a-454b-82f1-9301da2b74a7.jpg", 
+    image: "https://res.cloudinary.com/dlpvgphin/image/upload/v1784119774/kasa_saffron/pdra04b67ujncjfysiqx.webp", 
     spanishName: "Croquetas de Rape y Gambas" 
   }
 ];
 
 /* â”€â”€â”€ Allergen data per flavour â€” matched by name keyword â”€â”€â”€ */
+/* ─── Allergen data per flavour according to ASPB table ─── */
 const ALLERGEN_DATA = [
   {
-    keywords: ['jamÃ³n', 'jamon', 'ham', 'ibÃ©rico', 'iberico'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    keywords: ['cod', 'bacalao', 'bacallà'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche', 'Pescado (bacalao)'],
+      ca: ['Gluten (blat)', 'Llet', 'Peix (bacallà)'],
+      en: ['Gluten (wheat)', 'Milk', 'Fish (cod)'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
   {
     keywords: ['boletus', 'mushroom', 'cep', 'mush'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
   {
-    keywords: ['cod', 'bacalao', 'bacallÃ '],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk, Fish' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche, Pescado' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet, Peix' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    keywords: ['chicken', 'pollo', 'pollastre'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
   {
-    keywords: ['chicken', 'pollo', 'pollastre', 'saffron', 'azafrÃ¡n'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    keywords: ['cocido', "carn d'olla", 'stew'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Soja', 'Mostaza', 'Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Soja', 'Mostassa', 'Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Soy', 'Mustard', 'Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
+  },
+  {
+    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'rap', 'gambes'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche', 'Pescado (rape)', 'Crustáceos (gamba, camarón)', 'Sulfitos'],
+      ca: ['Gluten (blat)', 'Llet', 'Peix (rap)', 'Crustacis (gamba, gambeta)', 'Sulfits'],
+      en: ['Gluten (wheat)', 'Milk', 'Fish (monkfish)', 'Crustaceans (shrimp, small shrimp)', 'Sulphites'],
+    },
+    traces: {
+      es: ['Apio', 'Moluscos'],
+      ca: ['Api', 'Mol·luscs'],
+      en: ['Celery', 'Molluscs'],
+    },
+  },
+  {
+    keywords: ['jamón', 'jamon', 'ham', 'ibérico', 'iberico', 'pernil'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
   {
     keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'roquefort'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
   {
-    keywords: ['spinach', 'espinaca', 'espinac', 'pine nut', 'pine'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
-  },
-  {
-    keywords: ['oxtail', 'rabo', 'cocido', "carn d'olla", 'slow-cook'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
-  },
-  {
-    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'crustacean'],
-    rows: [
-      { langCode: 'en', allergens: 'Gluten (Wheat), Milk, Fish, Crustaceans' },
-      { langCode: 'es', allergens: 'Gluten (Trigo), Leche, Pescado, CrustÃ¡ceos' },
-      { langCode: 'ca', allergens: 'Gluten (Blat), Llet, Peix, Crustacis' },
-    ],
-    notice: 'Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.',
+    keywords: ['spinach', 'espinaca', 'espinac', 'edam'],
+    contains: {
+      es: ['Gluten (trigo)', 'Leche'],
+      ca: ['Gluten (blat)', 'Llet'],
+      en: ['Gluten (wheat)', 'Milk'],
+    },
+    traces: {
+      es: ['Crustáceos', 'Pescado', 'Apio', 'Sulfitos', 'Moluscos'],
+      ca: ['Crustacis', 'Peix', 'Api', 'Sulfits', 'Mol·luscs'],
+      en: ['Crustaceans', 'Fish', 'Celery', 'Sulphites', 'Molluscs'],
+    },
   },
 ];
 
-/* ─── Ingredients Data ─── */
+/* ─── Preparation, Conservation & Pack Quantity (Dynamic for 500g & 1kg) ─── */
 const PREP_DATA = {
   prep: {
-    en: 'Fry directly (or previously thawed) in abundant oil at 170º-180ºC.',
-    es: 'Freír directamente (o previa descongelación) en aceite abundante a 170º-180ºC.',
-    ca: 'Fregir directament (o prèvia descongelació) en oli abundant a 170º-180ºC.'
+    en: 'Fry directly from frozen in abundant oil preheated to 180 ºC for 4-5 minutes until thoroughly cooked. Do not consume without cooking.',
+    es: 'Freír directamente congeladas en abundante aceite precalentado a 180 °C durante 4-5 minutos, hasta que estén completamente cocinadas. No consumir sin cocinar.',
+    ca: 'Fregir directament congelades en oli abundant preescalfat a 180 °C durant 4-5 minuts, fins que estiguin completament cuites. No consumir sense cuinar.',
   },
   cons: {
-    en: 'At -18ºC (once thawed do not refreeze, cook and consume within 48h.)',
-    es: 'A -18ºC (una vez descongelado no volver a congelar, cocinar y consumir antes de 48h.)',
-    ca: 'A -18ºC (un cop descongelat no tornar a congelar, cuinar i consumir abans de 48h.)'
+    en: 'Store at -18 ºC or lower. Once thawed, keep refrigerated between 0 and 4 ºC, do not refreeze, cook and consume within 48 h.',
+    es: 'Conservar a -18 °C o inferior. Una vez descongelado, conservar refrigerado entre 0 y 4 °C, no volver a congelar, cocinar y consumir en un máximo de 48 h.',
+    ca: 'Conservar a -18 °C o inferior. Un cop descongelat, conservar refrigerat entre 0 i 4 °C, no tornar a congelar, cuinar i consumir en un màxim de 48 h.',
   },
   qty: {
-    en: '15 units (approx. 500g)',
-    es: '15 udes. (500g aprox.)',
-    ca: '15 udes. (500g aprox.)'
-  }
+    '500g': {
+      en: 'Approx. 15 pieces / units (500 g net weight)',
+      es: 'Aproximadamente 15 unidades (500 g peso neto)',
+      ca: 'Aproximadament 15 unitats (500 g pes net)',
+    },
+    '1kg': {
+      en: 'Approx. 30 pieces / units (1 kg net weight)',
+      es: 'Aproximadamente 30 unidades (1 kg peso neto)',
+      ca: 'Aproximadament 30 unitats (1 kg pes net)',
+    },
+  },
 };
 
+/* ─── Full Certified Ingredient Lists (with compound brackets & HTML <strong> for allergens) ─── */
 const INGREDIENTS_DATA = [
   {
-    keywords: ['jamón', 'jamon', 'ham', 'ibérico', 'iberico'],
+    keywords: ['cod', 'bacalao', 'bacallà'],
     ingredients: {
-      en: 'Milk, 50% Iberian breed bait ham (12%) (salt, preservatives: E-252; E-250), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), gelatin, garlic, salt and pepper.',
-      es: 'Leche, jamón cebo ibérico 50% raza ibérica (12%) (sal, conservantes: E-252; E-250), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), gelatina, ajo, sal y pimienta.',
-      ca: 'Llet, pernil cebo ibèric 50% raça ibèrica (12%)(sal, conservants: E-252; E-250), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espessant E-412), gelatina, all, sal i pebre.'
-    }
+      es: '<strong>Leche</strong>, <strong>bacalao</strong> (14%), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), <strong>mantequilla</strong>, sal, ajo y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, <strong>bacallà</strong> (14%), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), <strong>mantega</strong>, sal, all i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, <strong>cod</strong> (14%), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), <strong>butter</strong>, salt, garlic and pepper. May contain traces of <strong>crustaceans</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
   },
   {
     keywords: ['boletus', 'mushroom', 'cep', 'mush'],
     ingredients: {
-      en: 'Milk, boletus edulis (14%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, salt, garlic, boletus edulis powder, vegetable gelling agent and pepper.',
-      es: 'Leche, boletus edulis (14%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, sal, ajo, boletus edulis en polvo, gelificante vegetal y pimienta.',
-      ca: 'Llet, boletus edulis (14%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, sal, all, boletus edulis en pols, gelificant vegetal i pebre.'
-    }
-  },
-  {
-    keywords: ['cod', 'bacalao', 'bacallà'],
-    ingredients: {
-      en: 'Milk, cod (14%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, gelatin, salt, garlic and pepper.',
-      es: 'Leche, bacalao (14%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, gelatina, sal, ajo y pimienta.',
-      ca: 'Llet, bacallà (14%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, gelatina, sal, all i pebre.'
-    }
+      es: '<strong>Leche</strong>, boletus edulis (14%), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), <strong>mantequilla</strong>, sal, ajo, boletus edulis en polvo, gelificante vegetal y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, boletus edulis (14%), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), <strong>mantega</strong>, sal, all, boletus edulis en pols, gelificant vegetal i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, boletus edulis (14%), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), <strong>butter</strong>, salt, garlic, boletus edulis powder, vegetable gelling agent and pepper. May contain traces of <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
   },
   {
     keywords: ['chicken', 'pollo', 'pollastre'],
     ingredients: {
-      en: 'Milk, chicken (22%) (water, sunflower oil, salt, dextrose, starch, wine, spices, olive oil, yeast extract, acidity regulator (citric acid) and natural flavoring), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, gelatin, salt, garlic and pepper.',
-      es: 'Leche, pollo (22%) (agua, aceite de girasol, sal, dextrosa, almidón, vino, especias, aceite de oliva, extracto de levadura, corrector de acidez (acido citrico) y aroma natural), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, gelatina, sal, ajo y pimienta.',
-      ca: 'Llet, pollastre (22%) (aigua, oli de girasol, sal, dextrosa, midó, vi, espècies, oli d\'oliva, extracte de llevat, corrector d\'acidesa (acid citric) i aroma natural), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espessant E-412), mantega, gelatina, sal, all i pebre.'
-    }
+      es: '<strong>Leche</strong>, pollo (22%) (agua, aceite de girasol, sal, dextrosa, almidón, vino, especias, aceite de oliva, extracto de levadura, corrector de acidez (ácido cítrico) y aroma natural), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), <strong>mantequilla</strong>, gelatina, sal, ajo y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, pollastre (22%) (aigua, oli de gira-sol, sal, dextrosa, midó, vi, espècies, oli d\'oliva, extracte de llevat, corrector d\'acidesa (àcid cítric) i aroma natural), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), <strong>mantega</strong>, gelatina, sal, all i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, chicken (22%) (water, sunflower oil, salt, dextrose, starch, wine, spices, olive oil, yeast extract, acidity regulator (citric acid) and natural flavoring), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), <strong>butter</strong>, gelatin, salt, garlic and pepper. May contain traces of <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
+  },
+  {
+    keywords: ['cocido', "carn d'olla", 'stew'],
+    ingredients: {
+      es: '<strong>Leche</strong>, ternera (5%), cerdo (3,5%), pollo (3%), paleta ibérica de cebo (2,7%) (sal, antioxidantes: E 331(iii) y E 301, conservador: E 250, azúcares y dextrosa), garbanzos (2,5%), col (2,2%), zanahoria (1%), puerro (0,3%), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), gelatina, ajo, sal y pimienta. Puede contener trazas de <strong>soja</strong>, <strong>mostaza</strong>, <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, vedella (5%), porc (3,5%), pollastre (3%), paleta ibèrica de cebo (2,7%) (sal, antioxidants: E 331(iii) i E 301, conservador: E 250, sucres i dextrosa), cigrons (2,5%), col (2,2%), pastanaga (1%), porro (0,3%), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), gelatina, all, sal i pebre. Pot contenir traces de <strong>soja</strong>, <strong>mostassa</strong>, <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, beef (5%), pork (3.5%), chicken (3%), Iberian cebo shoulder ham (2.7%) (salt, antioxidants: E 331(iii) and E 301, preservative: E 250, sugars and dextrose), chickpeas (2.5%), cabbage (2.2%), carrot (1%), leek (0.3%), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), gelatin, garlic, salt and pepper. May contain traces of <strong>soy</strong>, <strong>mustard</strong>, <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
+  },
+  {
+    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'rap', 'gambes'],
+    ingredients: {
+      es: '<strong>Leche</strong>, <strong>rape</strong> (12,5%), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), aceite de oliva virgen extra, <strong>gamba</strong> (4,2%) (conservador: <strong>sulfitos</strong>), <strong>mantequilla</strong>, <strong>camarón</strong> (1,6%), sal, gelatina, ajo, extracto de <strong>gamba</strong> y pimienta. Puede contener trazas de <strong>apio</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, <strong>rap</strong> (12,5%), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), oli d\'oliva verge extra, <strong>gamba</strong> (4,2%) (conservador: <strong>sulfits</strong>), <strong>mantega</strong>, <strong>gambeta</strong> (1,6%), sal, gelatina, all, extracte de <strong>gamba</strong> i pebre. Pot contenir traces d\'<strong>api</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, <strong>monkfish</strong> (12.5%), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), extra virgin olive oil, <strong>shrimp</strong> (4.2%) (preservative: <strong>sulphites</strong>), <strong>butter</strong>, <strong>small shrimp</strong> (1.6%), salt, gelatin, garlic, <strong>shrimp extract</strong> and pepper. May contain traces of <strong>celery</strong> and <strong>molluscs</strong>.',
+    },
+  },
+  {
+    keywords: ['jamón', 'jamon', 'ham', 'ibérico', 'iberico', 'pernil'],
+    ingredients: {
+      es: '<strong>Leche</strong>, jamón de cebo ibérico 50% raza ibérica (12%) (sal, conservadores: E 252 y E 250), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), gelatina, ajo, sal y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, pernil de cebo ibèric 50% raça ibèrica (12%) (sal, conservadors: E 252 i E 250), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), gelatina, all, sal i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, 50% Iberian breed cebo ham (12%) (salt, preservatives: E 252 and E 250), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), gelatin, garlic, salt and pepper. May contain traces of <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
   },
   {
     keywords: ['blue cheese', 'queso azul', 'formatge blau', 'cabrales', 'roquefort'],
     ingredients: {
-      en: 'Milk, blue cheese (15%) (pasteurized cow\'s milk, salt, microbial rennet, lactic ferments and mold cultures (Penicillium Roqueforti)), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), butter, salt, vegetable gelling agent and pepper.',
-      es: 'Leche, queso azul (15%)(leche de vaca pasteurizada, sal, cuajo microbiano, fermentos lácticos y cultivos floridura (Penicillium Roqueforti)), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), mantequilla, sal, gelificante vegetal y pimienta.',
-      ca: 'Llet, formatge blau (15%)(llet de vaca pasteuritzada, sal, quall microbià, ferments làctics i cultius floridura (Penicillium Roqueforti)), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), mantega, sal, gelificant vegetal i pebre.'
-    }
+      es: '<strong>Leche</strong>, <strong>queso azul</strong> (15%) (<strong>leche</strong> de vaca pasteurizada, sal, cuajo microbiano, <strong>fermentos lácticos</strong> y cultivos de moho (Penicillium roqueforti)), cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), <strong>mantequilla</strong>, sal, gelatina y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong>, <strong>formatge blau</strong> (15%) (<strong>llet</strong> de vaca pasteuritzada, sal, quall microbià, <strong>ferments làctics</strong> i cultius de floridura (Penicillium roqueforti)), ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), <strong>mantega</strong>, sal, gelatina i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong>, <strong>blue cheese</strong> (15%) (pasteurized cow\'s <strong>milk</strong>, salt, microbial rennet, <strong>lactic ferments</strong> and mold cultures (Penicillium roqueforti)), onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), <strong>butter</strong>, salt, gelatin and pepper. May contain traces of <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
   },
   {
-    keywords: ['spinach', 'espinaca', 'espinac', 'pine nut', 'pine'],
+    keywords: ['spinach', 'espinaca', 'espinac', 'edam'],
     ingredients: {
-      en: 'Milk 54%, Spinach (21%) Butter 3% Sun-dried tomato 2% (E-320 and E-321), paprika, salt, ripening regulators (sugar and dextrose), stabilizer (E-451), spices, antioxidant (E-301) and preservative (E-252)), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, wheat starch, water, thickener E-412), EDAM cheese (6%) (milk, salt, lactic and ripening ferments), gelatin, salt, garlic and pepper.',
-      es: 'Leche 54%, Espinaca (21%) Mantequilla 3% Tomate seco 2% (E-320 y E-321), pimentón, sal, reguladores de maduración (azúcar y dextrosa), estabilizador (E-451), especias, antioxidante (E-301) y conservador (E-252)), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), queso EDAM (6%) (leche, sal, fermentos lácticos y de maduración), gelatina, sal, ajo y pimienta.',
-      ca: 'Llet 54%, Espinac (21%) Mantega 3% Tomaquet sec 2% (antioxidants E-320 i E-321, pebre vermell, sal, reguladors de maduració (sucre i dextrosa), estabilitzador (E-451), espècies, antioxidant (E-301) i conservador (E-252)), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (farina de blat, midó de blat, aigua, espesant E-412), Queso Edam (6%) (llet, sal, ferments làctics i de maduració), gelatina, sal, all i pebre.'
-    }
+      es: '<strong>Leche</strong> (54%), espinacas (21%), <strong>mantequilla</strong> (3%), tomate seco (2%) (antioxidantes: E 320 y E 321), pimentón, sal, reguladores de maduración (azúcar y dextrosa), estabilizador: E 451, especias, antioxidante: E 301 y conservador: E 252, cebolla, pan rallado (<strong>harina de trigo</strong>, agua, <strong>gluten de trigo</strong>, sal, aceite de oliva y levadura), <strong>harina de trigo</strong>, aceite de oliva virgen extra, encolante (<strong>harina de trigo</strong>, <strong>almidón de trigo</strong>, agua, espesante: E 412), <strong>queso Edam</strong> (6%) (<strong>leche</strong>, sal, <strong>fermentos lácticos</strong> y de maduración), gelatina, sal, ajo y pimienta. Puede contener trazas de <strong>crustáceos</strong>, <strong>pescado</strong>, <strong>apio</strong>, <strong>sulfitos</strong> y <strong>moluscos</strong>.',
+      ca: '<strong>Llet</strong> (54%), espinacs (21%), <strong>mantega</strong> (3%), tomàquet sec (2%) (antioxidants: E 320 i E 321), pebre vermell, sal, reguladors de maduració (sucre i dextrosa), estabilitzador: E 451, espècies, antioxidant: E 301 i conservador: E 252, ceba, pa ratllat (<strong>farina de blat</strong>, aigua, <strong>gluten de blat</strong>, sal, oli d\'oliva i llevat), <strong>farina de blat</strong>, oli d\'oliva verge extra, encolant (<strong>farina de blat</strong>, <strong>midó de blat</strong>, aigua, espessidor: E 412), <strong>formatge Edam</strong> (6%) (<strong>llet</strong>, sal, <strong>ferments làctics</strong> i de maduració), gelatina, sal, all i pebre. Pot contenir traces de <strong>crustacis</strong>, <strong>peix</strong>, <strong>api</strong>, <strong>sulfits</strong> i <strong>mol·luscs</strong>.',
+      en: '<strong>Milk</strong> (54%), spinach (21%), <strong>butter</strong> (3%), sun-dried tomato (2%) (antioxidants: E 320 and E 321), paprika, salt, ripening regulators (sugar and dextrose), stabilizer: E 451, spices, antioxidant: E 301 and preservative: E 252, onion, breadcrumbs (<strong>wheat flour</strong>, water, <strong>wheat gluten</strong>, salt, olive oil and yeast), <strong>wheat flour</strong>, extra virgin olive oil, binder (<strong>wheat flour</strong>, <strong>wheat starch</strong>, water, thickener: E 412), <strong>Edam cheese</strong> (6%) (<strong>milk</strong>, salt, <strong>lactic</strong> and ripening <strong>ferments</strong>), gelatin, salt, garlic and pepper. May contain traces of <strong>crustaceans</strong>, <strong>fish</strong>, <strong>celery</strong>, <strong>sulphites</strong> and <strong>molluscs</strong>.',
+    },
   },
-  {
-    keywords: ['oxtail', 'rabo', 'cocido', "carn d'olla", 'slow-cook'],
-    ingredients: {
-      en: 'Milk, Pork (5.0%), chicken (3%), Iberian bait shoulder (2.7%) (salt, antioxidants: E-331iii, E-301, preservatives: E-250, sugars and dextrose), chickpeas (2.5%), cabbage (2.2%), carrot (1%), leek (0.3%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, extra virgin olive oil, binder (wheat flour, breadcrumbs, water, thickener E-412), E-415 and E-464, gelatin, garlic, salt and pepper.',
-      es: 'Leche, Cerdo (5.0%), pollo (3%), paleta ibérica cebo (2,7%) (sal, antioxidantes: E-331iii, E-301, conservantes: E-250, azúcares y dextrosa), garbanzos (2,5%), col (2,2%), zanahoria (1%), puerro (0,3%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, aceite de oliva virgen extra, encolante (harina de trigo, pan rallado, agua, espesante E-412), E-415 Y E-464, gelatina, ajo, sal y pimienta.',
-      ca: 'llet, Porc (5,0%), pollastre (3%), paleta ibèrica cebo (2,7%) (sal, antioxidants: E-331iii, E-301, conservants: E-250, sucres i dextrosa), cigrons (2,5%), col (2,2%), pastanaga (1%), porro (0,3%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, oli d\'oliva verge extra, encolant (pa ratllat (farina de BLAT, aigua, sal i llevat), sal, estabilitzants (E-412, E-415 i E-464), conservant (E-202)), gelatina, all, sal i pebre.'
-    }
-  },
-  {
-    keywords: ['monkfish', 'prawn', 'shrimp', 'rape', 'gamba', 'crustacean'],
-    ingredients: {
-      en: 'Milk, monkfish (12.5%), onion, breadcrumbs (wheat flour, water, wheat gluten, salt, olive oil and yeast), wheat flour, binder (wheat flour, wheat starch, water, thickener E-412), extra virgin olive oil, prawn (4.2%), butter, shrimp (1.6%), salt, gelatin, garlic, prawn extract and pepper.',
-      es: 'Leche, rape (12,5%), cebolla, pan rallado (harina de trigo, agua, gluten de trigo, sal, aceite de oliva y levadura), harina de trigo, encolante (harina de trigo, almidón de trigo, agua, espesante E-412), aceite de oliva virgen extra, gamba (4,2%), mantequilla, camarón (1,6%), sal, gelatina, ajo, extracto de gamba y pimienta.',
-      ca: 'Llet, rap (12,5%), ceba, pa ratllat (farina de blat, aigua, gluten de blat, sal, oli d\'oliva i llevat), farina de blat, encolant (farina de blat, midó de blat, aigua, espessant E-412), oli d\'oliva verge extra, gamba (4,2%), mantega, gambeta (1,6%), sal, gelatina, all, extracte de gamba i pebre.'
-    }
-  }
 ];
 
 function getIngredientsData(flavour) {
@@ -283,8 +324,7 @@ function getIngredientsData(flavour) {
   ) || null;
 }
 
-/** Return the allergen entry that best matches a flavour object (works for both
- *  static fallback IDs and API-loaded flavours with arbitrary IDs). */
+/** Return the allergen entry that best matches a flavour object */
 function getAllergenData(flavour) {
   if (!flavour) return null;
   const nameParts = [
@@ -298,33 +338,76 @@ function getAllergenData(flavour) {
   ) || null;
 }
 
-/* â”€â”€â”€ SVG icons keyed by first word of allergen (lowercase, no parens) â”€â”€â”€ */
+/* ─── Allergen Key Mapper & SVG Icons ─── */
+function getAllergenKey(item) {
+  if (!item) return 'default';
+  const s = item.toLowerCase();
+  if (s.includes('gluten') || s.includes('trigo') || s.includes('blat') || s.includes('wheat')) return 'gluten';
+  if (s.includes('leche') || s.includes('milk') || s.includes('llet')) return 'milk';
+  if (s.includes('pescado') || s.includes('fish') || s.includes('peix') || s.includes('bacalao') || s.includes('bacallà') || s.includes('cod') || s.includes('rape') || s.includes('rap') || s.includes('monkfish')) return 'fish';
+  if (s.includes('crust') || s.includes('gamba') || s.includes('camarón') || s.includes('camaron') || s.includes('gambeta') || s.includes('shrimp') || s.includes('prawn')) return 'crustaceans';
+  if (s.includes('sulfit') || s.includes('sulphit')) return 'sulphites';
+  if (s.includes('soja') || s.includes('soy')) return 'soy';
+  if (s.includes('mostaza') || s.includes('mostassa') || s.includes('mustard')) return 'mustard';
+  if (s.includes('apio') || s.includes('api') || s.includes('celery')) return 'celery';
+  if (s.includes('molusc') || s.includes('mol·lusc') || s.includes('mollusc')) return 'molluscs';
+  return 'default';
+}
+
 const AllergenSVG = {
   gluten: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
       <path d="M12 2C8 5 6 8 6 12s2 7 6 10c4-3 6-6 6-10S16 5 12 2z"/>
       <path d="M12 2v20M9 7l3-2 3 2M9 12l3-2 3 2M9 17l3-2 3 2"/>
     </svg>
   ),
   milk: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
       <path d="M8 3h8l1 4H7L8 3z"/><path d="M7 7l-2 13h14L17 7"/>
       <circle cx="12" cy="14" r="2"/>
     </svg>
   ),
   fish: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
       <path d="M22 12C18 6 10 4 4 8l4 4-4 4c6 4 14 2 18-4z"/><circle cx="18" cy="10" r="1" fill="currentColor"/>
     </svg>
   ),
   crustaceans: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
       <path d="M12 8c-2 0-4 1.5-4 4s2 4 4 4 4-1.5 4-4-2-4-4-4z"/>
       <path d="M8 8L5 5M16 8l3-3M8 16l-3 3M16 16l3 3M12 8V4M12 20v-4M4 12H2M22 12h-2"/>
     </svg>
   ),
+  sulphites: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </svg>
+  ),
+  soy: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <path d="M12 3c-4.5 0-7 4-7 8 0 5 4 10 7 10s7-5 7-10c0-4-2.5-8-7-8z"/>
+      <path d="M12 7v10"/>
+    </svg>
+  ),
+  mustard: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <circle cx="12" cy="12" r="8"/>
+      <path d="M12 8v8M8 12h8"/>
+    </svg>
+  ),
+  celery: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <path d="M12 22V8M8 12c0-3 4-5 4-5s4 2 4 5M6 16c0-2 3-3.5 3-3.5M18 16c0-2-3-3.5-3-3.5"/>
+    </svg>
+  ),
+  molluscs: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <path d="M12 3a9 9 0 00-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9-4.03-9-9-9zm0 4a5 5 0 015 5c0 2.76-2.24 5-5 5s-5-2.24-5-5a5 5 0 015-5z"/>
+    </svg>
+  ),
   default: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
       <circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>
     </svg>
   ),
@@ -335,14 +418,24 @@ const ALLERGEN_ICONS = {
   milk: AllergenSVG.milk,
   fish: AllergenSVG.fish,
   crustaceans: AllergenSVG.crustaceans,
+  sulphites: AllergenSVG.sulphites,
+  soy: AllergenSVG.soy,
+  mustard: AllergenSVG.mustard,
+  celery: AllergenSVG.celery,
+  molluscs: AllergenSVG.molluscs,
   default: AllergenSVG.default,
 };
 
 const ALLERGEN_SUBTITLES = {
   gluten: 'Wheat based',
   milk: 'Dairy product',
-  fish: 'Seafood origin',
+  fish: 'Fish origin',
   crustaceans: 'Shellfish',
+  sulphites: 'Sulphites',
+  soy: 'Soy bean',
+  mustard: 'Mustard',
+  celery: 'Celery',
+  molluscs: 'Molluscs',
   default: 'Allergen',
 };
 
@@ -451,10 +544,7 @@ export default function Flavours() {
   const { flavours, isDataLoading } = useAdmin();
   const displayFlavours = flavours && flavours.length > 0 ? flavours : FLAVOURS;
 
-  useEffect(() => {
-    console.log("DEBUG FLAVOURS:", displayFlavours);
-    console.log("DEBUG GALLERY:", typeof galleryImages !== 'undefined' ? galleryImages : "galleryImages not found");
-  }, [displayFlavours]);
+
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -844,28 +934,72 @@ export default function Flavours() {
         </div>
       </section>
 
-      {/* â•â• EXPANDED CARD MODAL â•â• */}
+      {/* ══ EXPANDED CARD MODAL ══ */}
       <AnimatePresence>
         {expandedCard && (() => {
-          const allergenDisclaimer = {
-            en: "Production notice: Produced in a facility that handles milk, gluten (wheat), fish and crustaceans. Cross-contact may occur.",
-            es: "Aviso de producción: Elaborado en unas instalaciones que procesan leche, gluten (trigo), pescado y crustáceos. Puede haber contacto cruzado.",
-            ca: "Avís de producció: Elaborat en unes instal·lacions que processen llet, gluten (blat), peix i crustacis. Hi pot haver contacte creuat."
-          };
           const handcraftedText = {
             en: "Handcrafted with Care",
             es: "Elaborado a Mano con Cuidado",
             ca: "Elaborat a Mà amb Cura"
           };
+          const modalI18n = {
+            contains: {
+              en: 'Contains',
+              es: 'Contiene',
+              ca: 'Conté',
+            },
+            mayContain: {
+              en: 'May contain traces of',
+              es: 'Puede contener trazas de',
+              ca: 'Pot contenir traces de',
+            },
+            ingredients: {
+              en: 'Ingredients',
+              es: 'Ingredientes',
+              ca: 'Ingredients',
+            },
+            prepCons: {
+              en: 'Preparation & Storage',
+              es: 'Preparación y Conservación',
+              ca: 'Preparació i Conservació',
+            },
+            netQty: {
+              en: 'Net Quantity',
+              es: 'Cantidad Neta',
+              ca: 'Quantitat Neta',
+            },
+            pieces500g: {
+              en: '15 pcs',
+              es: '15 udes.',
+              ca: '15 unitats',
+            },
+            pieces1kg: {
+              en: '30 pcs',
+              es: '30 udes.',
+              ca: '30 unitats',
+            },
+            boldNotice: {
+              en: 'Allergens highlighted in bold',
+              es: 'Alérgenos destacados en negrita',
+              ca: 'Al·lèrgens destacats en negreta',
+            },
+            allergenTitle: {
+              en: 'Allergen Information',
+              es: 'Información de Alérgenos',
+              ca: 'Informació d\'Al·lèrgens',
+            },
+          };
+
           const ae = getAllergenData(expandedCard);
-          const allergenRow = ae ? (ae.rows.find(r => r.langCode === dbLang) || ae.rows[0]) : null;
-          const allergenItems = allergenRow ? allergenRow.allergens.split(',').map(s => s.trim()) : [];
+          const containsList = ae ? (ae.contains[dbLang] || ae.contains.en || []) : [];
+          const tracesList = ae ? (ae.traces[dbLang] || ae.traces.en || []) : [];
           
           const ingData = getIngredientsData(expandedCard);
-          const ingText = ingData ? (ingData.ingredients[dbLang] || ingData.ingredients.en) : '';
+          const ingHtml = ingData ? (ingData.ingredients[dbLang] || ingData.ingredients.en || '') : '';
           const prepText = PREP_DATA.prep[dbLang] || PREP_DATA.prep.en;
           const consText = PREP_DATA.cons[dbLang] || PREP_DATA.cons.en;
-          const qtyText = PREP_DATA.qty[dbLang] || PREP_DATA.qty.en;
+          const qtyObj = PREP_DATA.qty[selectedSize] || PREP_DATA.qty['500g'];
+          const qtyText = qtyObj[dbLang] || qtyObj.en;
 
           const cardName = typeof expandedCard.name === 'object' && expandedCard.name !== null
             ? (expandedCard.name[dbLang] || expandedCard.name.en || expandedCard.name.es || '')
@@ -888,12 +1022,12 @@ export default function Flavours() {
                 <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }}
                   transition={{ type: 'spring', damping: 28, stiffness: 300 }}
                   className="relative z-10 w-full bg-[#08000f] rounded-t-[2rem] border-t border-[#E6C587]/20 shadow-[0_-24px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
-                  style={{ maxHeight: '90dvh' }} onClick={e => e.stopPropagation()}>
+                  style={{ maxHeight: '92dvh' }} onClick={e => e.stopPropagation()}>
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-[#E6C587]/25 rounded-full pointer-events-none z-10" />
                   <button onClick={() => { setExpandedCard(null); setShowIngredients(false); }} className="absolute top-3 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-[#E6C587]/15 text-[#E6C587]/70 hover:bg-[#E6C587]/15">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
-                  <div className="relative w-full shrink-0" style={{ height: '42vw', maxHeight: '180px', minHeight: '110px' }}>
+                  <div className="relative w-full shrink-0" style={{ height: '40vw', maxHeight: '170px', minHeight: '110px' }}>
                     <img src={expandedCard.image} alt={cardName} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#08000f] via-[#08000f]/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 px-5 pb-3">
@@ -901,57 +1035,104 @@ export default function Flavours() {
                       <h3 className="text-2xl font-serif text-[#E6C587] leading-tight">{cardName}</h3>
                     </div>
                   </div>
-                  <div className="flex-1 overflow-y-auto overscroll-contain px-5 pt-3 pb-28 flex flex-col gap-3">
-                    <p className="text-white/45 text-[11px] leading-relaxed line-clamp-2">{cardDesc}</p>
-                    {allergenItems.length > 0 && (
-                      <div className="relative">
-                        <div className="flex justify-between items-center mb-2">
-                          <p className="text-[7.5px] font-extrabold tracking-[0.25em] text-[#E6C587]/35 uppercase">Contains Allergens</p>
-                          {ingText && (
-                            <button onClick={() => setShowIngredients(!showIngredients)} className="text-[7px] font-bold tracking-widest text-[#E6C587] underline decoration-[#E6C587]/30 hover:decoration-[#E6C587] transition-all">
-                              {dbLang === 'es' ? 'VER INGREDIENTES' : dbLang === 'ca' ? 'VEURE INGREDIENTS' : 'VIEW INGREDIENTS'}
-                            </button>
-                          )}
+                  <div className="flex-1 overflow-y-auto overscroll-contain px-5 pt-3 pb-32 flex flex-col gap-3.5">
+                    <p className="text-white/55 text-xs leading-relaxed">{cardDesc}</p>
+                    
+                    {/* Allergens: Contains & May contain traces of */}
+                    <div className="p-3.5 rounded-xl bg-[#1f0207] border border-[#E6C587]/15 space-y-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-3.5 h-3.5 text-[#E6C587]" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a.75.75 0 110 1.5A.75.75 0 018 4zm0 3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V8a.75.75 0 01.75-.75z"/></svg>
+                        <span className="text-[8.5px] font-extrabold tracking-widest text-[#E6C587] uppercase">
+                          {modalI18n.allergenTitle[dbLang] || modalI18n.allergenTitle.en}
+                        </span>
+                      </div>
+
+                      {/* Contains */}
+                      {containsList.length > 0 && (
+                        <div>
+                          <p className="text-[7.5px] font-bold text-[#E6C587]/60 uppercase tracking-widest mb-1.5">
+                            {modalI18n.contains[dbLang] || modalI18n.contains.en}:
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {containsList.map((item, i) => {
+                              const key = getAllergenKey(item);
+                              return (
+                                <div key={i} className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full border border-[#E6C587]/30 bg-[#E6C587]/10">
+                                  <div className="w-4 h-4 flex items-center justify-center rounded-full bg-[#E6C587]/20 text-[#E6C587] shrink-0">
+                                    {ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}
+                                  </div>
+                                  <span className="text-[8.5px] font-bold text-[#E6C587]">{item}</span>
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
-                        <AnimatePresence>
-                          {showIngredients && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden mb-3">
-                              <div className="p-4 rounded-xl bg-[#2c0107] border border-[#E6C587]/15 shadow-xl">
-                                <h4 className="text-[8px] font-bold text-[#E6C587] uppercase tracking-widest mb-1.5">{dbLang === 'es' ? 'Ingredientes' : dbLang === 'ca' ? 'Ingredients' : 'Ingredients'}</h4>
-                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-3">{ingText}</p>
-                                <h4 className="text-[8px] font-bold text-[#E6C587] uppercase tracking-widest mb-1.5">{dbLang === 'es' ? 'Preparación / Conservación' : dbLang === 'ca' ? 'Preparació / Conservació' : 'Preparation / Conservation'}</h4>
-                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-1">{prepText}</p>
-                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed mb-1">{consText}</p>
-                                <p className="text-[#E6C587]/70 text-[9.5px] leading-relaxed font-bold mt-2">{qtyText}</p>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                        <div className="flex flex-wrap gap-1.5">
-                          {allergenItems.map((item, i) => {
-                            const key = item.toLowerCase().replace(/[()]/g, '').split(' ')[0];
+                      )}
+
+                      {/* May contain traces of */}
+                      {tracesList.length > 0 && (
+                        <div className="pt-1.5 border-t border-[#E6C587]/10">
+                          <p className="text-[7.5px] font-bold text-[#f6e5dd]/50 uppercase tracking-widest mb-1.5">
+                            {modalI18n.mayContain[dbLang] || modalI18n.mayContain.en}:
+                          </p>
+                          <div className="flex flex-wrap gap-1">
+                            {tracesList.map((item, i) => (
+                              <span key={i} className="text-[8px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[#f6e5dd]/75">
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Ingredients with bold allergens */}
+                    {ingHtml && (
+                      <div className="p-3.5 rounded-xl bg-[#140003] border border-[#E6C587]/15">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <h4 className="text-[8.5px] font-bold text-[#E6C587] uppercase tracking-widest">
+                            {modalI18n.ingredients[dbLang] || modalI18n.ingredients.en}
+                          </h4>
+                          <span className="text-[7px] text-[#E6C587]/60 italic">
+                            {modalI18n.boldNotice[dbLang] || modalI18n.boldNotice.en}
+                          </span>
+                        </div>
+                        <p className="text-[#f6e5dd]/85 text-[10px] leading-relaxed [&>strong]:text-[#E6C587] [&>strong]:font-bold"
+                          dangerouslySetInnerHTML={{ __html: ingHtml }} />
+                      </div>
+                    )}
+
+                    {/* Preparation / Conservation / Net Quantity */}
+                    <div className="p-3.5 rounded-xl bg-[#1f0207] border border-[#E6C587]/15 space-y-1.5 text-[9.5px] text-[#f6e5dd]/80 leading-relaxed">
+                      <h4 className="text-[8px] font-bold text-[#E6C587] uppercase tracking-widest mb-1">
+                        {modalI18n.prepCons[dbLang] || modalI18n.prepCons.en}
+                      </h4>
+                      <p>{prepText}</p>
+                      <p>{consText}</p>
+                      <p className="text-[#E6C587] font-bold pt-1">
+                        <span className="opacity-60 font-normal mr-1">{modalI18n.netQty[dbLang] || modalI18n.netQty.en}:</span>
+                        {qtyText}
+                      </p>
+                    </div>
+
+                    {/* Size Selector with Pieces */}
+                    <div className="flex gap-3 items-end pt-1">
+                      <div className="flex-1">
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">Size</p>
+                        <div className="flex gap-2">
+                          {['500g', '1kg'].map(s => {
+                            const pcsText = s === '500g' ? (modalI18n.pieces500g[dbLang] || modalI18n.pieces500g.en) : (modalI18n.pieces1kg[dbLang] || modalI18n.pieces1kg.en);
                             return (
-                              <div key={i} className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-[#E6C587]/15 bg-[#E6C587]/5">
-                                <div className="w-5 h-5 flex items-center justify-center rounded-full bg-[#E6C587]/10 text-[#E6C587]/70 shrink-0">{ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}</div>
-                                <span className="text-[9px] font-bold text-[#E6C587]/75 uppercase tracking-wider">{item}</span>
-                              </div>
+                              <button key={s} onClick={() => setSelectedSize(s)} className={`flex-1 py-2 rounded-lg border text-[11px] font-bold uppercase tracking-wide transition-all ${selectedSize === s ? 'border-[#E6C587] bg-[#E6C587] text-[#140003]' : 'border-[#E6C587]/18 bg-transparent text-[#E6C587]/50'}`}>
+                                <span>{s}</span>
+                                <span className="text-[8.5px] ml-1 opacity-75 font-normal">({pcsText})</span>
+                              </button>
                             );
                           })}
                         </div>
-                        {ae && <p className="text-[8px] text-[#E6C587]/60 italic mt-2 leading-relaxed">{allergenDisclaimer[dbLang] || allergenDisclaimer.en}</p>}
-                      </div>
-                    )}
-                    <div className="flex gap-3 items-end">
-                      <div className="flex-1">
-                        <p className="text-[7.5px] font-bold text-[#E6C587]/35 uppercase tracking-[0.2em] mb-1.5">Size</p>
-                        <div className="flex gap-2">
-                          {['500g', '1kg'].map(s => (
-                            <button key={s} onClick={() => setSelectedSize(s)} className={`flex-1 py-2 rounded-lg border text-[11px] font-bold uppercase tracking-wide transition-all ${selectedSize === s ? 'border-[#E6C587] bg-[#E6C587] text-[#140003]' : 'border-[#E6C587]/18 bg-transparent text-[#E6C587]/50'}`}>{s}</button>
-                          ))}
-                        </div>
                       </div>
                       <div>
-                        <p className="text-[7.5px] font-bold text-[#E6C587]/35 uppercase tracking-[0.2em] mb-1.5">Qty</p>
+                        <p className="text-[7.5px] font-bold text-[#E6C587]/40 uppercase tracking-[0.2em] mb-1.5">Qty</p>
                         <div className="flex items-center bg-[#130004] border border-[#E6C587]/18 rounded-lg overflow-hidden">
                           <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-9 h-8 flex items-center justify-center text-[#E6C587]/80 text-lg font-light hover:bg-[#E6C587]/10 disabled:opacity-30">-</button>
                           <span className="w-8 h-8 flex items-center justify-center text-white font-bold text-xs bg-black/20">{selectedQuantity}</span>
@@ -960,7 +1141,9 @@ export default function Flavours() {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-[#08000f] via-[#08000f]/98 to-transparent border-t border-[#E6C587]/8">
+
+                  {/* Bottom bar */}
+                  <div className="absolute bottom-0 left-0 right-0 px-5 py-3.5 bg-gradient-to-t from-[#08000f] via-[#08000f]/98 to-transparent border-t border-[#E6C587]/10">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-[7px] font-bold text-[#E6C587]/35 uppercase tracking-widest mb-0.5">Total</p>
@@ -979,10 +1162,10 @@ export default function Flavours() {
                 <motion.div
                   initial={{ y: 20, scale: 0.97, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 20, scale: 0.97, opacity: 0 }}
                   transition={{ type: 'spring', damping: 30, stiffness: 320 }}
-                  className="relative z-10 w-full max-w-[1000px] rounded-[1.75rem] shadow-[0_32px_80px_rgba(20,0,3,0.7)] flex flex-row bg-[#fdfaf5]"
-                  style={{ height: 'min(75vh, 500px)' }} onClick={e => e.stopPropagation()}>
+                  className="relative z-10 w-full max-w-[1020px] rounded-[1.75rem] shadow-[0_32px_80px_rgba(20,0,3,0.7)] flex flex-row bg-[#fdfaf5] overflow-hidden"
+                  style={{ height: 'min(90vh, 720px)' }} onClick={e => e.stopPropagation()}>
                   {/* Left: image */}
-                  <div className="relative w-[42%] shrink-0 overflow-hidden rounded-l-[1.75rem]">
+                  <div className="relative w-[36%] shrink-0 overflow-hidden rounded-l-[1.75rem]">
                     <img src={expandedCard.image} alt={cardName} className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#fdfaf5]/10" />
                     <div className="absolute bottom-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)] flex items-center gap-2">
@@ -990,88 +1173,142 @@ export default function Flavours() {
                       <span className="text-[9px] font-bold text-white uppercase tracking-widest">{handcraftedText[dbLang] || handcraftedText.en}</span>
                     </div>
                   </div>
+
                   {/* Right: details */}
-                  <div className="flex-1 flex flex-col justify-center py-2 relative">
+                  <div className="flex-1 flex flex-col h-full overflow-hidden relative">
                     <button onClick={() => { setExpandedCard(null); setShowIngredients(false); }} className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#2c0107]/10 text-[#2c0107] hover:bg-[#2c0107] hover:text-[#E6C587] transition-all shadow-sm">
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
-                    <div className="px-7 pt-7 pb-4 shrink-0 border-b border-[#2c0107]/6">
-                      <h3 className="text-3xl font-serif text-[#2c0107] leading-tight mb-1">{cardName}</h3>
-                      <div className="w-8 h-[2px] bg-[#E6C587] mb-3 mt-3" />
-                      <p className="text-[#2c0107]/60 text-[12.5px] leading-relaxed line-clamp-3">{cardDesc}</p>
+
+                    {/* Title Header */}
+                    <div className="px-7 pt-6 pb-3 shrink-0 border-b border-[#2c0107]/8 pr-16">
+                      <p className="text-[8px] tracking-[0.25em] font-extrabold text-[#BD561A] uppercase mb-1">{cardTagline}</p>
+                      <h3 className="text-2xl font-serif text-[#2c0107] leading-tight mb-1">{cardName}</h3>
+                      <p className="text-[#2c0107]/65 text-xs leading-relaxed">{cardDesc}</p>
                     </div>
-                    {allergenItems.length > 0 && (
-                      <div className="px-7 py-4 shrink-0 border-b border-[#2c0107]/6 relative">
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-1.5">
-                            <svg className="w-3 h-3 text-[#BD561A] shrink-0" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a.75.75 0 110 1.5A.75.75 0 018 4zm0 3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V8a.75.75 0 01.75-.75z"/></svg>
-                            <span className="text-[8px] font-extrabold tracking-[0.25em] text-[#BD561A] uppercase">Allergen Information</span>
-                          </div>
-                          {ingText && (
-                            <div className="relative" onMouseEnter={() => setShowIngredients(true)} onMouseLeave={() => setShowIngredients(false)}>
-                              <button className="text-[7.5px] font-bold tracking-widest text-[#2c0107] border border-[#2c0107]/20 rounded-full px-3 py-1.5 hover:bg-[#2c0107] hover:text-[#E6C587] transition-all">
-                                {dbLang === 'es' ? 'VER INGREDIENTES' : dbLang === 'ca' ? 'VEURE INGREDIENTS' : 'VIEW INGREDIENTS'}
-                              </button>
-                              <AnimatePresence>
-                                {showIngredients && (
-                                  <motion.div initial={{ opacity: 0, y: -10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -5, scale: 0.95 }} transition={{ duration: 0.2 }}
-                                    className="absolute top-full right-0 mt-3 w-[380px] p-5 rounded-2xl bg-[#2c0107] border border-[#E6C587]/15 shadow-[0_20px_60px_rgba(44,1,7,0.45)] z-50 cursor-default">
-                                    <div className="absolute -top-2 right-8 w-4 h-4 bg-[#2c0107] border-t border-l border-[#E6C587]/15 rotate-45" />
-                                    <h4 className="text-[9px] font-bold text-[#E6C587] uppercase tracking-widest mb-2">{dbLang === 'es' ? 'Ingredientes' : dbLang === 'ca' ? 'Ingredients' : 'Ingredients'}</h4>
-                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-4">{ingText}</p>
-                                    <h4 className="text-[9px] font-bold text-[#E6C587] uppercase tracking-widest mb-2">{dbLang === 'es' ? 'Preparación / Conservación' : dbLang === 'ca' ? 'Preparació / Conservació' : 'Preparation / Conservation'}</h4>
-                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-1.5">{prepText}</p>
-                                    <p className="text-[#E6C587]/80 text-[10px] leading-relaxed mb-3">{consText}</p>
-                                    <p className="text-[#E6C587]/90 text-[9.5px] leading-relaxed font-bold tracking-wide">{qtyText}</p>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
+
+                    {/* Scrollable Content Body */}
+                    <div className="flex-1 overflow-y-auto px-7 py-4 space-y-3.5 pr-6">
+                      
+                      {/* Allergen Section: Contains + May Contain Traces Of */}
+                      <div className="p-4 rounded-2xl bg-white border border-[#2c0107]/10 shadow-sm space-y-3">
+                        <div className="flex items-center gap-1.5">
+                          <svg className="w-3.5 h-3.5 text-[#BD561A] shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a.75.75 0 110 1.5A.75.75 0 018 4zm0 3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V8a.75.75 0 01.75-.75z"/>
+                          </svg>
+                          <span className="text-[9px] font-extrabold tracking-[0.2em] text-[#BD561A] uppercase">
+                            {modalI18n.allergenTitle[dbLang] || modalI18n.allergenTitle.en}
+                          </span>
+                        </div>
+
+                        {/* Contains */}
+                        {containsList.length > 0 && (
+                          <div>
+                            <p className="text-[8px] font-bold text-[#2c0107]/50 uppercase tracking-widest mb-1.5">
+                              {modalI18n.contains[dbLang] || modalI18n.contains.en}:
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {containsList.map((item, i) => {
+                                const key = getAllergenKey(item);
+                                return (
+                                  <div key={i} className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-[#BD561A]/8 border border-[#BD561A]/15">
+                                    <div className="w-5 h-5 flex items-center justify-center rounded-full bg-[#BD561A]/12 text-[#BD561A] shrink-0">
+                                      {ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}
+                                    </div>
+                                    <div className="leading-none">
+                                      <p className="text-[9px] font-extrabold text-[#2c0107] uppercase tracking-wide">{item}</p>
+                                      <p className="text-[7px] text-[#BD561A] font-medium mt-0.5">{ALLERGEN_SUBTITLES[key] || 'Allergen'}</p>
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
-                          )}
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {allergenItems.map((item, i) => {
-                            const key = item.toLowerCase().replace(/[()]/g, '').split(' ')[0];
-                            return (
-                              <div key={i} className="flex items-center gap-2 pl-2 pr-3 py-2 rounded-xl bg-white border border-[#2c0107]/8 shadow-[0_1px_4px_rgba(44,1,7,0.05)]">
-                                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#BD561A]/8 text-[#BD561A] shrink-0">{ALLERGEN_ICONS[key] || ALLERGEN_ICONS.default}</div>
-                                <div className="leading-none">
-                                  <p className="text-[9px] font-extrabold text-[#2c0107] tracking-wide uppercase">{item}</p>
-                                  <p className="text-[7px] text-[#2c0107]/40 font-medium mt-0.5">{ALLERGEN_SUBTITLES[key] || 'Allergen'}</p>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                        {ae && <p className="text-[8px] text-[#2c0107]/70 italic mt-2.5 leading-relaxed font-medium">{allergenDisclaimer[dbLang] || allergenDisclaimer.en}</p>}
+                          </div>
+                        )}
+
+                        {/* May contain traces of */}
+                        {tracesList.length > 0 && (
+                          <div className="pt-2 border-t border-[#2c0107]/8">
+                            <p className="text-[8px] font-bold text-[#2c0107]/50 uppercase tracking-widest mb-1.5">
+                              {modalI18n.mayContain[dbLang] || modalI18n.mayContain.en}:
+                            </p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {tracesList.map((item, i) => (
+                                <span key={i} className="text-[8.5px] px-2.5 py-1 rounded-lg bg-gray-100 border border-gray-200 text-[#2c0107]/80 font-medium">
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-                    <div className="flex flex-col px-7 py-6 gap-4">
-                      <div className="flex gap-5 items-end">
+
+                      {/* Ingredients Section - Fully visible with bold allergens */}
+                      {ingHtml && (
+                        <div className="p-4 rounded-2xl bg-[#2c0107] text-[#E6C587] border border-[#E6C587]/15 shadow-sm space-y-1.5">
+                          <div className="flex items-center justify-between mb-1">
+                            <h4 className="text-[9px] font-bold uppercase tracking-widest text-[#E6C587]">
+                              {modalI18n.ingredients[dbLang] || modalI18n.ingredients.en}
+                            </h4>
+                            <span className="text-[8px] text-[#E6C587]/70 italic">
+                              {modalI18n.boldNotice[dbLang] || modalI18n.boldNotice.en}
+                            </span>
+                          </div>
+                          <p className="text-[#f6e5dd]/90 text-[10.5px] leading-relaxed [&>strong]:text-[#E6C587] [&>strong]:font-bold"
+                            dangerouslySetInnerHTML={{ __html: ingHtml }} />
+                        </div>
+                      )}
+
+                      {/* Preparation / Storage / Quantity */}
+                      <div className="p-3.5 rounded-xl bg-white border border-[#2c0107]/8 text-[#2c0107]/75 text-[10px] space-y-1 leading-relaxed">
+                        <h4 className="text-[8.5px] font-bold text-[#BD561A] uppercase tracking-widest mb-1">
+                          {modalI18n.prepCons[dbLang] || modalI18n.prepCons.en}
+                        </h4>
+                        <p>{prepText}</p>
+                        <p>{consText}</p>
+                        <p className="text-[#2c0107] font-bold pt-1">
+                          <span className="text-[#2c0107]/50 font-normal mr-1">{modalI18n.netQty[dbLang] || modalI18n.netQty.en}:</span>
+                          {qtyText}
+                        </p>
+                      </div>
+
+                    </div>
+
+                    {/* Bottom Bar: Size (with Pieces), Quantity, Price, Add to Cart */}
+                    <div className="shrink-0 px-7 py-4 border-t border-[#2c0107]/8 bg-[#fdfaf5]">
+                      <div className="flex gap-4 items-end mb-3">
                         <div className="flex-1">
                           <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Size</p>
                           <div className="flex gap-2">
-                            {['500g', '1kg'].map(s => (
-                              <button key={s} onClick={() => setSelectedSize(s)} className={`flex-1 py-2.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 ${selectedSize === s ? 'border-[#2c0107] bg-[#2c0107] text-[#E6C587]' : 'border-[#2c0107]/10 bg-white text-[#2c0107]/55 hover:border-[#2c0107]/25 hover:bg-[#f6e5dd]/50'}`}>{s}</button>
-                            ))}
+                            {['500g', '1kg'].map(s => {
+                              const pcsText = s === '500g' ? (modalI18n.pieces500g[dbLang] || modalI18n.pieces500g.en) : (modalI18n.pieces1kg[dbLang] || modalI18n.pieces1kg.en);
+                              return (
+                                <button key={s} onClick={() => setSelectedSize(s)}
+                                  className={`flex-1 py-2 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 ${selectedSize === s ? 'border-[#2c0107] bg-[#2c0107] text-[#E6C587]' : 'border-[#2c0107]/10 bg-white text-[#2c0107]/55 hover:border-[#2c0107]/25 hover:bg-[#f6e5dd]/50'}`}>
+                                  <span>{s}</span>
+                                  <span className="text-[9px] ml-1 opacity-75 font-normal">({pcsText})</span>
+                                </button>
+                              );
+                            })}
                           </div>
                         </div>
                         <div>
                           <p className="text-[8px] font-bold text-[#2c0107]/40 uppercase tracking-[0.2em] mb-1.5">Qty</p>
                           <div className="flex items-center bg-white border border-[#2c0107]/10 rounded-lg overflow-hidden shadow-sm">
-                            <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-10 h-9 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70 disabled:opacity-30">-</button>
-                            <span className="w-10 h-9 flex items-center justify-center text-[#140003] font-bold text-sm border-x border-[#2c0107]/8 bg-gray-50/40">{selectedQuantity}</span>
-                            <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-10 h-9 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70">+</button>
+                            <button onClick={() => setSelectedQuantity(q => Math.max(1, q - 1))} disabled={selectedQuantity <= 1} className="w-10 h-8 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70 disabled:opacity-30">-</button>
+                            <span className="w-9 h-8 flex items-center justify-center text-[#140003] font-bold text-sm border-x border-[#2c0107]/8 bg-gray-50/40">{selectedQuantity}</span>
+                            <button onClick={() => setSelectedQuantity(q => Math.min(99, q + 1))} className="w-10 h-8 flex items-center justify-center text-[#2c0107] text-xl font-light hover:bg-[#f6e5dd]/70">+</button>
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between gap-4 pt-4 border-t border-[#2c0107]/8">
+
+                      <div className="flex items-center justify-between gap-4 pt-3 border-t border-[#2c0107]/8">
                         <div>
                           <p className="text-[7.5px] font-bold text-[#2c0107]/35 uppercase tracking-widest mb-0.5">Total</p>
-                          <span className="text-[1.9rem] font-serif text-[#140003] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
+                          <span className="text-[1.8rem] font-serif text-[#140003] leading-none">€{(price * selectedQuantity).toFixed(2)}</span>
                         </div>
                         <button onClick={() => { addToCart({ id: expandedCard.id, name: cardName, image: expandedCard.image, size: selectedSize, price, quantity: selectedQuantity }); setExpandedCard(null); }}
-                          className="group relative px-7 py-3.5 bg-[#2c0107] text-[#E6C587] text-[11px] font-bold tracking-[0.18em] uppercase rounded-xl overflow-hidden shadow-[0_8px_22px_rgba(44,1,7,0.25)] hover:shadow-[0_12px_30px_rgba(44,1,7,0.35)] transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2.5">
+                          className="group relative px-7 py-3 bg-[#2c0107] text-[#E6C587] text-[11px] font-bold tracking-[0.18em] uppercase rounded-xl overflow-hidden shadow-[0_8px_22px_rgba(44,1,7,0.25)] hover:shadow-[0_12px_30px_rgba(44,1,7,0.35)] transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2.5">
                           <span className="relative z-10">Add to Cart</span>
                           <svg className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                           <div className="absolute inset-0 bg-gradient-to-r from-[#4a020d] to-[#1a0003] opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
