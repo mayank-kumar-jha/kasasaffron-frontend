@@ -88,12 +88,13 @@ const mobileStyles = `
 
   /* Plate Size Control for Mobile Portrait */
   .mob-animated-plate {
-      width: calc(100vw - 5px) !important;
+      width: min(340px, 86vw) !important;
+      max-width: 360px !important;
   }
 
   /* Sections */
   .mob-story-section {
-      padding: 180px 20px 50px; /* Increased top padding to avoid plate overlap */
+      padding: 210px 20px 50px; /* Generous top padding to ensure zero overlap with plate */
       background: #220b12;
       position: relative;
       overflow: hidden;
@@ -432,7 +433,7 @@ export default function MobileHome() {
           <div
             ref={plateRef}
             className="mob-animated-plate flex items-center justify-center"
-            style={{ transform: 'translate(-50%, calc(-50% + 100vh - 26px))' }}
+            style={{ transform: 'translate(-50%, calc(-50% + 100svh - 26px))' }}
           >
             {/* Plate Image */}
             <img
@@ -467,7 +468,7 @@ export default function MobileHome() {
                 {t('hero.descLine1')} {t('hero.descLine2')} {t('hero.descLine3')} {t('hero.descLine4')}
               </p>
               <div className="mob-neu-cta-group" style={{ marginTop: '30px' }}>
-                <Link to="/flavours" className="mob-neu-btn-beige">Discover Our Flavours</Link>
+                <Link to="/flavours" className="mob-neu-btn-beige">{t('hero.discoverFlavours')}</Link>
               </div>
             </div>
           </div>
@@ -477,8 +478,8 @@ export default function MobileHome() {
         {/* ═══════════ SECTION 2: OUR STORY ═══════════ */}
         <section className="mob-story-section">
           <div className="mob-story-header">
-            <span className="mob-story-badge">Our Story</span>
-            <h2 className="mob-story-title">The People Behind<br />the Flavour</h2>
+            <span className="mob-story-badge">{t('stories.badge')}</span>
+            <h2 className="mob-story-title">{t('stories.titleLine1')}<br />{t('stories.titleLine2')}</h2>
             <div className="mob-story-title-line" />
           </div>
 
@@ -535,8 +536,8 @@ export default function MobileHome() {
         {/* ═══════════ SECTION 3: WHAT WE DO ═══════════ */}
         <section className="mob-story-section mob-craft-section">
           <div className="mob-story-header">
-            <span className="mob-story-badge">Our Craft</span>
-            <h2 className="mob-story-title">What We Do</h2>
+            <span className="mob-story-badge">{t('craft.badge')}</span>
+            <h2 className="mob-story-title">{t('craft.title')}</h2>
             <div className="mob-story-title-line" />
           </div>
 
@@ -573,8 +574,8 @@ export default function MobileHome() {
 
           {/* CTA Buttons */}
           <div className="mob-neu-cta-group mob-reveal">
-            <Link to="/flavours" className="mob-neu-btn-primary">Our Flavours</Link>
-            <Link to="/b2b" className="mob-neu-btn-secondary">Partner With Us</Link>
+            <Link to="/flavours" className="mob-neu-btn-primary">{t('history.buttons.ourFlavours')}</Link>
+            <Link to="/b2b" className="mob-neu-btn-secondary">{t('history.buttons.becomePartner')}</Link>
           </div>
         </section>
 

@@ -28,7 +28,8 @@
     "feat3DescLine2": "cuidar de tu",
     "feat4Title": "ELABORADES AMB CURA",
     "feat4DescLine1": "Elaborades en petits lots",
-    "feat4DescLine2": "per assolir la perfecció"
+    "feat4DescLine2": "per assolir la perfecció",
+    "discoverFlavours": "Descobreix els Nostres Sabors"
   },
   "history": {
     "title": "QUÈ FEM",
@@ -59,6 +60,9 @@
     }
   },
   "stories": {
+    "badge": "La Nostra Història",
+    "titleLine1": "Les Persones Darrere",
+    "titleLine2": "del Sabor",
     "chetnaRole": "Xef / Directora / Fundadora",
     "chetnaP1": "La passió de Chetna per la cuina va començar a la cuina del seu pare a l'Índia, on va aprendre l'art de combinar espècies i crear sabors memorables.",
     "chetnaP2": "Després de formar-se a les millors escoles culinàries de Barcelona i especialitzar-se en pastisseria, Chetna va decidir crear Kasa Saffron com un tribut a les seves arrels i al seu amor per la croqueta espanyola.",
@@ -66,6 +70,10 @@
     "lovieshRole": "Xef Executiu",
     "lovieshP1": "Amb formació culinària a Suïssa i experiència professional en alguns dels hotels de luxe més prestigiosos del món, Loviesh aporta un nivell d'excel·lència inigualable a Kasa Saffron.",
     "lovieshP2": "La seva carrera inclou posicions als Estats Units, Suïssa i Espanya, culminant amb un màster en direcció hotelera a Espanya."
+  },
+  "craft": {
+    "badge": "El Nostre Ofici",
+    "title": "Què Fem"
   },
   "b2b": {
     "heroBadge": "••• Venda a l'engròs i B2B •••",

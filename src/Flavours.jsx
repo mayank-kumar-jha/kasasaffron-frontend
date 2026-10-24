@@ -483,7 +483,7 @@ function getAllergenSubtitle(key, lang) {
   const sub = ALLERGEN_SUBTITLES[key] || ALLERGEN_SUBTITLES.default;
   if (!sub) return '';
   if (typeof sub === 'string') return sub;
-  return sub[lang] || sub.es || sub.en || '';
+  return sub[lang] || sub.en || sub.es || '';
 }
 
 const fadeUp = (delay = 0) => ({

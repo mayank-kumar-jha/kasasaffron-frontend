@@ -28,7 +28,8 @@
     "feat3DescLine2": "a healthy you",
     "feat4Title": "CRAFTED WITH CARE",
     "feat4DescLine1": "Made in small batches",
-    "feat4DescLine2": "for perfection"
+    "feat4DescLine2": "for perfection",
+    "discoverFlavours": "Discover Our Flavours"
   },
   "history": {
     "title": "WHAT WE DO",
@@ -59,6 +60,9 @@
     }
   },
   "stories": {
+    "badge": "Our Story",
+    "titleLine1": "The People Behind",
+    "titleLine2": "the Flavour",
     "chetnaRole": "Chef / Director / Founder",
     "chetnaP1": "Chetna's passion for cooking began in her father's kitchen in India, where she learned the art of combining spices and creating memorable flavors.",
     "chetnaP2": "After training at Barcelona's best culinary schools and specializing in pastry, Chetna decided to create Kasa Saffron as a tribute to her roots and her love for the Spanish croquette.",
@@ -66,6 +70,10 @@
     "lovieshRole": "Executive Chef",
     "lovieshP1": "With culinary training in Switzerland and professional experience at some of the world's most prestigious luxury hotels, Loviesh brings an unparalleled level of excellence to Kasa Saffron.",
     "lovieshP2": "His career includes positions in the United States, Switzerland, and Spain, culminating with a master's in hotel management in Spain."
+  },
+  "craft": {
+    "badge": "Our Craft",
+    "title": "What We Do"
   },
   "b2b": {
     "heroBadge": "••• Wholesale & B2B •••",
