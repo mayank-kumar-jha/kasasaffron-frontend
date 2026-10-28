@@ -52,7 +52,7 @@ function StripePaymentForm({ clientSecret, total, onPaymentSuccess, onPaymentErr
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-[#FFFDF7] border border-[#E6C587]/40 rounded-xl p-5 shadow-sm">
         <label className="block text-sm font-bold text-[#4A0E1A] mb-3 uppercase tracking-wider">
-          Credit or Debit Card
+          {t("checkout.cardLabel", "Credit or Debit Card")}
         </label>
         <div className="py-4 px-4 bg-white rounded-lg border border-gray-200 shadow-inner">
           <CardElement
@@ -98,7 +98,7 @@ function StripePaymentForm({ clientSecret, total, onPaymentSuccess, onPaymentErr
 }
 
 export default function Checkout() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { cartItems, cartSubtotal, updateQuantity, removeFromCart, clearCart } = useCart();
   const navigate = useNavigate();
   const [user, setUser] = useState(getCurrentUserLocal());
@@ -109,6 +109,18 @@ export default function Checkout() {
     pickupDate: '',
     notes: ''
   });
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const localeMap = { cat: 'ca-ES', es: 'es-ES', en: 'en-GB' };
+    const locale = localeMap[i18n.language] || 'en-GB';
+    return new Date(dateStr).toLocaleDateString(locale, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
 
   useEffect(() => {
     const handleAuthChange = () => {
@@ -150,9 +162,9 @@ export default function Checkout() {
     if (name === 'phone') {
       const digitsOnly = value.replace(/[^0-9]/g, '');
       if (value !== digitsOnly && value.replace('+', '') !== digitsOnly) {
-        error = 'Phone number must contain digits only.';
+        error = t('checkout.errPhoneDigits', 'Phone number must contain digits only.');
       } else if (digitsOnly.length > 10) {
-        error = 'Phone number cannot exceed 10 digits.';
+        error = t('checkout.errPhoneLength', 'Phone number cannot exceed 10 digits.');
       }
       newValue = digitsOnly.slice(0, 10);
     }
@@ -161,7 +173,7 @@ export default function Checkout() {
       const [y, m, d] = value.split('-').map(Number);
       const day = new Date(y, m - 1, d).getDay();
       if (day === 0 || day === 6) {
-        error = 'Pickup is only available Monday to Friday. Please select a weekday.';
+        error = t('checkout.errWeekday', 'Pickup is only available Monday to Friday. Please select a weekday.');
         newValue = ''; // clear the value so they must pick again
       }
     }
@@ -180,7 +192,7 @@ export default function Checkout() {
     }
 
     if (!formData.fullName || !formData.phone || !formData.pickupDate) {
-      setError('Please fill in all required fields marked with *');
+      setError(t('checkout.errRequired', 'Please fill in all required fields marked with *'));
       return;
     }
 
@@ -239,33 +251,45 @@ export default function Checkout() {
             ✓
           </div>
           <h2 className="text-3xl font-serif text-[#4A0E1A] mb-2" style={{ fontFamily: "'Cinzel', serif" }}>
-            Thank You!
+            {t('checkout.thankYou', 'Thank You!')}
           </h2>
-          <p className="text-[#4A0E1A]/80 mb-6 text-sm">Your payment was processed successfully. Your Spanish gourmet croquetas will be prepared for pickup.</p>
+          <p className="text-[#4A0E1A]/80 mb-6 text-sm">{t('checkout.successDescription', 'Your payment was processed successfully. Your Spanish gourmet croquetas will be prepared for pickup.')}</p>
           
           <div className="w-full bg-[#FFFDF7] border border-[#E6C587]/30 rounded-xl p-5 mb-8 text-left space-y-3">
             <div>
-              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">Order ID</p>
+              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">{t('checkout.orderId', 'Order ID')}</p>
               <p className="text-xs font-mono text-[#4A0E1A] font-bold">{orderId}</p>
             </div>
             <div>
-              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">Pickup Date</p>
+              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">{t('checkout.pickupDateShort', 'Pickup Date')}</p>
               <p className="text-sm text-[#4A0E1A] font-bold">
-                {new Date(formData.pickupDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                {formatDate(formData.pickupDate)}
               </p>
             </div>
             <div>
-              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">Pickup Location</p>
+              <p className="text-[10px] text-[#B8893A] font-bold uppercase tracking-widest">{t('checkout.pickupLocation', 'Pickup Location')}</p>
               <p className="text-xs text-[#4A0E1A]/80 leading-relaxed font-bold">
                 Kasa Saffron Croqueteria<br/>
                 Gran Via Corts Catalanes 162, Local 27<br/>
                 08038 Barcelona, Spain
               </p>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Gran+Via+de+les+Corts+Catalanes+162+Local+27+08038+Barcelona+Spain"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2.5 inline-flex items-center gap-1.5 text-xs text-[#B8893A] hover:text-[#4A0E1A] font-semibold transition-colors"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>{t('checkout.getDirectionsMaps', 'Get Directions on Google Maps')}</span>
+              </a>
             </div>
           </div>
 
           <Link to="/flavours" className="w-full bg-[#4A0E1A] hover:bg-[#310911] text-white py-3.5 rounded-xl font-bold transition-all shadow-md">
-            Order More Flavours
+            {t('checkout.orderMore', 'Order More Flavours')}
           </Link>
         </div>
       </div>
@@ -291,7 +315,7 @@ export default function Checkout() {
         <div className="flex flex-col items-center justify-center mb-10">
           <img src="/Images/Logo.png" alt="Kasa Saffron" className="w-16 h-16 object-contain mb-4" />
           <h1 className="text-4xl md:text-5xl font-serif text-center text-saffron tracking-wide drop-shadow-sm" style={{ fontFamily: "'Cinzel', serif" }}>
-            Secure Checkout
+            {t('checkout.secureCheckout', 'Secure Checkout')}
           </h1>
         </div>
 
@@ -316,13 +340,13 @@ export default function Checkout() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">Store Pickup</h2>
+                    <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">{t('checkout.storePickup', 'Store Pickup')}</h2>
                   </div>
-                  <p className="text-[#4A0E1A]/80 mb-6 text-sm">Your order will be freshly prepared and ready for pickup.</p>
+                  <p className="text-[#4A0E1A]/80 mb-6 text-sm">{t('checkout.storePickupSub', 'Your order will be freshly prepared and ready for pickup.')}</p>
                   
-                  <div className="bg-gradient-to-r from-[#FFFDF7] to-transparent border border-[#E6C587]/30 rounded-2xl p-5 relative overflow-hidden flex items-center justify-between group-hover:border-[#E6C587]/60 transition-colors duration-300">
+                  <div className="bg-gradient-to-r from-[#FFFDF7] to-transparent border border-[#E6C587]/30 rounded-2xl p-5 relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4 group-hover:border-[#E6C587]/60 transition-colors duration-300">
                     <div className="flex items-start gap-4 z-10">
-                      <div className="bg-[#FCF5E3] p-2.5 rounded-full shadow-inner">
+                      <div className="bg-[#FCF5E3] p-2.5 rounded-full shadow-inner shrink-0">
                         <svg className="w-5 h-5 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -330,11 +354,72 @@ export default function Checkout() {
                       </div>
                       <div>
                         <h3 className="font-bold text-[#4A0E1A] text-sm md:text-base mb-1 font-cinzel">Kasa Saffron Croqueteria</h3>
-                        <p className="text-[#4A0E1A]/70 text-xs md:text-sm">Gran Via Corts Catalanes 162, Local 27<br/>08038 Barcelona, Spain</p>
+                        <p className="text-[#4A0E1A]/70 text-xs md:text-sm leading-relaxed">
+                          Gran Via Corts Catalanes 162, Local 27<br/>
+                          08038 Barcelona, Spain
+                        </p>
                       </div>
                     </div>
+
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=Gran+Via+de+les+Corts+Catalanes+162+Local+27+08038+Barcelona+Spain"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="z-10 self-start sm:self-center inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#FCF5E3] hover:bg-[#B8893A] text-[#B8893A] hover:text-white rounded-xl border border-[#E6C587]/50 text-xs font-semibold transition-all duration-300 shadow-sm hover:shadow"
+                      title={t('checkout.getDirections', 'Get Directions')}
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      <span>{t('checkout.getDirections', 'Get Directions')}</span>
+                    </a>
+
                     {/* Decorative Saffron Flower */}
-                    <img src="/Images/Saffron_Flower.png" alt="" className="absolute right-0 bottom-0 w-32 h-auto object-contain opacity-20 translate-x-4 translate-y-4 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700" />
+                    <img src="/Images/Saffron_Flower.png" alt="" className="absolute right-0 bottom-0 w-32 h-auto object-contain opacity-20 translate-x-4 translate-y-4 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 pointer-events-none" />
+                  </div>
+
+                  {/* Interactive Google Map Frame */}
+                  <div className="mt-5 rounded-2xl overflow-hidden border border-[#E6C587]/40 shadow-sm bg-[#FFFDF7]">
+                    {/* Map Header Bar */}
+                    <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-r from-[#FFFDF7] to-[#FCF5E3] border-b border-[#E6C587]/30 text-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-saffron opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-saffron"></span>
+                        </span>
+                        <span className="font-semibold text-[#4A0E1A]">{t('checkout.interactiveMap', 'Interactive Pickup Map')}</span>
+                      </div>
+                      <span className="text-[#4A0E1A]/60 text-[11px] hidden sm:inline">{t('checkout.mapHint', 'Click map to interact or open full navigation')}</span>
+                    </div>
+
+                    {/* Google Maps Embed iframe Container */}
+                    <div className="relative w-full h-[240px] md:h-[280px] bg-[#f5ede2]">
+                      <iframe
+                        title="Store Pickup Location - Kasa Saffron Croqueteria"
+                        src="https://maps.google.com/maps?q=Gran%20Via%20de%20les%20Corts%20Catalanes%20162,%2008038%20Barcelona,%20Spain&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        className="w-full h-full border-0"
+                        loading="lazy"
+                        allowFullScreen
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+
+                      {/* Floating Open in Google Maps Action Button */}
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=Gran+Via+de+les+Corts+Catalanes+162+Local+27+08038+Barcelona+Spain"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-2 px-3.5 py-2 bg-[#4A0E1A] hover:bg-[#310911] text-[#FFFDF7] text-xs font-semibold rounded-xl shadow-lg border border-[#E6C587]/40 transition-all duration-200 hover:scale-105 group/gbtn"
+                        title={t('checkout.openInGoogleMaps', 'Open in Google Maps')}
+                      >
+                        <svg className="w-3.5 h-3.5 text-[#E6C587]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>{t('checkout.openInGoogleMaps', 'Open in Google Maps')}</span>
+                        <svg className="w-3 h-3 text-[#E6C587]/80 group-hover/gbtn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -346,7 +431,7 @@ export default function Checkout() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">Your Details</h2>
+                    <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">{t('checkout.yourDetails', 'Your Details')}</h2>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
@@ -354,22 +439,22 @@ export default function Checkout() {
                       <label className="block text-sm font-medium text-[#4A0E1A] mb-2">
                         <span className="flex items-center gap-2">
                           <svg className="w-4 h-4 text-[#4A0E1A]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                          Full name *
+                          {t('checkout.fullName', 'Full name *')}
                         </span>
                       </label>
-                      <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm" placeholder="e.g. John Doe" />
+                      <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm" placeholder={t('checkout.namePlaceholder', 'e.g. John Doe')} />
                     </div>
                     <div className="relative">
                       <label className="block text-sm font-medium text-[#4A0E1A] mb-2">
                         <span className="flex items-center gap-2">
                           <svg className="w-4 h-4 text-[#4A0E1A]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                          Phone number *
+                          {t('checkout.phone', 'Phone number *')}
                         </span>
                       </label>
                       <input type="tel" inputMode="numeric" name="phone" value={formData.phone} onChange={handleInputChange} required 
                         className={`w-full px-4 py-3 rounded-lg border focus:ring-1 outline-none transition-colors text-sm ${
                           formErrors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : 'border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-[#B8893A]'
-                        }`} placeholder="e.g. 681819652" />
+                        }`} placeholder={t('checkout.phonePlaceholder', 'e.g. 681819652')} />
                       {formErrors.phone && (
                         <p className="text-[10px] text-red-500 mt-1 absolute -bottom-5 left-0">{formErrors.phone}</p>
                       )}
@@ -380,7 +465,7 @@ export default function Checkout() {
                     <label className="block text-sm font-medium text-[#4A0E1A] mb-2">
                       <span className="flex items-center gap-2">
                         <svg className="w-4 h-4 text-[#4A0E1A]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                        Pickup date *
+                        {t('checkout.pickupDate', 'Pickup date *')}
                       </span>
                     </label>
                     <input 
@@ -401,10 +486,10 @@ export default function Checkout() {
                     <label className="block text-sm font-medium text-[#4A0E1A] mb-2">
                       <span className="flex items-center gap-2">
                         <svg className="w-4 h-4 text-[#4A0E1A]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        Notes (preferred pickup time, etc.)
+                        {t('checkout.notes', 'Notes (preferred pickup time, etc.)')}
                       </span>
                     </label>
-                    <textarea name="notes" value={formData.notes} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm resize-none" placeholder="E.g. Pickup at 6 PM"></textarea>
+                    <textarea name="notes" value={formData.notes} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-lg border border-[#E6C587]/40 focus:border-[#B8893A] focus:ring-1 focus:ring-[#B8893A] outline-none transition-colors text-sm resize-none" placeholder={t('checkout.notesPlaceholder', 'E.g. Pickup at 6 PM')}></textarea>
                   </div>
                 </div>
 
@@ -426,7 +511,7 @@ export default function Checkout() {
               <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 md:p-8 space-y-6 animate-[fadeIn_0.5s_ease-out]">
                 <div className="flex items-center gap-3 mb-4 border-b border-[#E6C587]/10 pb-4">
                   <button onClick={() => setStep('details')} className="text-saffron hover:text-saffron-dark flex items-center gap-1.5 text-sm font-bold transition-colors">
-                    ← Edit details
+                    {t('checkout.editDetails', '← Edit details')}
                   </button>
                   <span className="text-gray-300">|</span>
                   <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">{t("checkout.paymentTitle")}</h2>
@@ -453,7 +538,7 @@ export default function Checkout() {
                 <svg className="w-6 h-6 text-[#8B2332]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
-                <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">Order Summary</h2>
+                <h2 className="text-xl md:text-2xl font-serif text-[#4A0E1A]">{t('checkout.orderSummary', 'Order Summary')}</h2>
               </div>
 
               {/* Cart Items */}
@@ -512,8 +597,8 @@ export default function Checkout() {
                 <div className="bg-[#FFFDF7] border border-[#E6C587]/30 rounded-xl p-4 flex items-center gap-3 mb-6">
                   <svg className="w-5 h-5 text-[#B8893A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                   <div>
-                    <p className="text-[#B8893A] text-xs font-bold mb-0.5">Pickup date</p>
-                    <p className="text-[#4A0E1A] text-xs font-bold">{new Date(formData.pickupDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <p className="text-[#B8893A] text-xs font-bold mb-0.5">{t('checkout.pickupDateShort', 'Pickup date')}</p>
+                    <p className="text-[#4A0E1A] text-xs font-bold">{formatDate(formData.pickupDate)}</p>
                   </div>
                 </div>
               )}
@@ -537,7 +622,7 @@ export default function Checkout() {
 
               <Link to="/flavours" className="w-full flex items-center justify-center gap-2 text-[#4A0E1A]/70 hover:text-[#4A0E1A] transition-colors text-sm font-medium">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                Back to flavors
+                {t('checkout.backToFlavours', 'Back to flavours')}
               </Link>
             </div>
           </div>
