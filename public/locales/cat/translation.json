@@ -395,5 +395,14 @@
     "changeAccount": "Canviar compte",
     "signOut": "Tancar sessió",
     "signInUp": "Iniciar Sessió / Registre"
+  },
+  "notFound": {
+    "pageTitle": "404 - Pàgina no trobada",
+    "badge": "ERROR 404",
+    "title": "UNA RECEPTA PERDUDA A LA CUINA",
+    "subtitle": "La pàgina que cerques no existeix",
+    "description": "Sembla que l'enllaç que has seguit s'ha mogut o mai no ha existit. No et preocupis, les nostres croquetes artesanals t'estan esperant.",
+    "backHome": "TORNAR A L'INICI",
+    "exploreFlavours": "EXPLORAR SABORS"
   }
 }

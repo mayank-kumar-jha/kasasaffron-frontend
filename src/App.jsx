@@ -109,6 +109,7 @@ const B2b = React.lazy(() => import('./B2b'));
 const Signup = React.lazy(() => import('./Signup'));
 const Checkout = React.lazy(() => import('./Checkout'));
 const UpcomingEvents = React.lazy(() => import('./UpcomingEvents'));
+const NotFound = React.lazy(() => import('./NotFound'));
 
 // Admin pages
 const AdminLogin = React.lazy(() => import('./admin/AdminLogin'));
@@ -215,6 +216,7 @@ function AppContent() {
           <Route path="/auth" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/events" element={<UpcomingEvents />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       {!isAuthPage && !isHomePage && <Footer />}

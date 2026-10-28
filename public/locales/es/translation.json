@@ -395,5 +395,14 @@
     "changeAccount": "Cambiar cuenta",
     "signOut": "Cerrar sesión",
     "signInUp": "Iniciar Sesión / Registro"
+  },
+  "notFound": {
+    "pageTitle": "404 - Página no encontrada",
+    "badge": "ERROR 404",
+    "title": "UNA RECETA PERDIDA EN LA COCINA",
+    "subtitle": "La página que buscas no existe",
+    "description": "Parece que el enlace que has seguido se ha movido o nunca existió. No te preocupes, nuestras croquetas artesanales te siguen esperando.",
+    "backHome": "VOLVER AL INICIO",
+    "exploreFlavours": "EXPLORAR SABORES"
   }
 }

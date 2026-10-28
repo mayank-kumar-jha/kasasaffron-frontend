@@ -395,5 +395,14 @@
     "changeAccount": "Change account",
     "signOut": "Sign out",
     "signInUp": "Sign In / Sign Up"
+  },
+  "notFound": {
+    "pageTitle": "404 - Page Not Found",
+    "badge": "ERROR 404",
+    "title": "A Recipe Lost in the Kitchen",
+    "subtitle": "The page you are looking for does not exist",
+    "description": "It seems the link you followed has moved or never existed. Don't worry, our handcrafted artisanal croquettes are always fresh and waiting.",
+    "backHome": "RETURN HOME",
+    "exploreFlavours": "EXPLORE FLAVOURS"
   }
 }
