@@ -104,6 +104,7 @@ import AdminLayout from './admin/AdminLayout';
 
 const Home = React.lazy(() => import('./Home'));
 const Flavours = React.lazy(() => import('./Flavours'));
+const FlavourDetail = React.lazy(() => import('./FlavourDetail'));
 const Gallery = React.lazy(() => import('./Gallery'));
 const B2b = React.lazy(() => import('./B2b'));
 const Signup = React.lazy(() => import('./Signup'));
@@ -128,6 +129,7 @@ import './App.css';
 import './horeca.css';
 
 import SkeletonPage from './components/SkeletonPage';
+import GoogleTranslator from './components/GoogleTranslator';
 
 const AdminSkeleton = () => (
   <div className="w-full min-h-screen bg-[#0a0001] flex items-center justify-center">
@@ -201,16 +203,18 @@ function AppContent() {
     );
   }
 
-
-
   return (
     <>
       <ScrollToTop />
       <Navbar />
+      <GoogleTranslator />
       <Suspense fallback={<SkeletonPage />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/flavours" element={<Flavours />} />
+          <Route path="/flavours/:slug" element={<FlavourDetail />} />
+          <Route path="/:lang/flavours/:slug" element={<FlavourDetail />} />
+          <Route path="/:lang/flavours" element={<Flavours />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/b2b" element={<B2b />} />
           <Route path="/auth" element={<Signup />} />

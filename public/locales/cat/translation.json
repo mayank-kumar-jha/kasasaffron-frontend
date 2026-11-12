@@ -228,6 +228,8 @@
     "badge": "••• Els Nostres Sabors •••",
     "title": "Elaborats per a cada caprici",
     "addToOrder": "Afegir a la Comanda",
+    "viewFlavour": "Veure Detalls i Demanar",
+    "handcrafted": "Gourmet Artesanal",
     "items": [
       {
         "name": "Clàssic Pernil Ibèric",
@@ -404,5 +406,28 @@
     "description": "Sembla que l'enllaç que has seguit s'ha mogut o mai no ha existit. No et preocupis, les nostres croquetes artesanals t'estan esperant.",
     "backHome": "TORNAR A L'INICI",
     "exploreFlavours": "EXPLORAR SABORS"
+  },
+  "flavourDetail": {
+    "sommelier": "Maridatge del Sommelier i Harmonia Culinària",
+    "selectSize": "Seleccionar Format d'Envàs",
+    "qty": "Quantitat",
+    "subtotal": "Preu Total",
+    "addToCart": "Afegir a la Comanda",
+    "checkoutNow": "Tramitar Comanda",
+    "ingredientsTab": "Ingredients i Al·lèrgens",
+    "prepTab": "Preparació i Conservació",
+    "specsTab": "Fitxa Tècnica",
+    "allergensTitle": "Desglossament Certificat d'Al·lèrgens (ASPB)",
+    "contains": "Conté",
+    "mayContain": "Pot contenir traces de",
+    "ingredientsLabel": "Llista Oficial d'Ingredients",
+    "boldNotice": "Al·lèrgens destacats en negreta",
+    "cookingInst": "Mode de Fregit",
+    "storageInst": "Conservació i Caducitat",
+    "netQty": "Quantitat Neta",
+    "catalogue": "Col·lecció Completa",
+    "exploreMore": "Explorar Altres Sabors Artesanals",
+    "viewAll": "Veure els 8 Sabors",
+    "viewRecipe": "Veure Detalls"
   }
 }

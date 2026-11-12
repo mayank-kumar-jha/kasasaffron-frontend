@@ -228,6 +228,8 @@
     "badge": "••• Our Flavours •••",
     "title": "Crafted for Every Craving",
     "addToOrder": "Add to Order",
+    "viewFlavour": "View Details & Order",
+    "handcrafted": "Handcrafted Gourmet",
     "items": [
       {
         "name": "Classic Jamón Ibérico",
@@ -404,5 +406,28 @@
     "description": "It seems the link you followed has moved or never existed. Don't worry, our handcrafted artisanal croquettes are always fresh and waiting.",
     "backHome": "RETURN HOME",
     "exploreFlavours": "EXPLORE FLAVOURS"
+  },
+  "flavourDetail": {
+    "sommelier": "Sommelier Pairing & Culinary Harmony",
+    "selectSize": "Select Package Size",
+    "qty": "Quantity",
+    "subtotal": "Total Price",
+    "addToCart": "Add to Order",
+    "checkoutNow": "Order & Checkout",
+    "ingredientsTab": "Ingredients & Allergens",
+    "prepTab": "Preparation & Storage",
+    "specsTab": "Packaging Specs",
+    "allergensTitle": "Certified Allergen Breakdown (ASPB)",
+    "contains": "Contains",
+    "mayContain": "May contain traces of",
+    "ingredientsLabel": "Certified Ingredients List",
+    "boldNotice": "Allergens highlighted in bold",
+    "cookingInst": "Frying Instructions",
+    "storageInst": "Storage & Shelf Life",
+    "netQty": "Net Quantity",
+    "catalogue": "Complete Collection",
+    "exploreMore": "Explore Other Handcrafted Flavours",
+    "viewAll": "View All 8 Flavours",
+    "viewRecipe": "View Details"
   }
 }

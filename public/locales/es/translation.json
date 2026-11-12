@@ -228,6 +228,8 @@
     "badge": "••• Nuestros Sabores •••",
     "title": "Elaborados para cada antojo",
     "addToOrder": "Añadir al Pedido",
+    "viewFlavour": "Ver Detalles y Pedir",
+    "handcrafted": "Gourmet Artesanal",
     "items": [
       {
         "name": "Clásico Jamón Ibérico",
@@ -404,5 +406,28 @@
     "description": "Parece que el enlace que has seguido se ha movido o nunca existió. No te preocupes, nuestras croquetas artesanales te siguen esperando.",
     "backHome": "VOLVER AL INICIO",
     "exploreFlavours": "EXPLORAR SABORES"
+  },
+  "flavourDetail": {
+    "sommelier": "Maridaje del Sumiller y Armonía Culinaria",
+    "selectSize": "Seleccionar Formato de Envase",
+    "qty": "Cantidad",
+    "subtotal": "Precio Total",
+    "addToCart": "Añadir al Pedido",
+    "checkoutNow": "Tramitar Pedido",
+    "ingredientsTab": "Ingredientes y Alérgenos",
+    "prepTab": "Preparación y Conservación",
+    "specsTab": "Ficha Técnica",
+    "allergensTitle": "Desglose Certificado de Alérgenos (ASPB)",
+    "contains": "Contiene",
+    "mayContain": "Puede contener trazas de",
+    "ingredientsLabel": "Lista Oficial de Ingredientes",
+    "boldNotice": "Alérgenos destacados en negrita",
+    "cookingInst": "Modo de Fritura",
+    "storageInst": "Conservación y Caducidad",
+    "netQty": "Cantidad Neta",
+    "catalogue": "Colección Completa",
+    "exploreMore": "Explorar Otros Sabores Artesanales",
+    "viewAll": "Ver los 8 Sabores",
+    "viewRecipe": "Ver Detalles"
   }
 }

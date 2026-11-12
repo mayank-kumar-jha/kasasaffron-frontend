@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { useAdmin } from './context/AdminContext';
 import { getCurrentUserLocal } from './api/auth.service';
 import SkeletonPage from './components/SkeletonPage';
 import SEO from './components/SEO';
 import { FLAVOUR_IMAGES, getFlavourImage } from './utils/flavourImages';
+import { getFlavourSlug } from './data/flavoursData';
 
 const FLAVOURS = [
   { 
@@ -971,7 +972,11 @@ export default function Flavours() {
                     {typeof displayFlavours[activeIndex].description === 'object' && displayFlavours[activeIndex].description !== null ? (displayFlavours[activeIndex].description[dbLang] || displayFlavours[activeIndex].description.en || displayFlavours[activeIndex].description.es) : (displayFlavours[activeIndex].description || t(`flavoursPage.items.${activeIndex}.description`))}
                   </p>
                   <button
-                    onClick={() => { setExpandedCard(displayFlavours[activeIndex]); setSelectedQuantity(1); setSelectedSize('1kg'); }}
+                    onClick={() => {
+                      setExpandedCard(displayFlavours[activeIndex]);
+                      setSelectedQuantity(1);
+                      setSelectedSize('1kg');
+                    }}
                     className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#E6C587]/40 bg-[#E6C587]/10 text-[#E6C587] text-[11px] font-bold uppercase tracking-widest shadow-lg hover:bg-[#E6C587]/20 transition-colors active:scale-95 backdrop-blur-sm"
                   >
                     {t('flavoursPage.addToOrder', 'Add to Order')}
