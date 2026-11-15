@@ -3,11 +3,19 @@ import React, { createContext, useContext, useState, useEffect, useMemo, useCall
 import { adminGetProducts, adminGetEvents, adminGetGallery, adminGetContent } from '../api/admin.service.js';
 import { login as backendLogin, logout as backendLogout, getCurrentUserLocal, getCurrentUser } from '../api/auth.service.js';
 
+const DEFAULT_ADMIN_EMAIL = 'admin@gmail.com';
+const DEFAULT_ADMIN_PASSWORD = 'yash91597';
+
 const AdminContext = createContext();
 export const useAdmin = () => useContext(AdminContext);
 
+function saveToStorage(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch { }
+}
+
 export const AdminProvider = ({ children }) => {
-  const [adminEmail, setAdminEmail] = useState('');
+  const [adminEmail, setAdminEmail] = useState(DEFAULT_ADMIN_EMAIL);
+  const [adminPassword, setAdminPassword] = useState(DEFAULT_ADMIN_PASSWORD);
 
   // Start as "checking" — verify the stored token against the server before rendering admin UI
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
@@ -32,7 +40,6 @@ export const AdminProvider = ({ children }) => {
         const res = await getCurrentUser();
         const user = res?.data;
         if (user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN' || user?.role === 'MANAGER') {
-          setAdminEmail(user.email || '');
           setIsAdminLoggedIn(true);
         } else {
           // Token valid but not admin — just deny admin access, DO NOT clear user token!
@@ -101,7 +108,6 @@ export const AdminProvider = ({ children }) => {
       const res = await backendLogin({ email, password });
       const user = res.data.user;
       if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') {
-        setAdminEmail(user.email || email);
         setIsAdminLoggedIn(true);
         return true;
       }
@@ -121,8 +127,11 @@ export const AdminProvider = ({ children }) => {
     setIsAdminLoggedIn(false);
   }, []);
 
-  const updateCredentials = useCallback((newEmail) => {
+  const updateCredentials = useCallback((newEmail, newPassword) => {
     setAdminEmail(newEmail);
+    setAdminPassword(newPassword);
+    saveToStorage('admin_email', newEmail);
+    saveToStorage('admin_password', newPassword);
   }, []);
 
   const updateEvents = useCallback((newEvents) => { setEvents(newEvents); }, []);
@@ -132,7 +141,7 @@ export const AdminProvider = ({ children }) => {
 
   const value = useMemo(() => ({
     isAdminLoggedIn, authChecked, login, logout,
-    adminEmail, updateCredentials,
+    adminEmail, adminPassword, updateCredentials,
     events, updateEvents,
     flavours, updateFlavours,
     galleryImages, updateGallery,
@@ -140,7 +149,7 @@ export const AdminProvider = ({ children }) => {
     isDataLoading,
   }), [
     isAdminLoggedIn, authChecked, login, logout,
-    adminEmail, updateCredentials,
+    adminEmail, adminPassword, updateCredentials,
     events, updateEvents, flavours, updateFlavours,
     galleryImages, updateGallery, aboutData, updateAbout,
     isDataLoading
