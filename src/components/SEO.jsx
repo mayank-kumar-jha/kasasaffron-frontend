@@ -5,7 +5,7 @@ const SEO = ({ title, description, name = 'Kasa Saffron', type = 'website', imag
   const pageTitle = title ? `${title} | ${name}` : name;
   const defaultDesc = 'At Kasa Saffron Croqueteria and Catering, we transform a traditional Spanish recipe into a contemporary gourmet experience using premium ingredients.';
   const pageDescription = description || defaultDesc;
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://www.kasasaffron.com';
+  const siteUrl = 'https://www.kasasaffron.com';
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
   const pageUrl = canonicalUrl || `${siteUrl}${currentPath === '/' ? '/' : currentPath.replace(/\/$/, '')}`;
   const imageUrl = image ? (image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`) : null;
@@ -25,7 +25,7 @@ const SEO = ({ title, description, name = 'Kasa Saffron', type = 'website', imag
       
       {/* Twitter tags */}
       <meta name="twitter:creator" content={name} />
-      <meta name="twitter:card" content={type} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       {imageUrl && <meta name="twitter:image" content={imageUrl} />}
