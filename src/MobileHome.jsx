@@ -437,7 +437,7 @@ export default function MobileHome() {
           >
             {/* Plate Image */}
             <img
-              src="/Images/Croqetta with plate_.png"
+              src="/Images/Croqetta with plate_.webp"
               className="w-full h-auto relative z-10 drop-shadow-xl"
               alt="Croquetas on Plate"
               fetchPriority="high"
@@ -488,7 +488,7 @@ export default function MobileHome() {
             <div className="mob-neu-card">
               <div className="mob-founder-img-wrap">
                 <img
-                  src={(typeof aboutData?.founderImage === 'string' && aboutData.founderImage.trim() !== '' && aboutData.founderImage !== "null") ? aboutData.founderImage : "/Images/founder_pngggg.png"}
+                  src={(typeof aboutData?.founderImage === 'string' && aboutData.founderImage.trim() !== '' && aboutData.founderImage !== "null") ? aboutData.founderImage : "/Images/founder_pngggg.webp"}
                   alt="Chetna Bali"
                   className="mob-founder-img" loading="lazy"
                   fetchPriority="low"
