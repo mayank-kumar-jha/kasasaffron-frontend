@@ -313,7 +313,7 @@ export default function Home() {
 
     return (
         <div ref={scrollContainerRef} className="scroll-container">
-            <SEO title="Home" />
+            <SEO title="Handcrafted Gourmet Croquettes in Barcelona" description="Discover handcrafted gourmet croquettes by Kasa Saffron in Barcelona. Premium Spanish recipes for restaurants, HORECA and catering, made with carefully selected ingredients." />
             <img
                 ref={bgImgRef}
                 src="/Images/background_image.jpeg"
