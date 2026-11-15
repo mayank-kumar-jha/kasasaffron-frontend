@@ -80,7 +80,7 @@ export default function Gallery() {
             <div className={`animate-scroll-up flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images, ...images].map((f, i) => (
                 <div key={`col1-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '200px' : i % 3 === 1 ? '260px' : '180px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -96,7 +96,7 @@ export default function Gallery() {
             <div className={`animate-scroll-down flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(3), ...images, ...images.slice(0, 3)].map((f, i) => (
                 <div key={`col2-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '240px' : i % 3 === 1 ? '180px' : '220px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -112,7 +112,7 @@ export default function Gallery() {
             <div className={`animate-scroll-up-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(5), ...images, ...images.slice(0, 5)].map((f, i) => (
                 <div key={`col3-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '180px' : i % 3 === 1 ? '240px' : '200px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -128,7 +128,7 @@ export default function Gallery() {
             <div className={`animate-scroll-down-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(1), ...images, ...images.slice(0, 1)].map((f, i) => (
                 <div key={`col4-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '220px' : i % 3 === 1 ? '190px' : '250px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
