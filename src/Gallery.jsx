@@ -14,6 +14,12 @@ const fadeUp = (delay = 0) => ({
 export default function Gallery() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language || 'en';
+  const seoCopy = lang === 'es'
+    ? { title: 'Galería de croquetas artesanas y catering en Barcelona', description: 'Descubre el trabajo de Kasa Saffron: croquetas gourmet elaboradas en Barcelona, nuestros sabores y momentos de nuestros servicios de catering.' }
+    : (lang === 'ca' || lang === 'cat')
+      ? { title: 'Galeria de croquetes artesanes i càtering a Barcelona', description: 'Descobreix la feina de Kasa Saffron: croquetes gourmet elaborades a Barcelona, els nostres sabors i moments dels nostres serveis de càtering.' }
+      : { title: 'Our Croquettes & Catering Gallery | Kasa Saffron', description: 'Take a closer look at Kasa Saffron, from our handcrafted gourmet croquettes to the food and moments we create for catering in Barcelona.' };
+
   const { galleryImages, isDataLoading } = useAdmin();
 
   const [isPaused, setIsPaused] = useState(false);
@@ -50,7 +56,7 @@ export default function Gallery() {
 
   return (
     <section className="relative w-full py-16 md:py-20 pt-[120px] overflow-hidden min-h-screen flex flex-col justify-center" style={{ backgroundImage: 'url(/assets/gallery_bg_new.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <SEO title="Gallery" description="See the beautiful creations at Kasa Saffron." />
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E6C587]/30 to-transparent" />
 
       <motion.div {...fadeUp(0)} className="relative flex flex-col items-center text-center px-6 mb-10 z-10 mt-10">
