@@ -701,7 +701,7 @@ export default function Flavours() {
 
   return (
     <>
-      <SEO title="Our Flavours" description="Explore our handcrafted gourmet saffron croquettes." />
+      <SEO title="Artisan Gourmet Croquettes in Barcelona" description="Explore Kasa Saffron's handcrafted croquette flavours, including Iberian ham, boletus, cod and other gourmet Spanish recipes made in Barcelona." />
       {/* Fixed Background â€” deep maroon on mobile, cream on desktop */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Mobile: deep maroon gradient matching home page */}
