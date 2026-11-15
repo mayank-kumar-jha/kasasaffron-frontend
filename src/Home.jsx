@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense, useCallback } from 'react';
+import LocomotiveScroll from 'locomotive-scroll';
 import { useTranslation } from 'react-i18next';
 import MobileHome from './MobileHome';
 import HeroSection from './components/HeroSection';
