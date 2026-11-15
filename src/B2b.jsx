@@ -355,7 +355,7 @@ export default function B2b() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className={`group relative bg-[#fdf6ee] border border-[#BD561A]/15 rounded-2xl p-3 md:p-3.5 hover:bg-[#fdf6ee] hover:border-[#BD561A]/40 hover:shadow-[0_15px_35px_rgba(114,3,3,0.05)] hover:-translate-y-0.5 transition-all duration-500 overflow-hidden w-full md:w-[75%] lg:w-[65%] ${i % 2 === 0 ? 'self-end' : 'self-start'} before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[3px] before:bg-gradient-to-b before:from-[#BD561A] before:to-[#720303] before:opacity-0 before:group-hover:opacity-100 before:transition-opacity before:duration-500`}
+                className={`group relative bg-[#fdf6ee] border border-[#BD561A]/15 rounded-2xl p-3 md:p-3.5 hover:bg-[#fdf6ee] hover:border-[#BD561A]/40 hover:shadow-[0_15px_35px_rgba(114,3,3,0.05)] hover:-translate-y-0.5 transition-all duration-500 overflow-hidden w-full md:w-[75%] lg:w-[65%] ${i % 2 === 0 ? 'self-end' : 'self-start'} before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[3px] before:bg-gradient-to-b before:from-[#BD561A] before:to-[#720303] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-500`}
               >
                 {/* Subtle background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#BD561A]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

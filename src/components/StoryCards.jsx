@@ -18,7 +18,7 @@ const StoryCards = memo(({ card1PhotoRef, card1InfoRef, card2PhotoRef, card2Info
         && aboutData.founderImage.trim() !== ''
         && aboutData.founderImage !== 'null')
         ? aboutData.founderImage
-        : '/Images/founder_pngggg.png';
+        : '/Images/founder_pngggg.webp';
 
     const showLoviesh = typeof aboutData?.lovieshImage === 'string' 
         && aboutData.lovieshImage.trim() !== '' 

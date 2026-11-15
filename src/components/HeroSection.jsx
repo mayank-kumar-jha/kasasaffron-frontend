@@ -130,7 +130,7 @@ const HeroSection = memo(({ leftGroupRef, rightGroupRef, topGroupRef, textRef, f
             {/* Plate — translateX(-50%) is in CSS, we only add Y and rotation on top */}
             <img
                 ref={plateRef}
-                src="/Images/Croqetta with plate_.png"
+                src="/Images/Croqetta with plate_.webp"
                 alt="Croquetas on Plate"
                 className="abs-img croquetas-plate"
                 fetchPriority="high"
