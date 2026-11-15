@@ -307,13 +307,15 @@ export default function Home() {
         };
     }, [isMobile, isDataLoading]);
 
-    if (isDataLoading) return <SkeletonPage />;
+    const homeSeo = <SEO title="Handcrafted Gourmet Croquettes in Barcelona" description="At Kasa Saffron, we make gourmet croquettes in Barcelona with carefully selected ingredients and a love for Spanish food. Discover our flavours or talk to us about supplying your restaurant, hotel or catering business." />;
 
-    if (isMobile) return <MobileHome />;
+    if (isDataLoading) return <>{homeSeo}<SkeletonPage /></>;
+
+    if (isMobile) return <>{homeSeo}<MobileHome /></>;
 
     return (
         <div ref={scrollContainerRef} className="scroll-container">
-            <SEO title="Handcrafted Gourmet Croquettes in Barcelona" description="Discover handcrafted gourmet croquettes by Kasa Saffron in Barcelona. Premium Spanish recipes for restaurants, HORECA and catering, made with carefully selected ingredients." />
+            {homeSeo}
             <img
                 ref={bgImgRef}
                 src="/Images/background_image.jpeg"
