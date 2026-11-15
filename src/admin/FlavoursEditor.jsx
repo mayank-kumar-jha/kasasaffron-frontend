@@ -84,7 +84,7 @@ function FlavourForm({ initial, onSave, onCancel }) {
         </div>
       </div>
 
-      {form.image && <img src={form.image} alt="preview" className="h-28 w-full object-cover rounded-xl opacity-70" onError={e => { e.target.style.display='none'; }} />}
+      {form.image && <img src={form.image} alt={form.name?.en || form.spanishName || 'Croquette flavour image'} className="h-28 w-full object-cover rounded-xl opacity-70" onError={e => { e.target.style.display='none'; }} />}
 
       <div className="flex gap-3 pt-2">
         <button onClick={handleSaveClick} disabled={loading} className="px-6 py-2.5 bg-[#E6C587] text-[#0d0002] font-bold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -161,7 +161,7 @@ export default function FlavoursEditor() {
               <FlavourForm initial={flavour} onSave={handleSave} onCancel={() => setEditing(null)} />
             ) : (
               <div className="bg-[#130004] border border-[#E6C587]/10 rounded-2xl p-4 flex items-center gap-4">
-                <img src={flavour.image} alt="" className="w-14 h-14 rounded-xl object-cover flex-shrink-0 opacity-80" onError={e => { e.target.style.display='none'; }} />
+                <img src={flavour.image} alt={flavour.name?.en || flavour.spanishName || 'Croquette flavour'} className="w-14 h-14 rounded-xl object-cover flex-shrink-0 opacity-80" onError={e => { e.target.style.display='none'; }} />
                 <div className="flex-1 min-w-0">
                   <h3 className="text-white font-bold text-sm truncate">{flavour.name?.en}</h3>
                   <p className="text-[#E6C587]/40 text-xs italic">{flavour.spanishName}</p>
