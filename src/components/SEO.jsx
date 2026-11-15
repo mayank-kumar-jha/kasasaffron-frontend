@@ -7,7 +7,7 @@ const SEO = ({ title, description, name = 'Kasa Saffron', type = 'website', imag
   const pageDescription = description || defaultDesc;
   const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://www.kasasaffron.com';
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
-  const pageUrl = canonicalUrl || `${siteUrl}${currentPath === '/' ? '/' : currentPath.replace(/\\/$/, '')}`;
+  const pageUrl = canonicalUrl || `${siteUrl}${currentPath === '/' ? '/' : currentPath.replace(/\/$/, '')}`;
   const imageUrl = image ? (image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`) : null;
 
   return (
@@ -28,7 +28,7 @@ const SEO = ({ title, description, name = 'Kasa Saffron', type = 'website', imag
       <meta name="twitter:card" content={type} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
-      {imageUrl && <meta name="twitter:image" content={imageUrl} />
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
     </Helmet>
   );
 };
