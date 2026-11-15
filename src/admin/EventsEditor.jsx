@@ -180,7 +180,7 @@ export default function EventsEditor() {
               <AnnouncementForm initial={event} onSave={handleSave} onCancel={() => setEditing(null)} />
             ) : (
               <div className="bg-[#130004] border border-[#E6C587]/10 rounded-2xl p-5 flex items-center gap-5">
-                {event.image && <img src={event.image} alt={event.title?.en || 'Event announcement image'} className="w-20 h-16 object-cover rounded-xl flex-shrink-0 opacity-80" onError={e => { e.target.style.display='none'; }} />}
+                {event.image && <img src={event.image} alt="" className="w-20 h-16 object-cover rounded-xl flex-shrink-0 opacity-80" onError={e => { e.target.style.display='none'; }} />}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-white font-bold text-sm truncate">{event.title?.en || 'Untitled'}</h3>
