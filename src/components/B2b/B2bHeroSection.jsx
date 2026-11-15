@@ -137,8 +137,8 @@ export default function B2bHeroSection({ t, scrollYProgress }) {
                   src={src}
                   alt=""
                   draggable={false}
-                  loading="eager"
-                  fetchPriority="high"
+                  loading={c < 2 ? "eager" : "lazy"}
+                  fetchPriority={c < 2 ? "high" : "low"}
                   className="w-full object-cover aspect-[4/3] border border-[#E6C587]/20"
                 />
               </div>
@@ -213,6 +213,7 @@ export default function B2bHeroSection({ t, scrollYProgress }) {
                   alt=""
                   draggable={false}
                   loading="lazy"
+                  fetchPriority="low"
                   decoding="async"
                   className="w-full h-full object-cover aspect-[4/3] border border-[#E6C587]/20"
                 />
