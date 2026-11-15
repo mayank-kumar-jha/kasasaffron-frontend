@@ -29,6 +29,13 @@ export default function B2b() {
   const { isDataLoading } = adminContext;
   const adminFlavours = adminContext.flavours || [];
 
+  const seoLang = (i18n.language || 'en').split('-')[0];
+  const seoCopy = seoLang === 'es'
+    ? { title: 'Croquetas gourmet para restaurantes y catering en Barcelona', description: 'En Kasa Saffron elaboramos croquetas gourmet en Barcelona para restaurantes, hoteles y empresas de catering. Cuéntanos qué necesita tu negocio y hablemos de una colaboración.' }
+    : (seoLang === 'ca' || seoLang === 'cat')
+      ? { title: 'Croquetes gourmet per a restaurants i càtering a Barcelona', description: 'A Kasa Saffron preparem croquetes gourmet a Barcelona per a restaurants, hotels i serveis de càtering. Explica’ns què necessita el teu negoci i parlem de com podem col·laborar.' }
+      : { title: 'Gourmet Croquettes for Restaurants & Catering in Barcelona', description: 'At Kasa Saffron, we make gourmet croquettes in Barcelona for restaurants, hotels and catering teams. Tell us what your kitchen needs and let’s talk about working together.' };
+
   const displayFlavours = adminFlavours && adminFlavours.length > 0 ? adminFlavours : FLAVOURS;
 
   const flavours = displayFlavours.map((f, i) => {
