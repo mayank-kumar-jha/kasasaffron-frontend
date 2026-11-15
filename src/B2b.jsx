@@ -271,7 +271,7 @@ export default function B2b() {
 
   return (
     <div ref={pageRef} className="relative w-full bg-[#f6e5dd] overflow-hidden">
-      <SEO title="B2B Partnership" description="Partner with Kasa Saffron for wholesale and catering." />
+      <SEO title="Wholesale Croquettes for Restaurants in Barcelona" description="Supply your restaurant, hotel or catering business with handcrafted gourmet croquettes from Kasa Saffron in Barcelona. Explore our HORECA range and request a wholesale catalogue." />
       {/* ── Grain Texture Overlay ── */}
       <div className="fixed inset-0 pointer-events-none z-[2] bg-grain opacity-[0.035]" />
 
@@ -429,7 +429,7 @@ export default function B2b() {
           style={{ opacity: 0 }}
         >
           <div className="w-full h-[80%] rounded-xl overflow-hidden bg-[#e8d5c0] border border-gray-50">
-            <img src="/assets/b2b-hero/hero1.jpg" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+            <img src="/assets/b2b-hero/hero1.jpg" alt="Kasa Saffron gourmet croquettes for restaurant and catering partners" loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
           <div className="w-full h-[20%] flex items-center justify-center">
             <span className="text-[7px] font-bold tracking-widest text-[#BD561A]/70 font-sans uppercase">KASA SAFFRON</span>
@@ -442,7 +442,7 @@ export default function B2b() {
           style={{ opacity: 0 }}
         >
           <div className="w-full h-[80%] rounded-xl overflow-hidden bg-[#e8d5c0] border border-gray-50">
-            <img src="/assets/b2b-hero/hero2.jpg" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+            <img src="/assets/b2b-hero/hero2.jpg" alt="Gourmet croquettes prepared for hospitality and catering service" loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
           <div className="w-full h-[20%] flex items-center justify-center">
             <span className="text-[7px] font-bold tracking-widest text-[#BD561A]/70 font-sans uppercase">KASA SAFFRON</span>
