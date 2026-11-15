@@ -207,6 +207,31 @@ export default function FlavourDetail() {
     "category": "Food & Beverage > Prepared Meals > Tapas & Croquettes"
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.kasasaffron.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": dbLang === 'es' ? "Sabores" : dbLang === 'ca' ? "Sabors" : "Flavours",
+        "item": "https://www.kasasaffron.com/flavours"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": flavourName,
+        "item": canonicalUrl
+      }
+    ]
+  };
+
   const handleAddToCart = () => {
     addToCart({
       id: flavour.id,
@@ -224,6 +249,7 @@ export default function FlavourDetail() {
         <title>{seoTitle}</title>
         <meta name="description" content={seoDesc} />
         <meta name="keywords" content={seoKeywords} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href={canonicalUrl} />
 
         {/* Hreflang alternates */}
@@ -233,6 +259,8 @@ export default function FlavourDetail() {
         <link rel="alternate" hrefLang="x-default" href={`https://www.kasasaffron.com/flavours/${flavour.slugs.en}`} />
 
         {/* OpenGraph */}
+        <meta property="og:site_name" content="Kasa Saffron" />
+        <meta property="og:locale" content={dbLang === 'es' ? 'es_ES' : dbLang === 'ca' ? 'ca_ES' : 'en_US'} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDesc} />
         <meta property="og:image" content={fullImageUrl} />
@@ -248,6 +276,9 @@ export default function FlavourDetail() {
         {/* JSON-LD Schema */}
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
       </Helmet>
 
