@@ -707,7 +707,7 @@ export default function Flavours() {
 
   return (
     <>
-      <SEO title={seoCopy.title} description={seoCopy.description} />
+      <SEO title={seoCopy.title} description={seoCopy.description} lang={dbLang} schemaType="CollectionPage" />
       {/* Fixed Background â€” deep maroon on mobile, cream on desktop */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Mobile: deep maroon gradient matching home page */}
@@ -726,9 +726,9 @@ export default function Flavours() {
 
         {/* Header */}
         <motion.div {...fadeUp(0.2)} className="relative flex flex-col items-center text-center px-6 pt-4 md:pt-8 mt-[20px] z-10">
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-normal leading-tight font-serif uppercase tracking-wide text-[#E6C587] md:text-[#720303] mt-3 mb-3 drop-shadow-sm" style={{ fontFamily: "'Cinzel', serif" }}>
+          <h1 className="text-xl md:text-3xl lg:text-4xl font-normal leading-tight font-serif uppercase tracking-wide text-[#E6C587] md:text-[#720303] mt-3 mb-3 drop-shadow-sm" style={{ fontFamily: "'Cinzel', serif" }}>
             {t('flavoursPage.title')}
-          </h2>
+          </h1>
           <div className="w-24 h-[1px] bg-[#E6C587] md:bg-[#BD561A] my-4 opacity-50"></div>
         </motion.div>
 

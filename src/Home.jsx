@@ -315,7 +315,7 @@ export default function Home() {
         : (homeSeoLang === 'ca' || homeSeoLang === 'cat')
             ? { title: 'Croquetes gourmet artesanes a Barcelona', description: 'A Kasa Saffron elaborem croquetes gourmet a Barcelona amb ingredients seleccionats i passió per la cuina. Descobreix els nostres sabors o explica’ns què necessita el teu restaurant, hotel o servei de càtering.' }
             : { title: 'Handcrafted Gourmet Croquettes in Barcelona', description: 'At Kasa Saffron, we make gourmet croquettes in Barcelona with carefully selected ingredients and a love for Spanish food. Discover our flavours or talk to us about supplying your restaurant, hotel or catering business.' };
-    const homeSeo = <SEO title={homeSeoCopy.title} description={homeSeoCopy.description} />;
+    const homeSeo = <SEO title={homeSeoCopy.title} description={homeSeoCopy.description} lang={homeSeoLang === 'cat' ? 'ca' : homeSeoLang} />;
 
     if (isDataLoading) return <>{homeSeo}<SkeletonPage /></>;
 

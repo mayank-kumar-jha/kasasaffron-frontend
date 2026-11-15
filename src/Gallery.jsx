@@ -56,16 +56,16 @@ export default function Gallery() {
 
   return (
     <section className="relative w-full py-16 md:py-20 pt-[120px] overflow-hidden min-h-screen flex flex-col justify-center" style={{ backgroundImage: 'url(/assets/gallery_bg_new.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <SEO title={seoCopy.title} description={seoCopy.description} />
+      <SEO title={seoCopy.title} description={seoCopy.description} lang={lang === 'cat' ? 'ca' : lang.split('-')[0]} schemaType="CollectionPage" />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E6C587]/30 to-transparent" />
 
       <motion.div {...fadeUp(0)} className="relative flex flex-col items-center text-center px-6 mb-10 z-10 mt-10">
         <span className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-white uppercase font-sans">
           {t('galleryPage.badge')}
         </span>
-        <h2 className="text-xl md:text-3xl lg:text-4xl font-normal leading-tight font-serif uppercase tracking-wide text-[#f6e5dd] mt-3 mb-3 drop-shadow-sm" style={{ fontFamily: "'Cinzel', serif" }}>
+        <h1 className="text-xl md:text-3xl lg:text-4xl font-normal leading-tight font-serif uppercase tracking-wide text-[#f6e5dd] mt-3 mb-3 drop-shadow-sm" style={{ fontFamily: "'Cinzel', serif" }}>
           {t('galleryPage.title')}
-        </h2>
+        </h1>
         <div className="w-24 h-[1px] bg-[#E6C587] my-2 opacity-50"></div>
       </motion.div>
 
