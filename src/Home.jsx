@@ -333,9 +333,10 @@ export default function Home() {
                     opacity: 0, zIndex: 0, pointerEvents: 'none', transition: 'none',
                     display: isMobile ? 'none' : 'block'
                 }}
-                alt="Background"
+                alt=""
+                aria-hidden="true"
                 fetchPriority="high"
-                decoding="sync"
+                decoding="async"
             />
 
             <div className="scene-3d-container">
