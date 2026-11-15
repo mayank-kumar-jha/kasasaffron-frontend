@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '../context/AdminContext';
 
 export default function AdminSettings() {
-  const { adminEmail, updateCredentials } = useAdmin();
+  const { adminEmail, adminPassword, updateCredentials } = useAdmin();
   const [email, setEmail] = useState(adminEmail);
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');
@@ -18,6 +18,10 @@ export default function AdminSettings() {
     setError('');
     setSuccess('');
 
+    if (currentPass !== adminPassword) {
+      setError('Current password is incorrect.');
+      return;
+    }
     if (!email) {
       setError('Email cannot be empty.');
       return;
@@ -34,9 +38,9 @@ export default function AdminSettings() {
     try {
       setLoading(true);
       const { adminUpdateCredentials } = await import('../api/admin.service.js');
-      await adminUpdateCredentials({ currentPassword: currentPass, newEmail: email, ...(newPass ? { newPassword: newPass } : {}) });
+      await adminUpdateCredentials({ currentPassword: currentPass, newEmail: email, newPassword: newPass || adminPassword });
       
-      updateCredentials(email);
+      updateCredentials(email, newPass || adminPassword);
       setSuccess('Credentials updated successfully!');
       setCurrentPass('');
       setNewPass('');
@@ -136,7 +140,19 @@ export default function AdminSettings() {
           </form>
         </div>
 
-
+        <div className="mt-6 bg-[#130004] border border-[#E6C587]/10 rounded-2xl p-6">
+          <h3 className="text-white/50 text-xs font-bold tracking-widest uppercase mb-3">Current Credentials</h3>
+          <div className="space-y-2">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/30">Email</span>
+              <span className="text-[#E6C587]/70 font-mono">{adminEmail}</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-white/30">Password</span>
+              <span className="text-[#E6C587]/70 font-mono">{'•'.repeat(adminPassword.length)}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
