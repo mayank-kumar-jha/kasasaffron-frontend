@@ -278,7 +278,7 @@ export default function B2b() {
 
   return (
     <div ref={pageRef} className="relative w-full bg-[#f6e5dd] overflow-hidden">
-      <SEO title="Wholesale Croquettes for Restaurants in Barcelona" description="Supply your restaurant, hotel or catering business with handcrafted gourmet croquettes from Kasa Saffron in Barcelona. Explore our HORECA range and request a wholesale catalogue." />
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       {/* ── Grain Texture Overlay ── */}
       <div className="fixed inset-0 pointer-events-none z-[2] bg-grain opacity-[0.035]" />
 
