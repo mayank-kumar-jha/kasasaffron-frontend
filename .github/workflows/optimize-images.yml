@@ -1,0 +1,84 @@
+name: Optimize homepage images
+
+on:
+  push:
+    branches:
+      - performance-image-font-optimization
+    paths:
+      - ".github/workflows/optimize-images.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out optimization branch
+        uses: actions/checkout@v4
+        with:
+          ref: performance-image-font-optimization
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Install temporary image encoder
+        run: npm install --no-save --package-lock=false sharp
+
+      - name: Convert homepage images to WebP and update references
+        run: |
+          node --input-type=module <<'NODE'
+          import sharp from 'sharp';
+          import fs from 'node:fs/promises';
+
+          const images = [
+            { input: 'public/Images/Croqetta with plate_.png', output: 'public/Images/Croqetta with plate_.webp' },
+            { input: 'public/Images/background_image.jpeg', output: 'public/Images/background_image.webp' },
+            { input: 'public/Images/founder_pngggg.png', output: 'public/Images/founder_pngggg.webp' },
+          ];
+
+          for (const image of images) {
+            await sharp(image.input)
+              .webp({ quality: 82, alphaQuality: 90, effort: 5, smartSubsample: true })
+              .toFile(image.output);
+            const input = await fs.stat(image.input);
+            const output = await fs.stat(image.output);
+            console.log(`${image.input}: ${input.size} bytes -> ${output.size} bytes`);
+          }
+
+          const replacements = [
+            ['src/components/HeroSection.jsx', '/Images/Croqetta with plate_.png', '/Images/Croqetta with plate_.webp'],
+            ['src/MobileHome.jsx', '/Images/Croqetta with plate_.png', '/Images/Croqetta with plate_.webp'],
+            ['src/MobileHome.jsx', '/Images/founder_pngggg.png', '/Images/founder_pngggg.webp'],
+            ['src/Home.jsx', '/Images/background_image.jpeg', '/Images/background_image.webp'],
+            ['src/components/StoryCards.jsx', '/Images/founder_pngggg.png', '/Images/founder_pngggg.webp'],
+          ];
+
+          for (const [file, before, after] of replacements) {
+            const original = await fs.readFile(file, 'utf8');
+            if (!original.includes(before)) throw new Error(`Expected image reference missing in ${file}: ${before}`);
+            await fs.writeFile(file, original.replaceAll(before, after));
+          }
+          NODE
+
+      - name: Verify production build
+        run: npm run build
+
+      - name: Commit optimized assets to this PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "public/Images/Croqetta with plate_.webp" public/Images/background_image.webp public/Images/founder_pngggg.webp src/components/HeroSection.jsx src/MobileHome.jsx src/Home.jsx src/components/StoryCards.jsx
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git commit -m "Optimize homepage images with WebP"
+          git push origin HEAD:performance-image-font-optimization
