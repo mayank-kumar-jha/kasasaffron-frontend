@@ -29,6 +29,13 @@ export default function B2b() {
   const { isDataLoading } = adminContext;
   const adminFlavours = adminContext.flavours || [];
 
+  const seoLang = (i18n.language || 'en').split('-')[0];
+  const seoCopy = seoLang === 'es'
+    ? { title: 'Croquetas gourmet para restaurantes y catering en Barcelona', description: 'En Kasa Saffron elaboramos croquetas gourmet en Barcelona para restaurantes, hoteles y empresas de catering. Cuéntanos qué necesita tu negocio y hablemos de una colaboración.' }
+    : (seoLang === 'ca' || seoLang === 'cat')
+      ? { title: 'Croquetes gourmet per a restaurants i càtering a Barcelona', description: 'A Kasa Saffron preparem croquetes gourmet a Barcelona per a restaurants, hotels i serveis de càtering. Explica’ns què necessita el teu negoci i parlem de com podem col·laborar.' }
+      : { title: 'Gourmet Croquettes for Restaurants & Catering in Barcelona', description: 'At Kasa Saffron, we make gourmet croquettes in Barcelona for restaurants, hotels and catering teams. Tell us what your kitchen needs and let’s talk about working together.' };
+
   const displayFlavours = adminFlavours && adminFlavours.length > 0 ? adminFlavours : FLAVOURS;
 
   const flavours = displayFlavours.map((f, i) => {
@@ -271,7 +278,7 @@ export default function B2b() {
 
   return (
     <div ref={pageRef} className="relative w-full bg-[#f6e5dd] overflow-hidden">
-      <SEO title="B2B Partnership" description="Partner with Kasa Saffron for wholesale and catering." />
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       {/* ── Grain Texture Overlay ── */}
       <div className="fixed inset-0 pointer-events-none z-[2] bg-grain opacity-[0.035]" />
 
@@ -429,7 +436,7 @@ export default function B2b() {
           style={{ opacity: 0 }}
         >
           <div className="w-full h-[80%] rounded-xl overflow-hidden bg-[#e8d5c0] border border-gray-50">
-            <img src="/assets/b2b-hero/hero1.jpg" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+            <img src="/assets/b2b-hero/hero1.jpg" alt="Kasa Saffron gourmet croquettes for restaurant and catering partners" loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
           <div className="w-full h-[20%] flex items-center justify-center">
             <span className="text-[7px] font-bold tracking-widest text-[#BD561A]/70 font-sans uppercase">KASA SAFFRON</span>
@@ -442,7 +449,7 @@ export default function B2b() {
           style={{ opacity: 0 }}
         >
           <div className="w-full h-[80%] rounded-xl overflow-hidden bg-[#e8d5c0] border border-gray-50">
-            <img src="/assets/b2b-hero/hero2.jpg" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+            <img src="/assets/b2b-hero/hero2.jpg" alt="Gourmet croquettes prepared for hospitality and catering service" loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
           <div className="w-full h-[20%] flex items-center justify-center">
             <span className="text-[7px] font-bold tracking-widest text-[#BD561A]/70 font-sans uppercase">KASA SAFFRON</span>

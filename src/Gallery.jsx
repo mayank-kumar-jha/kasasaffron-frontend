@@ -14,6 +14,12 @@ const fadeUp = (delay = 0) => ({
 export default function Gallery() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language || 'en';
+  const seoCopy = lang === 'es'
+    ? { title: 'Galería de croquetas artesanas y catering en Barcelona', description: 'Descubre el trabajo de Kasa Saffron: croquetas gourmet elaboradas en Barcelona, nuestros sabores y momentos de nuestros servicios de catering.' }
+    : (lang === 'ca' || lang === 'cat')
+      ? { title: 'Galeria de croquetes artesanes i càtering a Barcelona', description: 'Descobreix la feina de Kasa Saffron: croquetes gourmet elaborades a Barcelona, els nostres sabors i moments dels nostres serveis de càtering.' }
+      : { title: 'Our Croquettes & Catering Gallery | Kasa Saffron', description: 'Take a closer look at Kasa Saffron, from our handcrafted gourmet croquettes to the food and moments we create for catering in Barcelona.' };
+
   const { galleryImages, isDataLoading } = useAdmin();
 
   const [isPaused, setIsPaused] = useState(false);
@@ -50,7 +56,7 @@ export default function Gallery() {
 
   return (
     <section className="relative w-full py-16 md:py-20 pt-[120px] overflow-hidden min-h-screen flex flex-col justify-center" style={{ backgroundImage: 'url(/assets/gallery_bg_new.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <SEO title="Gallery" description="See the beautiful creations at Kasa Saffron." />
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E6C587]/30 to-transparent" />
 
       <motion.div {...fadeUp(0)} className="relative flex flex-col items-center text-center px-6 mb-10 z-10 mt-10">
@@ -74,7 +80,7 @@ export default function Gallery() {
             <div className={`animate-scroll-up flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images, ...images].map((f, i) => (
                 <div key={`col1-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '200px' : i % 3 === 1 ? '260px' : '180px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -90,7 +96,7 @@ export default function Gallery() {
             <div className={`animate-scroll-down flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(3), ...images, ...images.slice(0, 3)].map((f, i) => (
                 <div key={`col2-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '240px' : i % 3 === 1 ? '180px' : '220px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -106,7 +112,7 @@ export default function Gallery() {
             <div className={`animate-scroll-up-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(5), ...images, ...images.slice(0, 5)].map((f, i) => (
                 <div key={`col3-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '180px' : i % 3 === 1 ? '240px' : '200px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>
@@ -122,7 +128,7 @@ export default function Gallery() {
             <div className={`animate-scroll-down-slow flex flex-col gap-3 md:gap-4 ${isPaused ? '![animation-play-state:paused]' : ''}`}>
               {[...images.slice(1), ...images, ...images.slice(0, 1)].map((f, i) => (
                 <div key={`col4-${i}`} className="rounded-xl overflow-hidden relative group" style={{ height: i % 3 === 0 ? '220px' : i % 3 === 1 ? '190px' : '250px' }}>
-                  <img src={f.image} alt={f.name} loading="eager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={f.image} alt={f.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <p className="text-xs font-bold text-white font-serif">{f.name}</p>

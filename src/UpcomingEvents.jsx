@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAdmin } from './context/AdminContext';
 import { useTranslation } from 'react-i18next';
+import SEO from './components/SEO';
 
 /* ── Category Tag Color Map ── */
 const CATEGORY_COLORS = {
@@ -57,6 +58,12 @@ export default function UpcomingEvents() {
   const { events } = useAdmin();
   const { t, i18n } = useTranslation();
   const lang = i18n.language || 'en';
+  const seoCopy = lang === 'es'
+    ? { title: 'Novedades y eventos de Kasa Saffron en Barcelona', description: 'Sigue las novedades de Kasa Saffron: nuevos sabores, colaboraciones y próximos eventos gastronómicos en Barcelona.' }
+    : (lang === 'ca' || lang === 'cat')
+      ? { title: 'Novetats i esdeveniments de Kasa Saffron a Barcelona', description: 'Segueix les novetats de Kasa Saffron: nous sabors, col·laboracions i pròxims esdeveniments gastronòmics a Barcelona.' }
+      : { title: 'News & Events in Barcelona | Kasa Saffron', description: 'Keep up with Kasa Saffron, from new croquette flavours and partnerships to upcoming food events in Barcelona.' };
+
   const [expandedId, setExpandedId] = useState(null);
 
   const getTitle = (event) => {
@@ -71,6 +78,7 @@ export default function UpcomingEvents() {
 
   return (
     <div className="min-h-screen bg-[#140003] text-white pt-28 md:pt-36 pb-20 font-sans selection:bg-[#E6C587]/30 selection:text-[#E6C587]">
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       {/* Premium background effects */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[#E6C587]/[0.03] blur-[150px] rounded-full translate-x-1/3 translate-y-1/3"></div>

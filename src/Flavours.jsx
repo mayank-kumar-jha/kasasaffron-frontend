@@ -499,6 +499,12 @@ const fadeUp = (delay = 0) => ({
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const MobileCard = React.memo(function MobileCard({ flavour, index, isActive, diff, lang, t, onClick }) {
   const dbLang = lang === 'cat' ? 'ca' : lang;
+  const seoCopy = lang === 'es'
+    ? { title: 'Croquetas artesanas y gourmet en Barcelona', description: 'Descubre las croquetas gourmet de Kasa Saffron, elaboradas en Barcelona con recetas cuidadas e ingredientes seleccionados. Encuentra sabores para tu carta y para tus clientes.' }
+    : lang === 'cat'
+      ? { title: 'Croquetes artesanes i gourmet a Barcelona', description: 'Descobreix les croquetes gourmet de Kasa Saffron, elaborades a Barcelona amb receptes cuidades i ingredients seleccionats. Troba sabors per a la teva carta i els teus clients.' }
+      : { title: 'Artisan Gourmet Croquettes in Barcelona', description: 'Explore Kasa Saffron’s range of gourmet croquettes, made in Barcelona with carefully selected ingredients and recipes inspired by Spanish food. Find flavours for your menu.' };
+
   const name = typeof flavour.name === 'object' && flavour.name !== null ? (flavour.name[dbLang] || flavour.name.en || flavour.name.es) : flavour.name;
   const tagline = typeof flavour.tagline === 'object' && flavour.tagline !== null ? (flavour.tagline[dbLang] || flavour.tagline.en || flavour.tagline.es) : flavour.tagline;
   const description = typeof flavour.description === 'object' && flavour.description !== null ? (flavour.description[dbLang] || flavour.description.en || flavour.description.es) : flavour.description;
@@ -701,7 +707,7 @@ export default function Flavours() {
 
   return (
     <>
-      <SEO title="Our Flavours" description="Explore our handcrafted gourmet saffron croquettes." />
+      <SEO title={seoCopy.title} description={seoCopy.description} />
       {/* Fixed Background â€” deep maroon on mobile, cream on desktop */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Mobile: deep maroon gradient matching home page */}

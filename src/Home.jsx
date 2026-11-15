@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense, useCallback } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
+import { useTranslation } from 'react-i18next';
 import MobileHome from './MobileHome';
 import HeroSection from './components/HeroSection';
 import SEO from './components/SEO';
@@ -33,6 +34,7 @@ export default function Home() {
     };
     const [isMobile, setIsMobile] = useState(checkIsMobile);
     const { isDataLoading } = useAdmin();
+    const { i18n } = useTranslation();
 
     // ── Refs for static layout ──
     const backContentRef = useRef(null);
@@ -307,13 +309,21 @@ export default function Home() {
         };
     }, [isMobile, isDataLoading]);
 
-    if (isDataLoading) return <SkeletonPage />;
+    const homeSeoLang = (i18n.language || 'en').split('-')[0];
+    const homeSeoCopy = homeSeoLang === 'es'
+        ? { title: 'Croquetas gourmet artesanas en Barcelona', description: 'En Kasa Saffron elaboramos croquetas gourmet en Barcelona con ingredientes seleccionados y pasión por la cocina española. Descubre nuestros sabores o cuéntanos qué necesita tu restaurante, hotel o servicio de catering.' }
+        : (homeSeoLang === 'ca' || homeSeoLang === 'cat')
+            ? { title: 'Croquetes gourmet artesanes a Barcelona', description: 'A Kasa Saffron elaborem croquetes gourmet a Barcelona amb ingredients seleccionats i passió per la cuina. Descobreix els nostres sabors o explica’ns què necessita el teu restaurant, hotel o servei de càtering.' }
+            : { title: 'Handcrafted Gourmet Croquettes in Barcelona', description: 'At Kasa Saffron, we make gourmet croquettes in Barcelona with carefully selected ingredients and a love for Spanish food. Discover our flavours or talk to us about supplying your restaurant, hotel or catering business.' };
+    const homeSeo = <SEO title={homeSeoCopy.title} description={homeSeoCopy.description} />;
 
-    if (isMobile) return <MobileHome />;
+    if (isDataLoading) return <>{homeSeo}<SkeletonPage /></>;
+
+    if (isMobile) return <>{homeSeo}<MobileHome /></>;
 
     return (
         <div ref={scrollContainerRef} className="scroll-container">
-            <SEO title="Home" />
+            {homeSeo}
             <img
                 ref={bgImgRef}
                 src="/Images/background_image.jpeg"
@@ -323,9 +333,10 @@ export default function Home() {
                     opacity: 0, zIndex: 0, pointerEvents: 'none', transition: 'none',
                     display: isMobile ? 'none' : 'block'
                 }}
-                alt="Background"
+                alt=""
+                aria-hidden="true"
                 fetchPriority="high"
-                decoding="sync"
+                decoding="async"
             />
 
             <div className="scene-3d-container">

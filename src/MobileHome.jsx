@@ -422,11 +422,11 @@ export default function MobileHome() {
         >
           {/* Decorative elements - scrolled with section */}
           <div className="mob-hero-deco-wrapper">
-            <img src="/Images/LeftSide_Flower.png" className="mob-hero-deco mob-hero-deco-flower-l" alt="" aria-hidden="true" fetchPriority="high" decoding="sync" />
-            <img src="/Images/RightSide_Flower.png" className="mob-hero-deco mob-hero-deco-flower-r" alt="" aria-hidden="true" fetchPriority="high" decoding="sync" />
-            <img src="/Images/RightSide_SaffronCup.png" className="mob-hero-deco mob-hero-deco-cup" alt="" aria-hidden="true" fetchPriority="high" decoding="sync" />
-            <img src="/Images/RightSide_Leaves.png" className="mob-hero-deco mob-hero-deco-leaves" alt="" aria-hidden="true" fetchPriority="high" decoding="sync" />
-            <img src="/Images/RightSide_FlowerPetalBottom.png" className="mob-hero-deco" style={{ position: 'absolute', bottom: 'calc(2% + 100px)', left: '5%', width: '30vw', zIndex: 1 }} alt="" aria-hidden="true" fetchPriority="high" decoding="sync" />
+            <img src="/Images/LeftSide_Flower.png" className="mob-hero-deco mob-hero-deco-flower-l" alt="" aria-hidden="true" decoding="async" />
+            <img src="/Images/RightSide_Flower.png" className="mob-hero-deco mob-hero-deco-flower-r" alt="" aria-hidden="true" decoding="async" />
+            <img src="/Images/RightSide_SaffronCup.png" className="mob-hero-deco mob-hero-deco-cup" alt="" aria-hidden="true" decoding="async" />
+            <img src="/Images/RightSide_Leaves.png" className="mob-hero-deco mob-hero-deco-leaves" alt="" aria-hidden="true" decoding="async" />
+            <img src="/Images/RightSide_FlowerPetalBottom.png" className="mob-hero-deco" style={{ position: 'absolute', bottom: 'calc(2% + 100px)', left: '5%', width: '30vw', zIndex: 1 }} alt="" aria-hidden="true" decoding="async" />
           </div>
 
           {/* Dynamic Plate Wrapper (scrolled with section) */}
@@ -490,8 +490,8 @@ export default function MobileHome() {
                 <img
                   src={(typeof aboutData?.founderImage === 'string' && aboutData.founderImage.trim() !== '' && aboutData.founderImage !== "null") ? aboutData.founderImage : "/Images/founder_pngggg.png"}
                   alt="Chetna Bali"
-                  className="mob-founder-img"
-                  fetchPriority="high"
+                  className="mob-founder-img" loading="lazy"
+                  fetchPriority="low"
                   decoding="sync"
                 />
               </div>
@@ -514,8 +514,8 @@ export default function MobileHome() {
                   <img
                     src={aboutData.lovieshImage}
                     alt="Loviesh Bali"
-                    className="mob-founder-img"
-                    fetchPriority="high"
+                    className="mob-founder-img" loading="lazy"
+                    fetchPriority="low"
                     decoding="sync"
                   />
                 )}

@@ -41,6 +41,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-jamon-iberico</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-jamon-iberico"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/iberian-ham-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/iberian-ham-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-pernil-iberic"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -50,6 +51,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-pernil-iberic"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-jamon-iberico"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/iberian-ham-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/iberian-ham-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -68,6 +70,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-boletus-edulis</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-boletus-edulis"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/boletus-edulis-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/boletus-edulis-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-boletus-edulis"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -77,6 +80,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-boletus-edulis"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-boletus-edulis"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/boletus-edulis-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/boletus-edulis-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -95,6 +99,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-bacalao</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-bacalao"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/salt-cod-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/salt-cod-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-bacalla"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -104,6 +109,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-bacalla"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-bacalao"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/salt-cod-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/salt-cod-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -122,6 +128,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-pollo-rustido</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-pollo-rustido"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/roast-chicken-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/roast-chicken-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-pollastre-rostit"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -131,6 +138,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-pollastre-rostit"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-pollo-rustido"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/roast-chicken-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/roast-chicken-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -149,6 +157,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-queso-azul</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-queso-azul"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/blue-cheese-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/blue-cheese-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-formatge-blau"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -158,6 +167,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-formatge-blau"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-queso-azul"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/blue-cheese-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/blue-cheese-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -176,6 +186,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-espinaca-queso-edam-y-tomate-seco</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-espinaca-queso-edam-y-tomate-seco"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/spinach-edam-cheese-sun-dried-tomato-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/spinach-edam-cheese-sun-dried-tomato-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-espinacs-formatge-edam-tomaquet-sec"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -185,6 +196,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-espinacs-formatge-edam-tomaquet-sec"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-espinaca-queso-edam-y-tomate-seco"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/spinach-edam-cheese-sun-dried-tomato-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/spinach-edam-cheese-sun-dried-tomato-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -203,6 +215,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-cocido</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-cocido"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/traditional-spanish-stew-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/traditional-spanish-stew-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-carn-dolla"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -212,6 +225,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-carn-dolla"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-cocido"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/traditional-spanish-stew-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/traditional-spanish-stew-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -230,6 +244,7 @@
     <loc>https://www.kasasaffron.com/flavours/croquetas-de-rape-y-gambas</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-rape-y-gambas"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/monkfish-and-shrimp-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/monkfish-and-shrimp-croquettes"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-rap-i-gambes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -239,6 +254,7 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://www.kasasaffron.com/flavours/croquetes-de-rap-i-gambes"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.kasasaffron.com/flavours/croquetas-de-rape-y-gambas"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.kasasaffron.com/flavours/monkfish-and-shrimp-croquettes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kasasaffron.com/flavours/monkfish-and-shrimp-croquettes"/>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>

@@ -173,7 +173,7 @@ export default function FlavourDetail() {
   const otherFlavours = FLAVOURS.filter(f => f.id !== flavour.id);
 
   // SEO strings
-  const seoTitle = `${flavourName} | Handcrafted Gourmet Croquettes | Kasa Saffron`;
+  const seoTitle = flavour.seo?.title?.[dbLang] || `${flavourName} | Gourmet Croquettes | Kasa Saffron`;
   const seoDesc = flavour.seo?.description?.[dbLang] || flavourDesc;
   const seoKeywords = flavour.seo?.keywords?.[dbLang] || `${flavourName}, croquettes, tapas, barcelona`;
   const canonicalUrl = `https://www.kasasaffron.com/flavours/${getFlavourSlug(flavour, dbLang)}`;
