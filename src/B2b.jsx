@@ -278,7 +278,7 @@ export default function B2b() {
 
   return (
     <div ref={pageRef} className="relative w-full bg-[#f6e5dd] overflow-hidden">
-      <SEO title={seoCopy.title} description={seoCopy.description} />
+      <SEO title={seoCopy.title} description={seoCopy.description} lang={seoLang === 'cat' ? 'ca' : seoLang} />
       {/* ── Grain Texture Overlay ── */}
       <div className="fixed inset-0 pointer-events-none z-[2] bg-grain opacity-[0.035]" />
 

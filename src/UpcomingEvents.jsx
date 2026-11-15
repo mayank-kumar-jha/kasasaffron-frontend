@@ -78,7 +78,7 @@ export default function UpcomingEvents() {
 
   return (
     <div className="min-h-screen bg-[#140003] text-white pt-28 md:pt-36 pb-20 font-sans selection:bg-[#E6C587]/30 selection:text-[#E6C587]">
-      <SEO title={seoCopy.title} description={seoCopy.description} />
+      <SEO title={seoCopy.title} description={seoCopy.description} lang={lang === 'cat' ? 'ca' : lang.split('-')[0]} schemaType="CollectionPage" />
       {/* Premium background effects */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[#E6C587]/[0.03] blur-[150px] rounded-full translate-x-1/3 translate-y-1/3"></div>
